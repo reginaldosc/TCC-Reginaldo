@@ -1,6 +1,6 @@
 <?php
 
-class Role_model extends CI_Model {
+class Unidade_model extends CI_Model {
 	
 	
 	/**
@@ -17,7 +17,7 @@ class Role_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('Role', $data);
+		return $this->db->insert('unidade', $data);
 	}
 
 
@@ -27,7 +27,7 @@ class Role_model extends CI_Model {
 	function listar() 
 	{
 		$this->db->select('*');
-		$this->db->from('Role');
+		$this->db->from('Unidade');
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -39,10 +39,8 @@ class Role_model extends CI_Model {
 	 */
     function delete($id)
     {
-	    $this->db->where('roleID', $id);
-	    $this->db->delete('Role');
+	    $this->db->where('unidadeID', $id);
+	    $this->db->delete('Unidade');
 
 	}
 }
-
-?>

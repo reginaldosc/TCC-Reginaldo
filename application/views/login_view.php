@@ -12,7 +12,7 @@
 </head>
 
 </body>
-<div id="login_form">
+<div id="login_page">
 
 	<?php echo form_open('login/validate_login'); ?>
 			

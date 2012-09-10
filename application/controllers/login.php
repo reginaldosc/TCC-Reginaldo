@@ -27,14 +27,13 @@ class Login extends CI_Controller {
 	 */
 	public function validate_login()
 	{
-		$this->load->model('User_model');
-		$query = $this->User_model->validar();
+		$query = $this->usuario_model->validar();
 
 		if ($query)
 		{
 			$data = array(
 
-				'userLogin' => $this->input->post('login'), 
+				'usuarioLogin' => $this->input->post('login'), 
 				'logged' => true
 
 			);

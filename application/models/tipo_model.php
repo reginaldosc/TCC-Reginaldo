@@ -1,6 +1,6 @@
 <?php
 
-class Eag_model extends CI_Model {
+class Tipo_model extends CI_Model {
 	
 	
 	/**
@@ -17,7 +17,7 @@ class Eag_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('EAG', $data);
+		return $this->db->insert('Tipo', $data);
 	}
 
 
@@ -27,7 +27,7 @@ class Eag_model extends CI_Model {
 	function listar() 
 	{
 		$this->db->select('*');
-		$this->db->from('EAG');
+		$this->db->from('Tipo');
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -39,8 +39,8 @@ class Eag_model extends CI_Model {
 	 */
     function delete($id)
     {
-	    $this->db->where('eagID', $id);
-	    $this->db->delete('EAG');
+	    $this->db->where('tipoID', $id);
+	    $this->db->delete('Tipo');
 
 	}
 }

@@ -34,6 +34,13 @@ $(document).ready(function(){
 				required: true,
 				email: true
 			},
+
+			/* Valida data */
+			Data:
+			{
+				required: true,
+				dateISO: true
+			},
 		
 		},
 		
@@ -57,6 +64,11 @@ $(document).ready(function(){
 			{
 				required:"Informe um endereço de e-mail",
 				email:"Endereço de e-mail invalido"
+			},
+
+			Data:{
+				required: "Informe a data para auditoria",
+				dateISO: "Informe uma data valida, ex: dd/mm/aaaa",
 			},
 			
 		},

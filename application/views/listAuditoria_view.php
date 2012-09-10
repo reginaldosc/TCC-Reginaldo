@@ -10,7 +10,7 @@
 	</form>
 
 	<!-- Adicionar novo usuario -->
-	<a href="newUser" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Novo Usuário </a>
+	<a href="newAuditoria" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Nova Auditoria </a>
 	<br>
 	<br>
 
@@ -18,32 +18,34 @@
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Nome</th>
-				<th>Login</th>
-				<th>E-mail</th>
-				<th>Função</th>
-				<th>EAG</th>
+				<th>Auditor</th>
+				<th>Unidade</th>
 				<th>Departamento</th>
-				<th>Tipo de usuario</th>
+				<th>Projeto</th>
+				<th>Data Inicial</th>
 				<th>Editar</th>
 				<th>Excluir</th>
+				<th>Executar</th>
+				<th>Visualizar</th>
+				<th>Status</th>
 			</tr>
 		</thead>
 				
 		<tbody>
-			{usuarios}
-			<tr>
+			{auditorias}
+			<tr>	
 				<td>{usuarioNome}</td>
-				<td>{usuarioLogin}</td>
-				<td>{usuarioEmail}</td>
-				<td>{cargoNome}</td>
-				<td>{departamentoNome}</td>
 				<td>{unidadeNome}</td>
-				<td>{tipoNome}</td>
-				<td><a href="editUser/{usuarioID}" class='icon-edit'> <a/></td>
-				<td><a onclick='RemoveUser("{usuarioID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td>{departamentoNome}</td>
+				<td>{projetoNome}</td>
+				<td>{auditoriaDataInicio}</td>
+				<td><a href="editUser/{auditoriaID}" class='icon-edit'> <a/></td>
+				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td><a href="execAuditoria/{userID}" class='icon-play'> <a/></td>
+				<td><a href="execAuditoria/{userID}" class='icon-eye-open'> <a/></td>
+				<td> <span id="status" class="label label-success">Agendada</span></td>
 			</tr>
-			{/usuarios}
+			{/auditorias}
 		</tbody>
 	</table>
 	<br>
@@ -56,7 +58,7 @@
 		</div>
 
 		<div class="modal-body">
-		<p> Todos os dados relacionados a esse usuário serão apagados também. Deseja realmente excluir o usuário ?</p>
+		<p>Deseja realmente excluir a auditoria ?</p>
 		</div>
 
 		 <div class="modal-footer">
@@ -76,10 +78,10 @@
 
 <script type="text/javascript">
 
-function RemoveUser(id){
+function RemoveAuditoria(id){
 
 	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="deleteUser/"+id;
+	document.getElementById('Excluir').href="deleteAuditoria/"+id;
 
 }	
 

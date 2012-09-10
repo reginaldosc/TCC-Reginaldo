@@ -8,16 +8,27 @@
  		</h2>
  	</div>
   
+<div class="span12">
+
 	<div class="row">
 
-		<div class="span12">
-			<h2>
-	 			<img src="<?php echo base_url();?>img/user.jpg" class="img-rounded"> Reginaldo <small> Admin</small>
-	 		</h2>
- 		</div>
+	<ul class="thumbnails">
+  	
+  	<li class="span">
+    
+    <div class="thumbnail">
+      <img src="<?php echo base_url();?>img/user.jpg"  alt="">
+      <p><small> Administrador</small></p>
+    </div>
 
-		<div class="offset1">  			
-			<h4>Email: <small> reginaldo@intelbras.com.br</small></h4>
+  	</li>
+
+  	<li class="span">
+      
+      <h3>Reginaldo Gonçalvesdasdsas</h3>
+      <br>
+			
+      <h4>Email: <small> reginaldo@intelbras.com.br</small></h4>
 
  			<h4>Matricula: <small> 046468</small></h4>
 
@@ -26,11 +37,12 @@
  		 	<h4>Senha: <small> *******</small></h4>
  		 	<br>
  		 	<button class="btn btn-warning">Alterar a senha</button>
- 			
-		</div>
+ 	</li>
+	</ul>
+
 	</div>
 
-	
+</div>	
 	<br>
 
 <!-- javascript -->

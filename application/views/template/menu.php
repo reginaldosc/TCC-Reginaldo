@@ -10,12 +10,12 @@
 				
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
 					
-					<?php $usuario = $this->session->userdata('userLogin'); ?>
+					<?php $usuario = $this->session->userdata('usuarioLogin'); ?>
 					
 					<i class="icon-user"> </i> <?php echo $usuario ?> <span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><?php echo anchor('app/pageUser','Perfil');?></li>
+					<li><?php echo anchor('usuario/pageUser','Perfil');?></li>
 					<li class="divider"></li>
 					<li><?php echo anchor('login/logout','Sair');?></li>
 				</ul>
@@ -31,34 +31,13 @@
 					</li>
 
 					<li class="">
-						<?php echo anchor('app/listUser','Usuário');?>
+						<?php echo anchor('usuario/listAll','Usuário');?>
 					</li>
 					
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Auditoria</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Visualizar</a></li>
-							<li><a href="#">Executar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
+					<li class="">
+						<?php echo anchor('auditoria/listAll','Auditoria');?>
+					</li>
 					
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Processo</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
-					
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Fase</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
 					
 					<li class="dropdown"><a class="dropdown-toggle" href="#">Nao
 							Conformidade</a>

@@ -1,6 +1,6 @@
 <?php
 
-class Type_model extends CI_Model {
+class Departamento_model extends CI_Model {
 	
 	
 	/**
@@ -17,7 +17,7 @@ class Type_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('Type', $data);
+		return $this->db->insert('Departamento', $data);
 	}
 
 
@@ -27,7 +27,7 @@ class Type_model extends CI_Model {
 	function listar() 
 	{
 		$this->db->select('*');
-		$this->db->from('Type');
+		$this->db->from('Departamento');
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -39,8 +39,8 @@ class Type_model extends CI_Model {
 	 */
     function delete($id)
     {
-	    $this->db->where('typeID', $id);
-	    $this->db->delete('Type');
+	    $this->db->where('departamentoID', $id);
+	    $this->db->delete('Departamento');
 
 	}
 }

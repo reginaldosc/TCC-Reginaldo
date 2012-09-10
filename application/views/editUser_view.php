@@ -32,19 +32,9 @@
 					</div>
 				</div>
 
-				<div class="control-group">
-					<label class="control-label" for="select01">EAG</label>
-					<div class="controls">
-						<select id="select01">
-							<option>SIP e REDE</option>
-							<option>UC</option>
-							<option>Grandes Sistemas</option>
-						</select>
-					</div>
-				</div>
 
 				<div class="control-group">
-					<label class="control-label" for="select01">Departamento</label>
+					<label class="control-label" for="select01">Unidade</label>
 					<div class="controls">
 						<select id="select01">
 							<option>ISOL</option>
@@ -54,6 +44,19 @@
 						</select>
 					</div>
 				</div>
+
+
+				<div class="control-group">
+					<label class="control-label" for="select01">Departamento</label>
+					<div class="controls">
+						<select id="select01">
+							<option>SIP e REDE</option>
+							<option>UC</option>
+							<option>Grandes Sistemas</option>
+						</select>
+					</div>
+				</div>
+
 
 				<div class="control-group">
 					<label class="control-label" for="select01">Tipo de usuario</label>
