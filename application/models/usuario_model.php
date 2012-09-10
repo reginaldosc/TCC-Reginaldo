@@ -31,7 +31,7 @@ class Usuario_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('usuario', $data);
+		return $this->db->insert('Usuario', $data);
 	}
 
 
@@ -43,13 +43,13 @@ class Usuario_model extends CI_Model {
 
 		$this->db->select('*');
 
-		$this->db->from('usuario');
+		$this->db->from('Usuario');
 		
-		$this->db->join('Cargo', 'usuario.cargoID = Cargo.cargoID');
+		$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 		
-		$this->db->join('Departamento', 'usuario.departamentoID = Departamento.departamentoID');
+		$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 		
-		$this->db->join('Tipo', 'usuario.tipoID = Tipo.tipoID');
+		$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
 		
 		$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
 		
