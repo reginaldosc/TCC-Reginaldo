@@ -17,7 +17,7 @@ class Projeto_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('projeto', $data);
+		return $this->db->insert('Projeto', $data);
 	}
 
 

@@ -17,7 +17,7 @@ class Unidade_model extends CI_Model {
 	  */ 
 	function cadastrar($data) 
 	{
-		return $this->db->insert('unidade', $data);
+		return $this->db->insert('Unidade', $data);
 	}
 
 
