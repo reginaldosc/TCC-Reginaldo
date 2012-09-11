@@ -116,7 +116,8 @@ $autoload['model'] = array(
 							'auditoria_model', 
 							'departamento_model',
 							'projeto_model',
-							'tipo_model'
+							'tipo_model',
+							'artefato_model'
 							);
 
 

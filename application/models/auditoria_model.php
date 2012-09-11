@@ -47,8 +47,8 @@ class Auditoria_model extends CI_Model {
 	/**
 	 * Procura e deleta na BD
 	 */
-    function deletar($id)
-    {
+    	function deletar($id)
+    	{
 	    $this->db->where('auditoriaID', $id);
 	    $this->db->delete('Auditoria');
 

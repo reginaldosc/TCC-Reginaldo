@@ -13,6 +13,23 @@ class Unidade_model extends CI_Model {
 
 
 	/**
+	* valida usuario
+	*/
+	function validar()
+	{
+		 $this->db->where('usuarioLogin', $this->input->post('login'));
+		 $this->db->where('usuarioPassword',$this->input->post('password'));
+		 $query = $this->db->get('Usuario');
+
+		 if ($query->num_rows == 1)
+		 {
+		 	return true;
+		 }
+
+	}
+
+
+	/**
 	  * Insere 
 	  */ 
 	function cadastrar($data) 
@@ -27,7 +44,9 @@ class Unidade_model extends CI_Model {
 	function listar() 
 	{
 		$this->db->select('*');
+
 		$this->db->from('Unidade');
+
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -37,7 +56,7 @@ class Unidade_model extends CI_Model {
 	/**
 	 * Procura e deleta na BD
 	 */
-    function delete($id)
+    function deletar($id)
     {
 	    $this->db->where('unidadeID', $id);
 	    $this->db->delete('Unidade');

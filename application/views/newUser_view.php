@@ -20,7 +20,6 @@
 				</div>
 			</div>
 
-			
 			<div class="control-group">
 				<label class="control-label" for="">Matrícula</label>
 				<div class="controls">

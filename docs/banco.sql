@@ -264,7 +264,9 @@ INSERT INTO rg_quality.Usuario  VALUES (null, 'Administrador',000001, 'admin','a
 INSERT INTO rg_quality.Projeto  VALUES (null, 'Gateway Cisco', 1);
 INSERT INTO rg_quality.Projeto  VALUES (null, 'Modem ADSL', 4);
 
-
+-- Inserindo Artefato -- 
+INSERT INTO rg_quality.Artefato  VALUES (null, 'Cronograma', 'cronograma completo do projeto');
+INSERT INTO rg_quality.Artefato  VALUES (null, 'DOC_Requisitos', 'Documentação detalhada dos requisitos do sistema');
 
 
 

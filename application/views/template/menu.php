@@ -5,7 +5,6 @@
 				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span>
 
-			</a> <a class="brand" href="#"> RG</a>
 			<div class="btn-group pull-right">
 				
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
@@ -31,13 +30,8 @@
 					</li>
 
 					<li class="">
-						<?php echo anchor('usuario/listAll','Usuário');?>
-					</li>
-					
-					<li class="">
 						<?php echo anchor('auditoria/listAll','Auditoria');?>
 					</li>
-					
 					
 					<li class="dropdown"><a class="dropdown-toggle" href="#">Nao
 							Conformidade</a>
@@ -48,14 +42,7 @@
 
 						</ul>
 					
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Altefato</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
-					
+				
 					<li class="dropdown"><a class="dropdown-toggle" href="#">Acao
 							corretiva</a>
 						<ul class="dropdown-menu">
@@ -64,7 +51,39 @@
 							<li><a href="#">Excluir</a></li>
 
 						</ul>
+
+
 				
+					<li class="dropdown"><a class="dropdown-toggle" href="#">Cadastro</a>
+						<ul class="dropdown-menu">
+							<li class="">
+								<?php echo anchor('artefato/listAll','Artefato');?>
+							</li>
+							
+							<li class="">
+								<?php echo anchor('cargo/listAll','Cargo');?>
+							</li>
+
+							<li class="">
+								<?php echo anchor('departamento/listAll','Departamento');?>
+							</li>
+
+							<li class="">
+								<?php echo anchor('projeto/listAll','Projeto');?>
+							</li>
+
+							<li class="">
+								<?php echo anchor('tipo/listAll','Tipo de Usuário');?>
+							</li>
+
+							<li class="">
+								<?php echo anchor('unidade/listAll','Unidade');?>
+							</li>
+
+							<li class="">
+								<?php echo anchor('usuario/listAll','Usuário');?>
+							</li>
+						</ul>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

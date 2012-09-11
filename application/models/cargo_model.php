@@ -37,7 +37,7 @@ class Cargo_model extends CI_Model {
 	/**
 	 * Procura e deleta na BD
 	 */
-    function delete($id)
+    function deletar($id)
     {
 	    $this->db->where('cargoID', $id);
 	    $this->db->delete('Cargo');

@@ -37,7 +37,7 @@ class Tipo_model extends CI_Model {
 	/**
 	 * Procura e deleta na BD
 	 */
-    function delete($id)
+    function deletar($id)
     {
 	    $this->db->where('tipoID', $id);
 	    $this->db->delete('Tipo');

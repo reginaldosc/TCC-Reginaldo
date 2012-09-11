@@ -13,6 +13,23 @@ class Departamento_model extends CI_Model {
 
 
 	/**
+	* valida usuario
+	*/
+	function validar()
+	{
+		 $this->db->where('usuarioLogin', $this->input->post('login'));
+		 $this->db->where('usuarioPassword',$this->input->post('password'));
+		 $query = $this->db->get('Usuario');
+
+		 if ($query->num_rows == 1)
+		 {
+		 	return true;
+		 }
+
+	}
+
+
+	/**
 	  * Insere 
 	  */ 
 	function cadastrar($data) 
@@ -27,7 +44,11 @@ class Departamento_model extends CI_Model {
 	function listar() 
 	{
 		$this->db->select('*');
+
 		$this->db->from('Departamento');
+
+		$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
+
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -37,7 +58,7 @@ class Departamento_model extends CI_Model {
 	/**
 	 * Procura e deleta na BD
 	 */
-    function delete($id)
+    function deletar($id)
     {
 	    $this->db->where('departamentoID', $id);
 	    $this->db->delete('Departamento');
