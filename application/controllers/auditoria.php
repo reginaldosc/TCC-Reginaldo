@@ -86,16 +86,11 @@ class Auditoria extends CI_Controller {
 		
 
 		// Recupera dos dados a serem cadastrados //
-<<<<<<< HEAD
-		$data['auditorID'] 		= $this->input->post('Auditor');
-		$data['projetoID']   		= $this->input->post('Projeto');
-		$data['auditoriaDataInicio']   	= $data_mysql;
-=======
+
 		$data['auditorID'] 				= $this->input->post('Auditor');
 		$data['projetoID']   			= $this->input->post('Projeto');
 		$data['auditoriaDataInicio']   	= $date_mysql;
->>>>>>> 1cf6b171f671cfc432654cb3bb1373d34d4c8d41
-	
+
 			 
 		$this->auditoria_model->cadastrar($data);
 

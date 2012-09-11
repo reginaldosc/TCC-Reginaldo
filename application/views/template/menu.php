@@ -33,26 +33,14 @@
 						<?php echo anchor('auditoria/listAll','Auditoria');?>
 					</li>
 					
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Nao
-							Conformidade</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
+					<li class="">
+						<?php echo anchor('nc/listAll','Não Conformidade');?>
+					</li>
 					
 				
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Acao
-							corretiva</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Cadastrar</a></li>
-							<li><a href="#">Editar</a></li>
-							<li><a href="#">Excluir</a></li>
-
-						</ul>
-
-
+					<li class="">
+						<?php echo anchor('ac/listAll','Ação Corretiva');?>
+					</li>
 				
 					<li class="dropdown"><a class="dropdown-toggle" href="#">Cadastro</a>
 						<ul class="dropdown-menu">
@@ -66,6 +54,10 @@
 
 							<li class="">
 								<?php echo anchor('departamento/listAll','Departamento');?>
+							</li>
+							
+							<li class="">
+								<?php echo anchor('escalonamento/listAll','Escalonamento');?>
 							</li>
 
 							<li class="">
