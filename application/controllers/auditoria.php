@@ -1,5 +1,8 @@
 <?php 
 
+/**
+ * Classe para controlar o sistema de auditoria
+ */
 class Auditoria extends CI_Controller {
 
 
@@ -75,15 +78,23 @@ class Auditoria extends CI_Controller {
 	 */
 	public function cadastrarAuditoria() 
 	{
-		
+		// Recupera a data informada pelo usuario //
 		$date = $this->input->post('Data');
-		$data_mysql = implode("-",array_reverse(explode("/",$date)));
+
+		// Converte a nada informada para o formato mysql //
+		$date_mysql = implode("-",array_reverse(explode("/",$date)));
 		
 
 		// Recupera dos dados a serem cadastrados //
+<<<<<<< HEAD
 		$data['auditorID'] 		= $this->input->post('Auditor');
 		$data['projetoID']   		= $this->input->post('Projeto');
 		$data['auditoriaDataInicio']   	= $data_mysql;
+=======
+		$data['auditorID'] 				= $this->input->post('Auditor');
+		$data['projetoID']   			= $this->input->post('Projeto');
+		$data['auditoriaDataInicio']   	= $date_mysql;
+>>>>>>> 1cf6b171f671cfc432654cb3bb1373d34d4c8d41
 	
 			 
 		$this->auditoria_model->cadastrar($data);

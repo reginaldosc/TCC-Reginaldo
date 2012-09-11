@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Classe para controlar as funcoes relacionadas ao Usuario 
+ */
 class Usuario extends CI_Controller {
 
 
