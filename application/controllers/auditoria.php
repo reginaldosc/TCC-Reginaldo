@@ -109,7 +109,16 @@ class Auditoria extends CI_Controller {
 		redirect('auditoria/listAll','refresh');
 	}	
 
+	/**
+	 * Chama o model para executar a auditoria selecionada, apos essa operacao retorna a HOME
+	 */
+	public function execAuditoria($id)
+	{
 
+		$this->auditoria_model->executar($id);
+		
+		redirect('app/home','refresh');
+	}
 
 }
 
