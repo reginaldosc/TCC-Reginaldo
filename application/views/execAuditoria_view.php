@@ -1,0 +1,95 @@
+
+<!-- Estrutura -->
+<div class="container">
+
+	<div class="page-header">
+			<h2>
+				Execução <small> de Auditoria</small>
+			</h2>
+	</div>
+
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="execAuditoria">  
+			
+			<fieldset>
+
+			<div class="control-group">
+				<label class="control-label" for="">Auditor</label>
+				<div class="controls">
+					<select id="" name="Auditor" class="input-xlarge">
+						
+						{usuarios}		
+						<option value="{usuarioID}"> {usuarioNome} </option>
+						{/usuarios}
+						
+				    </select>
+				</div>
+			</div>	
+
+
+			<div class="control-group">
+				<label class="control-label" for="">Unidade</label>
+				<div class="controls">
+					<select id="" class="input-xlarge" >
+						
+						{unidades}		
+						<option value="{unidadeID}"> {unidadeNome} </option>
+						{/unidades}
+						
+				    </select>
+				</div>
+			</div>
+
+
+			<div class="control-group">
+				<label class="control-label" for="">Departamento</label>
+				<div class="controls">
+					<select id="" name="Setor" class="input-xlarge">
+						
+						{departamentos}		
+						<option value="{departamentoID}"> {departamentoNome} </option>
+						{/departamentos}
+						
+				    </select>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="">Projeto</label>
+				<div class="controls">
+					<select id="" name="Projeto"class="input-xlarge">
+						
+						{projetos}		
+						<option value="{projetoID}"> {projetoNome} </option>
+						{/projetos}
+						
+				    </select>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="">Data Execução</label>
+				<div class="controls">
+					<input type="datetime" class="input-xlarge" id="" placeholder="Ex: dd/mm/aaaa" name="Data" rel="popover" 
+					data-content="Data da auditoria no formato dd/mm/aaaa" data-original-title="Data" value="" autocomplete="off" >
+				</div>
+			</div>				
+			
+
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Salvar</button>
+				<button class="btn" type="reset">Limpar</button>
+			</div>
+	
+		</fieldset>
+	</form>
+
+
+
+<!-- javascript -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="<?php echo base_url();?>js/jquery.js"></script>
+<script src="<?php echo base_url();?>js/jquery.validate.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-tooltip.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-popover.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
+<script src="<?php echo base_url();?>js/valida.js"></script>
