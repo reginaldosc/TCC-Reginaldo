@@ -41,7 +41,7 @@
 				<td>{auditoriaDataInicio}</td>
 				<td><a href="editAuditoria/{auditoriaID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
-				<td><a onclick="ExecAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
+				<td><a href="ExecAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
 				<td><a href="visuAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
 				<td> <span id="status" class="label label-success">Agendada</span></td>
 			</tr>
@@ -84,14 +84,6 @@ function RemoveAuditoria(id){
 	document.getElementById('Excluir').href="deleteAuditoria/"+id;
 
 }	
-
-function ExecAuditoria(id){
-
-	document.getElementById("Executar");
-	document.getElementById('Executar').href="execAuditoria/"+id;
-
-}	
-
 
 </script>
 

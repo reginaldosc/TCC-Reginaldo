@@ -60,6 +60,30 @@ class Usuario_model extends CI_Model {
 
 
 	/**
+	 * Lista usuarios do banco de dados por tipo
+	 */
+	function listarPorTipo($id) 
+	{
+
+		$this->db->select('*');
+
+		$this->db->from('Usuario');
+		
+	    $this->db->where('tipoID', $id);
+
+		$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
+		
+		$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
+		
+		$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+		
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+
+
+	/**
 	 * Procura e deleta usuario do BD 
 	 */
     function deletar($id)
@@ -68,4 +92,7 @@ class Usuario_model extends CI_Model {
 	    $this->db->delete('Usuario');
 
 	}
+
+
+
 }

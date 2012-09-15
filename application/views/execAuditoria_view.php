@@ -12,68 +12,98 @@
 			
 			<fieldset>
 
-			<div class="control-group">
-				<label class="control-label" for="">Auditor</label>
-				<div class="controls">
-					<select id="" name="Auditor" class="input-xlarge">
+				<div class="control-group">
+					<label class="control-label" for="">Auditor</label>
+					<div class="controls">
+						{auditorias}
+						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{usuarioNome}" disabled>
 						
-						{usuarios}		
-						<option value="{usuarioID}"> {usuarioNome} </option>
-						{/usuarios}
-						
-				    </select>
+					</div>
 				</div>
-			</div>	
-
-
+				
 			<div class="control-group">
 				<label class="control-label" for="">Unidade</label>
 				<div class="controls">
-					<select id="" class="input-xlarge" >
 						
-						{unidades}		
-						<option value="{unidadeID}"> {unidadeNome} </option>
-						{/unidades}
+						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{unidadeNome}" disabled>
 						
-				    </select>
 				</div>
 			</div>
-
-
 			<div class="control-group">
 				<label class="control-label" for="">Departamento</label>
 				<div class="controls">
-					<select id="" name="Setor" class="input-xlarge">
-						
-						{departamentos}		
-						<option value="{departamentoID}"> {departamentoNome} </option>
-						{/departamentos}
-						
-				    </select>
+						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{departamentoNome}" disabled>
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Projeto</label>
 				<div class="controls">
-					<select id="" name="Projeto"class="input-xlarge">
-						
-						{projetos}		
-						<option value="{projetoID}"> {projetoNome} </option>
-						{/projetos}
-						
-				    </select>
+						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{projetoNome}" disabled>
 				</div>
 			</div>
 
-			<div class="control-group">
+
+				<div class="control-group">
 				<label class="control-label" for="">Data Execução</label>
 				<div class="controls">
-					<input type="datetime" class="input-xlarge" id="" placeholder="Ex: dd/mm/aaaa" name="Data" rel="popover" 
-					data-content="Data da auditoria no formato dd/mm/aaaa" data-original-title="Data" value="" autocomplete="off" >
+					
+					<input type="datetime" class="input-xlarge" id="disabledInput" placeholder="" name="Data" rel="popover" 
+					data-content="" data-original-title="Data" value= {auditoriaDataInicio} autocomplete="off" disabled>
+							
+			</div>
+			</div>
+
+			{/auditorias}
+			<div class="control-group">
+				<label class="control-label" for="">Acompanhante</label>
+				<div class="controls">
+					<select id="" name="Acompanhante" class="input-xlarge">						
+						{usuarios}		
+						<option value="{usuarioID}"> {usuarioNome} </option>
+						{/usuarios}						
+				    </select>
 				</div>
-			</div>				
+			</div>								
 			
+		<table class='table table-bordered table-striped'>
+		<thead>
+			<tr>
+				<th>Artefato</th>
+				<th>Resultado</th>				
+				<th>Não Conformidade</th>
+				<th>Ação Corretiva</th>				
+			</tr>
+		</thead>
+				
+		<tbody>
+	
+			{artefatos}
+			<tr>	
+			    <td><strong>{artefatoNome}</strong></td>
+				<td>   				    
+					<label class="radio inline">
+					<input type="radio" name="optionsRadios{artefatoID}" id="optionsRadios1" value="option1">
+					<p class="label label-info">Não Aplicável</p>
+					</label>
+
+					<label class="radio inline">
+					<input type="radio" name="optionsRadios{artefatoID}" id="optionsRadios2" value="option2">
+					<p class="label label-success">Conforme</p>
+					</label>
+
+					<label class="radio inline">
+					<input type="radio" name="optionsRadios{artefatoID}" id="optionsRadios3" value="option3">
+					<p class="label label-important">Não Conforme</p>
+					</label>
+				</td>
+				<td><a href="visuNC/{ncID}" class='icon-list-alt'> <a/></td>
+				<td><a href="visuAC/{acID}" class='icon-list-alt'> <a/></td>
+			</tr>
+			{/artefatos}
+
+		</tbody>
+	</table>
 
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary">Salvar</button>

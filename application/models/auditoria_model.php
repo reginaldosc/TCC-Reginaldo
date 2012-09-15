@@ -52,5 +52,25 @@ class Auditoria_model extends CI_Model {
 	    $this->db->where('auditoriaID', $id);
 	    $this->db->delete('Auditoria');
 
+		}
+
+
+	function executar($id)
+	{
+		
+		$this->db->select('*');
+		
+		$this->db->from('Auditoria');
+
+		 $this->db->where('auditoriaID', $id);
+
+		$this->db->join('Projeto' , 'Projeto.projetoID = Auditoria.projetoID');
+		$this->db->join('Usuario' , 'Usuario.usuarioID = Auditoria.auditorID');
+		$this->db->join('Departamento' , 'Departamento.departamentoID = Projeto.departamentoID');
+		$this->db->join('Unidade' , 'Unidade.unidadeID = Departamento.unidadeID');
+
+		$query = $this->db->get();
+		
+		return $query->result();		    
 	}
 }

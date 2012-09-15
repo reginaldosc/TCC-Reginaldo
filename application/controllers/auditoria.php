@@ -81,7 +81,7 @@ class Auditoria extends CI_Controller {
 		// Recupera a data informada pelo usuario //
 		$date = $this->input->post('Data');
 
-		// Converte a nada informada para o formato mysql //
+		// Converte a dada informada para o formato mysql //
 		$date_mysql = implode("-",array_reverse(explode("/",$date)));
 		
 
@@ -115,9 +115,20 @@ class Auditoria extends CI_Controller {
 	public function execAuditoria($id)
 	{
 
-		$this->auditoria_model->executar($id);
+		$data['auditorias'] = $this->auditoria_model->executar($id);
+
+		// Lista todos os usuarios //
+		$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
+
+		// Lista todos os artefatos //
+		$data['artefatos'] = $this->artefato_model->listar();
+
+		// Carrega a view correspondende //
+		$data['main_content'] = 'execAuditoria_view';
+
+		// Envia todas as informações para tela //			
+		$this->parser->parse('template', $data); 
 		
-		redirect('app/home','refresh');
 	}
 
 }
