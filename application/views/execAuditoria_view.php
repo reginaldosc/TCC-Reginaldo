@@ -15,7 +15,7 @@
 				<div class="control-group">
 					<label class="control-label" for="">Auditor</label>
 					<div class="controls">
-						{auditorias}
+			{auditorias}
 						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{usuarioNome}" disabled>
 						
 					</div>

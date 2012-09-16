@@ -15,8 +15,8 @@
 			<div class="control-group">
 				<label class="control-label" for="">Nome</label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="Nome" placeholder="Nome do Artefato" name="Nome2" 						rel="popover" 
-					data-content="Deve ter no minimo 2 caracteres e no maxímo 45 caracteres." data-original-title="Nome" 						value="" autocomplete="off">
+					<input type="text" class="input-xlarge" id="Nome" placeholder="Nome do Artefato" name="Nome" rel="popover" 
+					data-content="Deve ter no minimo 6 caracteres e no maxímo 45 caracteres." data-original-title="Nome" 						value="" autocomplete="off">
 				</div>
 			</div>
 

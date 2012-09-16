@@ -8,14 +8,14 @@
 			</h2>
 	</div>
 
-	<form class="form-horizontal" id="FormCadastro" method="POST" action="execAuditoria">  
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarExecAuditoria">  
 			
 			<fieldset>
 
 				<div class="control-group">
 					<label class="control-label" for="">Auditor</label>
 					<div class="controls">
-						{auditorias}
+			{auditorias}
 						<input class="input-xlarge" id="disabledInput" type="text" placeholder="{usuarioNome}" disabled>
 						
 					</div>
@@ -97,7 +97,7 @@
 					<p class="label label-important">Não Conforme</p>
 					</label>
 				</td>
-				<td><a href="visuNC/{ncID}" class='icon-list-alt' disabled> <a/></td>
+				<td><a href="visuNC/{ncID}" class='icon-list-alt'> <a/></td>
 				<td><a href="visuAC/{acID}" class='icon-list-alt'> <a/></td>
 			</tr>
 			{/artefatos}

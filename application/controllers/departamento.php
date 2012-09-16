@@ -52,6 +52,9 @@ class Departamento extends CI_Controller {
 		// Carrega a view correspondende //
 		$data['main_content'] = 'newDepartamento_view';
 
+		// Lista todas as unidades de negocio //
+		$data['unidades'] = $this->unidade_model->listar();
+
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);
 		
@@ -65,7 +68,7 @@ class Departamento extends CI_Controller {
 	{
 		// Recupera dos dados a serem cadastrados //
 		$data['departamentoNome']   	= $this->input->post('Nome');
-		$data['unidadeID']   		= $this->input->post('Divisão');
+		$data['unidadeID']   		= $this->input->post('Unidade');
 	
 			 
 		$this->departamento_model->cadastrar($data);

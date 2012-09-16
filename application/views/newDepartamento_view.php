@@ -24,7 +24,7 @@
 			<div class="control-group">
 				<label class="control-label" for="">Unidade</label>
 				<div class="controls">
-					<select id="" name="Divisão" class="input-xlarge">
+					<select id="" name="Unidade" class="input-xlarge">
 						
 						{unidades}		
 						<option value="{unidadeID}"> {unidadeNome} </option>

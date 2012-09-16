@@ -45,6 +45,22 @@ class Auditoria extends CI_Controller {
 
 	}
 
+	/**
+	 * Apresenta a view com todas as auditorias executadas no sistema 
+	 */
+	public function listAllExec()
+	{
+
+		// Lista todas as auditorias //
+		$data['auditoriasExec'] = $this->auditoria_model->listarExec();
+
+		// Carrega a view correspondende //
+		$data['main_content'] = 'listAuditoriaExec_view';
+		
+		// Envia todas as informações para tela //
+		$this->parser->parse('template', $data);
+
+	}
 
 	/**
 	 * Apresenta view de cadastro de novas auditorias
@@ -53,7 +69,7 @@ class Auditoria extends CI_Controller {
 	{
 
 		// Lista todos os usuarios //
-		$data['usuarios'] = $this->usuario_model->listar();
+		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
 		
 		// Lista todas as unidades de negocio //
 		$data['unidades'] = $this->unidade_model->listar();
@@ -88,13 +104,31 @@ class Auditoria extends CI_Controller {
 		// Recupera dos dados a serem cadastrados //
 
 		$data['auditorID'] 				= $this->input->post('Auditor');
-		$data['projetoID']   			= $this->input->post('Projeto');
-		$data['auditoriaDataInicio']   	= $date_mysql;
 
+		$data['projetoID']   			= $this->input->post('Projeto');
+
+		$data['auditoriaDataInicio']   	= $date_mysql;
 			 
 		$this->auditoria_model->cadastrar($data);
 
 		redirect('auditoria/listAll');
+
+	}
+
+/**
+	 * Recupera as informações do cadastro e grava no bando de dados
+	 */
+	public function cadastrarExecAuditoria() 
+	{
+		
+		// Recupera dos dados a serem cadastrados //
+
+		$data['auditoriaID']	= $this->input->post('AuditoriaExec');
+		
+		$this->auditoria_model->cadastrarExec($data);
+
+		redirect('auditoria/listAllExec');
+
 
 	}
 

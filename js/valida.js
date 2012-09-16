@@ -20,7 +20,7 @@ $(document).ready(function(){
 			},
 
 			/* Valida campos Nome em cadastros */
-			Nome2:
+			abc:
 			{
 				required: true,
 				minlength: 2,
@@ -31,7 +31,8 @@ $(document).ready(function(){
 			Descricao:
 			{
 				required: true,
-				minlength: 6				
+				minlength: 6,
+				maxlength: 255				
 			},
 
 			/* Valida o nome do usuario, inserido */	
@@ -67,7 +68,7 @@ $(document).ready(function(){
 				maxlength:"O nome do novo usuario deve ser menor que 45 caracteres ",
 			},
 			
-			Nome2:{
+			abc:{
 				required: "Informe o nome Válido",
 				minlength:"O nome deve ser maior que 2 caracteres ",
 				maxlength:"O nome deve ser menor que 45 caracteres ",
@@ -76,6 +77,7 @@ $(document).ready(function(){
 			Descricao:{
 				required: "Informe a descrição",
 				minlength:"A Descricao deve ser maior que 6 caracteres ",
+				maxlength:"O nome deve ser menor que 256 caracteres ",
 			},
 
 			Matricula:

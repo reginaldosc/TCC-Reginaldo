@@ -8,7 +8,7 @@
 			</h2>
 	</div>
 
-	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAuditoria">  
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarExecAuditoria">  
 			
 			<fieldset>
 

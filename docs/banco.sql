@@ -1,9 +1,8 @@
 /*
-  ######### RG - Quality #########
-  
-  Data 07/09/2012
+######### RG - Quality #########
+Data 07/09/2012
 
-  - Script para criação das tabelas do Banco de dados e inserção de alguns dados default do sistema. -
+- Script para criação das tabelas do Banco de dados e inserção de alguns dados default do sistema. -
 
 */
 
@@ -16,12 +15,12 @@ CREATE SCHEMA IF NOT EXISTS rg_quality DEFAULT CHARACTER SET utf8;
 -- -----------------------------------------------------
 -- Table rg_quality.Unidade
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Unidade (
+CREATE TABLE IF NOT EXISTS rg_quality.Unidade (
   
   unidadeID INT NOT NULL AUTO_INCREMENT ,
   unidadeNome VARCHAR(45) NOT NULL ,
   
-  PRIMARY KEY (unidadeID) 
+  PRIMARY KEY (unidadeID)
 
   )ENGINE = InnoDB;
 
@@ -29,7 +28,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Unidade (
 -- -----------------------------------------------------
 -- Table rg_quality.Departamento
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Departamento (
+CREATE TABLE IF NOT EXISTS rg_quality.Departamento (
  
   departamentoID INT NOT NULL AUTO_INCREMENT ,
   departamentoNome VARCHAR(45) NOT NULL ,
@@ -44,12 +43,12 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Departamento (
 -- -----------------------------------------------------
 -- Table rg_quality.Tipo
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Tipo (
+CREATE TABLE IF NOT EXISTS rg_quality.Tipo (
   
   tipoID INT NOT NULL AUTO_INCREMENT ,
   tipoNome VARCHAR(45) NOT NULL ,
   
-  PRIMARY KEY (tipoID) 
+  PRIMARY KEY (tipoID)
 
   )ENGINE = InnoDB;
 
@@ -57,12 +56,12 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Tipo (
 -- -----------------------------------------------------
 -- Table rg_quality.Cargo
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Cargo (
+CREATE TABLE IF NOT EXISTS rg_quality.Cargo (
   
   cargoID INT NOT NULL AUTO_INCREMENT ,
   cargoNome VARCHAR(45) NOT NULL ,
   
-  PRIMARY KEY (cargoID) 
+  PRIMARY KEY (cargoID)
 
   )ENGINE = InnoDB;
 
@@ -70,7 +69,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Cargo (
 -- -----------------------------------------------------
 -- Table rg_quality.Usuario
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Usuario (
+CREATE TABLE IF NOT EXISTS rg_quality.Usuario (
   
   usuarioID INT NOT NULL AUTO_INCREMENT ,
   usuarioNome VARCHAR(45) NOT NULL ,
@@ -94,12 +93,12 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Usuario (
 -- -----------------------------------------------------
 -- Table rg_quality.Escalonamento
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Escalonamento (
+CREATE TABLE IF NOT EXISTS rg_quality.Escalonamento (
   
   escalonamentoID INT NOT NULL AUTO_INCREMENT ,
   escalonamentoData DATE NOT NULL ,
   
-  PRIMARY KEY (escalonamentoID) 
+  PRIMARY KEY (escalonamentoID)
 
   )ENGINE = InnoDB;
 
@@ -107,13 +106,13 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Escalonamento (
 -- -----------------------------------------------------
 -- Table rg_quality.Artefato
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Artefato (
+CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
   
   artefatoID INT NOT NULL AUTO_INCREMENT ,
   artefatoNome VARCHAR(45) NOT NULL ,
-  artefatoDescricao TEXT NULL ,
+  artefatoDescricao TEXT NOT NULL ,
   
-  PRIMARY KEY (artefatoID) 
+  PRIMARY KEY (artefatoID)
 
   )ENGINE = InnoDB;
 
@@ -121,7 +120,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Artefato (
 -- -----------------------------------------------------
 -- Table rg_quality.Projeto
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Projeto (
+CREATE TABLE IF NOT EXISTS rg_quality.Projeto (
   
   projetoID INT NOT NULL AUTO_INCREMENT ,
   projetoNome VARCHAR(45) NOT NULL ,
@@ -137,13 +136,14 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Projeto (
 -- -----------------------------------------------------
 -- Table rg_quality.Auditoria
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Auditoria (
+CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   
   auditoriaID INT NOT NULL AUTO_INCREMENT ,
   auditorID INT NOT NULL ,
   projetoID INT NOT NULL ,
   auditoriaDataInicio DATE NOT NULL ,
   auditoriaDataFinal DATE NULL ,
+  auditoriaStatus VARCHAR(15) NOT NULL, 	
   
   PRIMARY KEY (auditoriaID) ,
   
@@ -156,13 +156,13 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Auditoria (
 -- -----------------------------------------------------
 -- Table rg_quality.AC
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.AC (
+CREATE TABLE IF NOT EXISTS rg_quality.AC (
  
   acID INT NOT NULL AUTO_INCREMENT ,
   acDataFinal DATE NULL ,
   acDescricao TEXT NOT NULL ,
   
-  PRIMARY KEY (acID) 
+  PRIMARY KEY (acID)
   
   )ENGINE = InnoDB;
 
@@ -170,7 +170,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.AC (
 -- -----------------------------------------------------
 -- Table rg_quality.NC
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.NC (
+CREATE TABLE IF NOT EXISTS rg_quality.NC (
   
   ncID INT NOT NULL AUTO_INCREMENT ,
   ncDescricao VARCHAR(45) NOT NULL ,
@@ -187,7 +187,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.NC (
 
   FOREIGN KEY (escalonamentoID) REFERENCES rg_quality.Escalonamento (escalonamentoID) ,
   FOREIGN KEY (acID) REFERENCES rg_quality.AC (acID) ,
-  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID) 
+  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
 
 
   )ENGINE = InnoDB;
@@ -196,7 +196,7 @@ CREATE  TABLE IF NOT EXISTS rg_quality.NC (
 -- -----------------------------------------------------
 -- Table rg_quality.Projeto_Artefato
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
+CREATE TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
   
   projetoID INT NOT NULL ,
   artefatoID INT NOT NULL ,
@@ -212,65 +212,73 @@ CREATE  TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
 -- -----------------------------------------------------
 -- Table rg_quality.Auditoria_Usuario
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS rg_quality.Auditoria_Usuario (
+CREATE TABLE IF NOT EXISTS rg_quality.Auditoria_Usuario (
   
   auditoriaID INT NOT NULL ,
   acompanhanteID INT NOT NULL ,
   
   PRIMARY KEY (auditoriaID,acompanhanteID) ,
 
-  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID) , 
+  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID) ,
   FOREIGN KEY (acompanhanteID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
 
 
-/* 
-  #####  Abaixo script adicional para fazer a inserção dos dados default no sistema #####
+-- -----------------------------------------------------
+-- Table rg_quality.AuditoriaExec
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS rg_quality.AuditoriaExec (
+  
+  auditoriaExecID 	INT NOT NULL AUTO_INCREMENT ,
+  auditoriaID 		INT NOT NULL ,
+  
+  PRIMARY KEY (auditoriaExecID),
+  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria(auditoriaID)
+
+  )ENGINE = InnoDB;
+
+
+
+
+/*
+##### Abaixo script adicional para fazer a inserção dos dados default no sistema #####
 */
 
 
--- Inserindo Unidades de negocio -- 
-INSERT INTO rg_quality.Unidade  VALUES (null, 'ISOL');
-INSERT INTO rg_quality.Unidade  VALUES (null, 'INET');
-INSERT INTO rg_quality.Unidade  VALUES (null, 'ISEC');
+-- Inserindo Unidades de negocio --
+INSERT INTO rg_quality.Unidade VALUES (null, 'ISOL');
+INSERT INTO rg_quality.Unidade VALUES (null, 'INET');
+INSERT INTO rg_quality.Unidade VALUES (null, 'ISEC');
 
 
--- Inserindo departamentos  -- 
-INSERT INTO rg_quality.Departamento  VALUES (null, 'SIP e Rede', 1);
-INSERT INTO rg_quality.Departamento  VALUES (null, 'UC', 1);
-INSERT INTO rg_quality.Departamento  VALUES (null, 'Grandes Sistemas', 1);
-INSERT INTO rg_quality.Departamento  VALUES (null, 'BroadBand', 2);
-INSERT INTO rg_quality.Departamento  VALUES (null, 'Cameras IP', 3);
+-- Inserindo departamentos --
+INSERT INTO rg_quality.Departamento VALUES (null, 'SIP e Rede', 1);
+INSERT INTO rg_quality.Departamento VALUES (null, 'UC', 1);
+INSERT INTO rg_quality.Departamento VALUES (null, 'Grandes Sistemas', 1);
+INSERT INTO rg_quality.Departamento VALUES (null, 'BroadBand', 2);
+INSERT INTO rg_quality.Departamento VALUES (null, 'Cameras IP', 3);
 
 
--- Inserindo tipos de usuario -- 
-INSERT INTO rg_quality.Tipo  VALUES (null, 'Admin');
-INSERT INTO rg_quality.Tipo  VALUES (null, 'Auditor');
-INSERT INTO rg_quality.Tipo  VALUES (null, 'Supervisor');
+-- Inserindo tipos de usuario --
+INSERT INTO rg_quality.Tipo VALUES (null, 'Admin');
+INSERT INTO rg_quality.Tipo VALUES (null, 'Auditor');
+INSERT INTO rg_quality.Tipo VALUES (null, 'Supervisor');
 
 
--- Inserindo Cargo -- 
-INSERT INTO rg_quality.Cargo  VALUES (null, 'Técnico');
-INSERT INTO rg_quality.Cargo  VALUES (null, 'Analista');
-INSERT INTO rg_quality.Cargo  VALUES (null, 'Engenheiro');
+-- Inserindo Cargo --
+INSERT INTO rg_quality.Cargo VALUES (null, 'Técnico');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Analista');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro');
 
 
--- Inserindo Usuario -- 
-INSERT INTO rg_quality.Usuario  VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1);
+-- Inserindo Usuario --
+INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1);
 
 
--- Inserindo Projeto -- 
-INSERT INTO rg_quality.Projeto  VALUES (null, 'Gateway Cisco', 1);
-INSERT INTO rg_quality.Projeto  VALUES (null, 'Modem ADSL', 4);
-
--- Inserindo Artefato -- 
-INSERT INTO rg_quality.Artefato  VALUES (null, 'Cronograma', 'cronograma completo do projeto');
-INSERT INTO rg_quality.Artefato  VALUES (null, 'DOC_Requisitos', 'Documentação detalhada dos requisitos do sistema');
-
-
-
-
+-- Inserindo Projeto --
+INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1);
+INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4);
 
 
 
