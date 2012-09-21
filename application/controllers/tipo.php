@@ -35,7 +35,7 @@ class Tipo extends CI_Controller {
 		$data['tipos'] = $this->tipo_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listTipo_view';
+		$data['main_content'] = 'tipo/listTipo_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -50,7 +50,7 @@ class Tipo extends CI_Controller {
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newTipo_view';
+		$data['main_content'] = 'tipo/newTipo_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);

@@ -35,7 +35,7 @@ class Cargo extends CI_Controller {
 		$data['cargos'] = $this->cargo_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listCargo_view';
+		$data['main_content'] = 'cargo/listCargo_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -50,7 +50,7 @@ class Cargo extends CI_Controller {
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newCargo_view';
+		$data['main_content'] = 'cargo/newCargo_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);

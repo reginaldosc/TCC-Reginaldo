@@ -35,7 +35,7 @@ class AC extends CI_Controller {
 		$data['acs'] = $this->ac_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listAc_view';
+		$data['main_content'] = 'ac/listAc_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -50,7 +50,7 @@ class AC extends CI_Controller {
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newAc_view';
+		$data['main_content'] = 'ac/newAc_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);

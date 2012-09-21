@@ -15,7 +15,7 @@ class Usuario extends CI_Controller {
 
 
 	/**
-	 * Verifica se o usuario está logado
+	 * Verifica se o usuario esta logado
 	 */
 	public function logged()
 	{
@@ -38,9 +38,9 @@ class Usuario extends CI_Controller {
 		$data['usuarios'] = $this->usuario_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listUser_view';
+		$data['main_content'] = 'usuario/listUser_view';
 		
-		// Envia todas as informações para tela //
+		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 
 	} 
@@ -66,9 +66,9 @@ class Usuario extends CI_Controller {
 		$data['tipos'] = $this->tipo_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newUser_view';
+		$data['main_content'] = 'usuario/newUser_view';
 
-		// Envia todas as informações para tela //		
+		// Envia todas as informacoes para tela //		
 		$this->parser->parse('template', $data);
 		
 	}
@@ -109,7 +109,7 @@ class Usuario extends CI_Controller {
 	 */
 	public function editUser()
 	{
-		$data['main_content'] = 'editUser_view';		
+		$data['main_content'] = 'usuario/editUser_view';		
 		$this->parser->parse('template', $data);
 	}
 
@@ -126,15 +126,15 @@ class Usuario extends CI_Controller {
 	}	
 
 	/**
-	 * Apresenta a view de informações do usuario
+	 * Apresenta a view de informacoes do usuario
 	 */
 	public function pageUser()
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'pageUser_view';
+		$data['main_content'] = 'usuario/pageUser_view';
 
-		// Envia todas as informações para tela //			
+		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);
 	}
 

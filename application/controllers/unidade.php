@@ -35,7 +35,7 @@ class Unidade extends CI_Controller {
 		$data['unidades'] = $this->unidade_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listUnidade_view';
+		$data['main_content'] = 'unidade/listUnidade_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -50,7 +50,7 @@ class Unidade extends CI_Controller {
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newUnidade_view';
+		$data['main_content'] = 'unidade/newUnidade_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);

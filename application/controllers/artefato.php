@@ -35,7 +35,7 @@ class Artefato extends CI_Controller {
 		$data['artefatos'] = $this->artefato_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listArtefato_view';
+		$data['main_content'] = 'artefato/listArtefato_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -50,7 +50,7 @@ class Artefato extends CI_Controller {
 	{
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newArtefato_view';
+		$data['main_content'] = 'artefato/newArtefato_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);
@@ -65,8 +65,8 @@ class Artefato extends CI_Controller {
 	{
 		
 		// Recupera dos dados a serem cadastrados //
-		$data['artefatoNome']   = $this->input->post('Nome');
-		$data['artefatoDescricao']   = $this->input->post('Descricao');
+		$data['artefatoNome']   	= $this->input->post('Nome');
+		$data['artefatoDescricao']  = $this->input->post('Descricao');
 					 
 		$this->artefato_model->cadastrar($data);
 

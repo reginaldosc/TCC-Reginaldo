@@ -15,7 +15,7 @@ class Auditoria extends CI_Controller {
 
 
 	/**
-	 * Verifica se o usuario está logado
+	 * Verifica se o usuario esta logado
 	 */
 	public function logged()
 	{
@@ -38,9 +38,9 @@ class Auditoria extends CI_Controller {
 		$data['auditorias'] = $this->auditoria_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listAuditoria_view';
+		$data['main_content'] = 'auditoria/listAuditoria_view';
 		
-		// Envia todas as informações para tela //
+		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 
 	}
@@ -55,7 +55,7 @@ class Auditoria extends CI_Controller {
 		$data['auditoriasExec'] = $this->auditoria_model->listarExec();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listAuditoriaExec_view';
+		$data['main_content'] = 'auditoria/listAuditoriaExec_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -81,7 +81,7 @@ class Auditoria extends CI_Controller {
 		$data['projetos'] = $this->projeto_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'newAuditoria_view';
+		$data['main_content'] = 'auditoria/newAuditoria_view';
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);
@@ -108,7 +108,8 @@ class Auditoria extends CI_Controller {
 		$data['projetoID']   			= $this->input->post('Projeto');
 
 		$data['auditoriaDataInicio']   	= $date_mysql;
-			 
+
+		
 		$this->auditoria_model->cadastrar($data);
 
 		redirect('auditoria/listAll');
@@ -116,14 +117,14 @@ class Auditoria extends CI_Controller {
 	}
 
 /**
-	 * Recupera as informações do cadastro e grava no bando de dados
+	 * Recupera as informacoes do cadastro e grava no bando de dados
 	 */
 	public function cadastrarExecAuditoria() 
 	{
 		
 		// Recupera dos dados a serem cadastrados //
 
-		$data['auditoriaID']	= $this->input->post('AuditoriaExec');
+		$data['auditoriaID'] = $this->input->post('AuditoriaExec');
 		
 		$this->auditoria_model->cadastrarExec($data);
 
@@ -158,9 +159,9 @@ class Auditoria extends CI_Controller {
 		$data['artefatos'] = $this->artefato_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'execAuditoria_view';
+		$data['main_content'] = 'auditoria/execAuditoria_view';
 
-		// Envia todas as informações para tela //			
+		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data); 
 		
 	}

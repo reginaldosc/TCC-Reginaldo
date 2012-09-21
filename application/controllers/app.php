@@ -17,7 +17,7 @@ class App extends CI_Controller {
 	 */
 	public function home()
 	{
-		$data['main_content'] = 'home_view';
+		$data['main_content'] = 'home/home_view';
 		$this->load->view('template',$data);
 	}
 
