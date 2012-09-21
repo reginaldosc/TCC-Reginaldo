@@ -23,11 +23,12 @@
 				<th>Departamento</th>
 				<th>Projeto</th>
 				<th>Data Inicial</th>
+				<th>Status</th>
 				<th>Editar</th>
 				<th>Excluir</th>
 				<th>Executar</th>
 				<th>Visualizar</th>
-				<th>Status</th>
+				
 			</tr>
 		</thead>
 				
@@ -39,11 +40,12 @@
 				<td>{departamentoNome}</td>
 				<td>{projetoNome}</td>
 				<td>{auditoriaDataInicio}</td>
+				<td> <span id="status" class="label label-success">Agendada</span></td>
 				<td><a href="editAuditoria/{auditoriaID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				<td><a href="execAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
 				<td><a href="visuAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
-				<td> <span id="status" class="label label-success">Agendada</span></td>
+				
 			</tr>
 			{/auditorias}
 		</tbody>
