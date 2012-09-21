@@ -63,11 +63,7 @@
 							<li class="">
 								<?php echo anchor('projeto/listAll','Projeto');?>
 							</li>
-
-							<li class="">
-								<?php echo anchor('tipo/listAll','Tipo de Usuário');?>
-							</li>
-
+  
 							<li class="">
 								<?php echo anchor('unidade/listAll','Unidade');?>
 							</li>

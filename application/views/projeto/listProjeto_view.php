@@ -22,7 +22,6 @@
 				<th>Departamento</th>
 				<th>Editar</th>
 				<th>Excluir</th>
-				<th>Visualizar</th>				
 			</tr>
 		</thead>
 				
@@ -33,7 +32,6 @@
 				<td>{departamentoNome}</td>
 				<td><a href="editProjeto/{projetoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveProjeto("{projetoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
-				<td><a href="visuProjeto/{projetoID}" class='icon-eye-open'> <a/></td>
 				</tr>
 			{/projetos}
 		</tbody>

@@ -21,7 +21,6 @@
 				<th>Unidade</th>
 				<th>Editar</th>
 				<th>Excluir</th>
-				<th>Visualizar</th>				
 			</tr>
 		</thead>
 				
@@ -31,8 +30,7 @@
 				<td>{unidadeNome}</td>
 				<td><a href="editUnidade/{unidadeID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveUnidade("{unidadeID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
-				<td><a href="visuUnidade/{unidadeID}" class='icon-eye-open'> <a/></td>
-				</tr>
+			</tr>
 			{/unidades}
 		</tbody>
 	</table>

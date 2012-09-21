@@ -22,7 +22,6 @@
 				<th>Descricao</th>
 				<th>Editar</th>
 				<th>Excluir</th>
-				<th>Visualizar</th>				
 			</tr>
 		</thead>
 				
@@ -33,8 +32,7 @@
 				<td>{artefatoDescricao}</td>
 				<td><a href="editArtefato/{artefatoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveArtefato("{artefatoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
-				<td><a href="visuArtefato/{artefatoID}" class='icon-eye-open'> <a/></td>
-				</tr>
+			</tr>
 			{/artefatos}
 		</tbody>
 	</table>

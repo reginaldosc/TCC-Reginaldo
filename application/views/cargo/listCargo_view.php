@@ -21,7 +21,6 @@
 				<th>Cargo</th>
 				<th>Editar</th>
 				<th>Excluir</th>
-				<th>Visualizar</th>				
 			</tr>
 		</thead>
 				
@@ -31,7 +30,6 @@
 				<td>{cargoNome}</td>
 				<td><a href="editCargo/{cargoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveCargo("{cargoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
-				<td><a href="visuCargo/{cargoID}" class='icon-eye-open'> <a/></td>
 				</tr>
 			{/cargos}
 		</tbody>

@@ -12,6 +12,22 @@ CREATE SCHEMA IF NOT EXISTS rg_quality DEFAULT CHARACTER SET utf8;
  USE rg_quality;
 
 
+
+-- -----------------------------------------------------
+-- Table rg_quality.Status
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS rg_quality.Status (
+  
+  statusID 		INT NOT NULL AUTO_INCREMENT ,
+  statusNome	INT NOT NULL ,
+  
+  PRIMARY KEY (statusID)
+
+
+  )ENGINE = InnoDB;
+
+
+
 -- -----------------------------------------------------
 -- Table rg_quality.Unidade
 -- -----------------------------------------------------
@@ -143,11 +159,12 @@ CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   projetoID INT NOT NULL ,
   auditoriaDataInicio DATE NOT NULL ,
   auditoriaDataFinal DATE NULL ,
-  auditoriaStatus VARCHAR(15) NOT NULL, 	
+  auditoriaStatus INT NOT NULL ,	
   
   PRIMARY KEY (auditoriaID) ,
   
   FOREIGN KEY (projetoID) REFERENCES rg_quality.Projeto (projetoID) ,
+  FOREIGN KEY (auditoriaStatus) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (auditorID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
@@ -161,8 +178,11 @@ CREATE TABLE IF NOT EXISTS rg_quality.AC (
   acID INT NOT NULL AUTO_INCREMENT ,
   acDataFinal DATE NULL ,
   acDescricao TEXT NOT NULL ,
+  acStatus INT NOT NULL ,	
   
-  PRIMARY KEY (acID)
+  PRIMARY KEY (acID),
+
+  FOREIGN KEY (acStatus) REFERENCES rg_quality.Status (statusID)
   
   )ENGINE = InnoDB;
 
@@ -174,7 +194,6 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   
   ncID INT NOT NULL AUTO_INCREMENT ,
   ncDescricao VARCHAR(45) NOT NULL ,
-  ncStatus VARCHAR(45) NOT NULL ,
   ncDataFinalprev DATE NOT NULL ,
   ncDataFinal DATE NULL ,
   ncComentario VARCHAR(45) NULL ,
@@ -182,9 +201,11 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   escalonamentoID INT NOT NULL ,
   acID INT NOT NULL ,
   auditoriaID INT NOT NULL ,
-  
+  ncStatus INT NOT NULL ,  
+
   PRIMARY KEY (ncID) ,
 
+  FOREIGN KEY (ncStatus) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (escalonamentoID) REFERENCES rg_quality.Escalonamento (escalonamentoID) ,
   FOREIGN KEY (acID) REFERENCES rg_quality.AC (acID) ,
   FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
@@ -240,10 +261,18 @@ CREATE TABLE IF NOT EXISTS rg_quality.AuditoriaExec (
 
 
 
-
 /*
 ##### Abaixo script adicional para fazer a inserção dos dados default no sistema #####
 */
+
+
+-- Inserindo Status --
+INSERT INTO rg_quality.Status VALUES (null, 'Agendado');
+INSERT INTO rg_quality.Status VALUES (null, 'Realizado');
+INSERT INTO rg_quality.Status VALUES (null, 'Andamento');
+INSERT INTO rg_quality.Status VALUES (null, 'Não Aplicável');
+INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme');
+INSERT INTO rg_quality.Status VALUES (null, 'Conforme');
 
 
 -- Inserindo Unidades de negocio --
@@ -264,6 +293,7 @@ INSERT INTO rg_quality.Departamento VALUES (null, 'Cameras IP', 3);
 INSERT INTO rg_quality.Tipo VALUES (null, 'Admin');
 INSERT INTO rg_quality.Tipo VALUES (null, 'Auditor');
 INSERT INTO rg_quality.Tipo VALUES (null, 'Supervisor');
+INSERT INTO rg_quality.Tipo VALUES (null, 'Usuario');
 
 
 -- Inserindo Cargo --
@@ -273,7 +303,11 @@ INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro');
 
 
 -- Inserindo Usuario --
+--									  (ID, Nome, Matricula, Login, Password, Email, cargoID, departamentoID, tipoID) --
 INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1);
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello',000002, 'marcelo','marcelo','marcelo@auditor.com', 2, 1, 2);
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane',000003, 'fabiane','fabiane','fabiane@supervisor.com', 2, 1, 3);
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra',000004, 'alessandra','alessandra','alessandra@usuario.com', 2, 1, 4);
 
 
 -- Inserindo Projeto --
@@ -281,4 +315,8 @@ INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1);
 INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4);
 
 
+-- Inserindo Artefatos --
+INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema');
 

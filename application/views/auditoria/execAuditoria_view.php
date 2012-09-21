@@ -71,8 +71,7 @@
 			<tr>
 				<th>Artefato</th>
 				<th>Resultado</th>				
-				<th>Não Conformidade</th>
-				<th>Ação Corretiva</th>				
+						
 			</tr>
 		</thead>
 				
@@ -97,8 +96,7 @@
 					<p class="label label-important">Não Conforme</p>
 					</label>
 				</td>
-				<td><a href="visuNC/{ncID}" class='icon-list-alt'> <a/></td>
-				<td><a href="visuAC/{acID}" class='icon-list-alt'> <a/></td>
+				
 			</tr>
 			{/artefatos}
 

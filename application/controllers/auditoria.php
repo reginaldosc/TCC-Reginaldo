@@ -106,6 +106,8 @@ class Auditoria extends CI_Controller {
 		$data['auditorID'] 				= $this->input->post('Auditor');
 
 		$data['projetoID']   			= $this->input->post('Projeto');
+		
+		$data['auditoriaStatus']		= '1';
 
 		$data['auditoriaDataInicio']   	= $date_mysql;
 
