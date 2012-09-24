@@ -31,7 +31,7 @@ class Artefato extends CI_Controller {
 	public function listAll()
 	{
 
-		// Lista todos os projetos //
+		// Lista todos os artefatos //
 		$data['artefatos'] = $this->artefato_model->listar();
 
 		// Carrega a view correspondende //
@@ -66,6 +66,7 @@ class Artefato extends CI_Controller {
 		
 		// Recupera dos dados a serem cadastrados //
 		$data['artefatoNome']   	= $this->input->post('Nome');
+		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
 					 
 		$this->artefato_model->cadastrar($data);
@@ -73,6 +74,43 @@ class Artefato extends CI_Controller {
 		redirect('artefato/listAll');
 
 	}
+	
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editArtefato()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['artefatoID']			= $this->input->post('ID');
+		
+		$data['artefatoNome']   	= $this->input->post('Nome');
+		
+		$data['artefatoDescricao']  = $this->input->post('Descricao');
+		
+		$this->artefato_model->editar($data);
+		
+		redirect('artefato/listAll');
+	
+	}
+	
+	
+	/**
+	 *
+	 * Apresenta view de edicao de um artefato
+	 *
+	 */
+	public function buscaArtefato($id)
+	{
+		$data['main_content'] = 'artefato/editArtefato_view';
+		
+		$data['artefato'] = $this->artefato_model->buscar($id);
+		
+		$this->parser->parse('template', $data);
+		
+	}
+	
+	
 
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios

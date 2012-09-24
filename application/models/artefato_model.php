@@ -50,6 +50,35 @@ class Artefato_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	/**
+	 * Busca um artefato
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT artefatoID, artefatoNome, artefatoDescricao 
+				FROM Artefato WHERE artefatoID = '$id' LIMIT 1");
+		
+		return $query->result();		
+	}
+	
+	
+	/**
+	 * Edita
+	 */
+	function editar($data)
+	{
+		$id 		= $data['artefatoID']; 
+		
+		$nome 		= $data['artefatoNome'];
+
+		$descricao 	= $data['artefatoDescricao']; 
+		
+		$query = $this->db->query("UPDATE Artefato SET artefatoNome='$nome', artefatoDescricao='$descricao'
+				 WHERE artefatoID='$id'");
+		 
+	}
+	
 
 	/**
 	 * Procura e deleta na BD
