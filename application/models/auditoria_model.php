@@ -38,6 +38,8 @@ class Auditoria_model extends CI_Model {
 
 		$this->db->join('Usuario' , 'Usuario.usuarioID = Auditoria.auditorID');
 
+		$this->db->join('Status' , 'Status.statusID = Auditoria.statusID');
+
 		$query = $this->db->get();
 		
 		return $query->result();
@@ -45,14 +47,31 @@ class Auditoria_model extends CI_Model {
 
 
 
+	/**
+	* Insere a execução da auditoria
+	*/ 
+	function cadastrarPAS($data) 
+	{
+		return $this->db->insert('Projeto_Artefato', $data);
+	}
+
 
 	/**
 	* Insere a execução da auditoria
 	*/ 
-	function cadastrarExec($data) 
+	function cadastrarAU($data) 
 	{
-		return $this->db->insert('AuditoriaExec', $data);
+		return $this->db->insert('Auditoria_Usuario', $data);
 	}
+
+	/**
+	* Atualiza status da auditoria
+	*/ 
+	function atualizaAuditoria($id, $data) 
+	{
+		$this->db->update('Auditoria', $data, "auditoriaID = $id");
+	}
+
 
 	/**
 	* Lista dados da auditoria executada
@@ -95,6 +114,33 @@ class Auditoria_model extends CI_Model {
 		$this->db->join('Departamento' , 'Departamento.departamentoID = Projeto.departamentoID');
 
 		$this->db->join('Unidade' , 'Unidade.unidadeID = Departamento.unidadeID');
+
+		$query = $this->db->get();
+		
+		return $query->result();		    
+	}
+
+
+	function listarAuditoria($id)
+	{
+		
+		$this->db->select('*');
+		
+		$this->db->from('Auditoria');
+
+		$this->db->where('auditoriaID', $id);
+
+		$this->db->join('Projeto' , 'Projeto.projetoID = Auditoria.projetoID');
+	
+		$this->db->join('Usuario' , 'Usuario.usuarioID = Auditoria.auditorID');
+
+		$this->db->join('Departamento' , 'Departamento.departamentoID = Projeto.departamentoID');
+
+		$this->db->join('Unidade' , 'Unidade.unidadeID = Departamento.unidadeID');
+
+		$this->db->join('Status' , 'Status.statusID = Projeto.projetoID');
+
+
 
 		$query = $this->db->get();
 		
