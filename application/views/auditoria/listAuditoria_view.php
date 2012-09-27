@@ -40,11 +40,11 @@
 				<td>{departamentoNome}</td>
 				<td>{projetoNome}</td>
 				<td>{auditoriaDataInicio}</td>
-				<td> <span id="status" class="label label-success">Agendada</span></td>
+				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="editAuditoria/{auditoriaID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				<td><a href="execAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
-				<td><a href="visuAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
+				<td><a href="visualizarAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
 				
 			</tr>
 			{/auditorias}

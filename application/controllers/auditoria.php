@@ -45,22 +45,6 @@ class Auditoria extends CI_Controller {
 
 	}
 
-	/**
-	 * Apresenta a view com todas as auditorias executadas no sistema 
-	 */
-	public function listAllExec()
-	{
-
-		// Lista todas as auditorias //
-		$data['auditoriasExec'] = $this->auditoria_model->listarExec();
-
-		// Carrega a view correspondende //
-		$data['main_content'] = 'auditoria/listAuditoriaExec_view';
-		
-		// Envia todas as informações para tela //
-		$this->parser->parse('template', $data);
-
-	}
 
 	/**
 	 * Apresenta view de cadastro de novas auditorias
@@ -107,18 +91,18 @@ class Auditoria extends CI_Controller {
 
 		$data['projetoID']   			= $this->input->post('Projeto');
 		
-		$data['auditoriaStatus']		= '1';
+		$data['statusID']				= '1';
 
 		$data['auditoriaDataInicio']   	= $date_mysql;
 
 		
 		$this->auditoria_model->cadastrar($data);
 
-		redirect('auditoria/listAll');
+		redirect('auditoria/listAll','refresh');
 
 	}
 
-/**
+	/**
 	 * Recupera as informacoes do cadastro e grava no bando de dados
 	 */
 	public function cadastrarExecAuditoria() 
@@ -126,12 +110,34 @@ class Auditoria extends CI_Controller {
 		
 		// Recupera dos dados a serem cadastrados //
 
-		$data['auditoriaID'] = $this->input->post('AuditoriaExec');
-		
-		$this->auditoria_model->cadastrarExec($data);
+		$data['projetoID'] = $this->input->post('Projeto');
 
-		redirect('auditoria/listAllExec');
+		$array_artefatos = $this->input->post('allArtefatos');
+		$array_artefatos = explode("," ,$array_artefatos);
 
+		$tam = count($array_artefatos);
+
+		for ($i=0; $i < $tam; $i++) { 
+
+			list ($data['artefatoID'], $data['statusID'] ) = explode ('-', $array_artefatos[$i]);
+			$this->auditoria_model->cadastrarPAS($data);
+		 }
+
+
+		// Cadastrar na tabela de Auditoria_Usuario //
+		$data2 ['acompanhanteID'] = $this->input->post('Acompanhante');
+		$data2 ['auditoriaID']  = $this->input->post('Auditoria');
+ 		
+		$this->auditoria_model->cadastrarAU($data2);
+
+
+		// Atualiza status auditoria //
+		$id  = $this->input->post('Auditoria');
+		$status ['statusID']  = 2;
+
+		$this->auditoria_model->atualizaAuditoria($id, $status);
+
+		redirect('auditoria/listAll','refresh');
 
 	}
 
@@ -168,6 +174,22 @@ class Auditoria extends CI_Controller {
 		
 	}
 
+	/**
+	 * Visualiza auditoria selecionada 
+	 */
+	public function visualizarAuditoria($id)
+	{
+
+		// Lista todas as auditorias //
+		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
+
+		// Carrega a view correspondende //
+		$data['main_content'] = 'auditoria/auditoria_view';
+
+		// Envia todas as informacoes para tela //			
+		$this->parser->parse('template', $data);
+
+	}
 }
 
 

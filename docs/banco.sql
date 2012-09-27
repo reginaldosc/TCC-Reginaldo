@@ -19,7 +19,8 @@ CREATE SCHEMA IF NOT EXISTS rg_quality DEFAULT CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS rg_quality.Status (
   
   statusID 		INT NOT NULL AUTO_INCREMENT ,
-  statusNome	INT NOT NULL ,
+  statusNome	VARCHAR(45) NOT NULL ,
+  statusCode  VARCHAR(45) NOT NULL ,
   
   PRIMARY KEY (statusID)
 
@@ -159,12 +160,12 @@ CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   projetoID INT NOT NULL ,
   auditoriaDataInicio DATE NOT NULL ,
   auditoriaDataFinal DATE NULL ,
-  auditoriaStatus INT NOT NULL ,	
+  statusID INT NOT NULL ,	
   
   PRIMARY KEY (auditoriaID) ,
   
   FOREIGN KEY (projetoID) REFERENCES rg_quality.Projeto (projetoID) ,
-  FOREIGN KEY (auditoriaStatus) REFERENCES rg_quality.Status (statusID) ,
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (auditorID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
@@ -221,11 +222,13 @@ CREATE TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
   
   projetoID INT NOT NULL ,
   artefatoID INT NOT NULL ,
+  statusID INT NOT NULL ,
   
-  PRIMARY KEY (projetoID, artefatoID) ,
+  PRIMARY KEY (projetoID, artefatoID,statusID) ,
   
   FOREIGN KEY (projetoID) REFERENCES rg_quality.Projeto (projetoID) ,
-  FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID)
+  FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID),
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
 
   )ENGINE = InnoDB;
 
@@ -267,12 +270,12 @@ CREATE TABLE IF NOT EXISTS rg_quality.AuditoriaExec (
 
 
 -- Inserindo Status --
-INSERT INTO rg_quality.Status VALUES (null, 'Agendado');
-INSERT INTO rg_quality.Status VALUES (null, 'Realizado');
-INSERT INTO rg_quality.Status VALUES (null, 'Andamento');
-INSERT INTO rg_quality.Status VALUES (null, 'Não Aplicável');
-INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme');
-INSERT INTO rg_quality.Status VALUES (null, 'Conforme');
+INSERT INTO rg_quality.Status VALUES (null, 'Agendada'      , 'info');
+INSERT INTO rg_quality.Status VALUES (null, 'Realizada'     , 'success');
+INSERT INTO rg_quality.Status VALUES (null, 'Andamento'     , 'warning');
+INSERT INTO rg_quality.Status VALUES (null, 'Não Aplicável' , 'info');
+INSERT INTO rg_quality.Status VALUES (null, 'Conforme'      , 'success');
+INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme'  , 'important');
 
 
 -- Inserindo Unidades de negocio --
