@@ -2,7 +2,7 @@
 
 class Departamento extends CI_Controller {
 
-
+	
 	public function __construct()
 	{
 		parent::__construct();
@@ -76,6 +76,47 @@ class Departamento extends CI_Controller {
 		redirect('departamento/listAll');
 	}
 
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editDepartamento()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['departamentoID']			= $this->input->post('ID');
+	
+		$data['departamentoNome']   	= $this->input->post('Nome');
+		
+		$data['unidadeID']				= $this->input->post('Unidade');
+	
+		$this->departamento_model->editar($data);
+	
+		redirect('departamento/listAll');
+	
+	}
+	
+	
+	/**
+	 *
+	 * Apresenta view de edicao de um cargo
+	 *
+	 */
+	public function buscaDepartamento($id)
+	{
+		$data['main_content']	= 'departamento/editDepartamento_view';
+	
+		$data['departamento'] 	= $this->departamento_model->buscar($id);
+		
+		// Lista todas as unidades de negocio //
+		$data['unidades'] = $this->unidade_model->listar();
+	
+		$this->parser->parse('template', $data);
+	
+		//print_r($data);
+	
+	}
+	
+	
 	/**
 	 * Chama o model para deletar o departamento selecionado, apos essa operacao retorna a view de listagem de departamentos
 	 */

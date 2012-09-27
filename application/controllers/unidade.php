@@ -73,6 +73,41 @@ class Unidade extends CI_Controller {
 		redirect('unidade/listAll');
 
 	}
+	
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editUnidade()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['unidadeID']			= $this->input->post('ID');
+	
+		$data['unidadeNome']  	 	= $this->input->post('Nome');
+	
+		$this->unidade_model->editar($data);
+	
+		redirect('unidade/listAll');
+	
+	}
+	
+	
+	/**
+	 *
+	 * Apresenta view de edicao de uma unidade
+	 *
+	 */
+	public function buscaUnidade($id)
+	{
+		$data['main_content'] = 'unidade/editUnidade_view';
+	
+		$data['unidade'] = $this->unidade_model->buscar($id);
+	
+		$this->parser->parse('template', $data);
+	
+	}
+	
+	
 
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios

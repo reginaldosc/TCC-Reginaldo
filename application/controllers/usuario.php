@@ -133,6 +133,8 @@ class Usuario extends CI_Controller {
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'usuario/pageUser_view';
+		
+		//$data['usuario'] = $this->usuario_model->buscar();
 
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);

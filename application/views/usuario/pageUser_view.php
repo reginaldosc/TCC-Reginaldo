@@ -18,23 +18,24 @@
     
     <div class="thumbnail">
       <img src="<?php echo base_url();?>img/user.jpg"  alt="">
-      <p><small> Administrador</small></p>
+     
+      <p><small>{TipoDeUsuario}</small></p>
     </div>
 
   	</li>
 
   	<li class="span">
       
-      <h3>Reginaldo Gonçalvesdasdsas</h3>
+      <h3>{usuarioNome}</h3>
       <br>
 			
-      <h4>Email: <small> reginaldo@intelbras.com.br</small></h4>
+      <h4>Email: <small> {usuarioEmail}</small></h4>
 
- 			<h4>Matricula: <small> 046468</small></h4>
+ 			<h4>Matricula: <small> {usuarioMatricula}</small></h4>
 
- 			<h4>Departamento: <small> ISOL</small></h4>
+ 			<h4>Departamento: <small> {departamentoNome}</small></h4>
 
- 		 	<h4>Senha: <small> *******</small></h4>
+ 		 	<h4>Senha: <small> {usuarioPassword}</small></h4>
  		 	<br>
  		 	<button class="btn btn-warning">Alterar a senha</button>
  	</li>

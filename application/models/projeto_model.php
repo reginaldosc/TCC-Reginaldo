@@ -1,5 +1,6 @@
 <?php
 
+
 class Projeto_model extends CI_Model {
 	
 	
@@ -54,6 +55,36 @@ class Projeto_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	/**
+	 * Busca um projeto
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT projetoID, projetoNome, departamentoID
+				FROM Projeto WHERE projetoID = '$id' LIMIT 1");
+		
+		return $query->result();
+				
+	}
+	
+	
+	/**
+	* Edita
+	 */
+	 function editar($data)
+	 {
+	 $id 			= $data['projetoID'];
+	
+	 $nome 			= $data['projetoNome'];
+	
+	 $departamento 	= $data['departamentoID'];
+	
+	 $query = $this->db->query("UPDATE Projeto SET projetoNome='$nome', departamentoID='$departamento'
+	 		WHERE projetoID='$id'");
+	 			
+	 }
+	
 
 	/**
 	 * Procura e deleta na BD

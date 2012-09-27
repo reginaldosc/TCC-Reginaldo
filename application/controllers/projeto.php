@@ -70,15 +70,56 @@ class Projeto extends CI_Controller {
 
 		// Recupera dos dados a serem cadastrados //
 		$data['projetoNome']   	= $this->input->post('Nome');
+		
 		$data['departamentoID'] = $this->input->post('Setor');
-	
-			 
+				 
 		$this->projeto_model->cadastrar($data);
 
 		redirect('projeto/listAll');
 
 	}
 
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editProjeto()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['projetoID']			= $this->input->post('ID');
+	
+		$data['projetoNome']   		= $this->input->post('Nome');
+	
+		$data['departamento']  		= $this->input->post('Departamento');
+	
+		$this->projeto_model->editar($data);
+	
+		redirect('projeto/listAll');
+	
+	}
+	
+	
+	/**
+	 *
+	 * Apresenta view de edicao de um artefato
+	 *
+	 */
+	public function buscaProjeto($id)
+	{
+		$data['main_content']	= 'projeto/editProjeto_view';
+	
+		$data['projeto'] 		= $this->projeto_model->buscar($id);
+		
+		// Lista todas as unidades de negocio //
+		$data['departamentos'] = $this->departamento_model->listar();
+		
+		$this->parser->parse('template', $data);
+		
+		//print_r($data);
+	
+	}	
+	
+	
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
 	 */
@@ -88,10 +129,7 @@ class Projeto extends CI_Controller {
 		$this->projeto_model->deletar($id);
 		
 		redirect('projeto/listAll','refresh');
-	}	
-
-
-
+	}
 }
 
 

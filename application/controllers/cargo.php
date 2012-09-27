@@ -74,6 +74,42 @@ class Cargo extends CI_Controller {
 
 	}
 
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editCargo()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['cargoID']			= $this->input->post('ID');
+	
+		$data['cargoNome']   		= $this->input->post('Nome');
+	
+		$this->cargo_model->editar($data);
+	
+		redirect('cargo/listAll');
+	
+	}
+	
+	
+	/**
+	 *
+	 * Apresenta view de edicao de um cargo
+	 *
+	 */
+	public function buscaCargo($id)
+	{
+		$data['main_content']	= 'cargo/editCargo_view';
+	
+		$data['cargo'] 		= $this->cargo_model->buscar($id);
+	
+		$this->parser->parse('template', $data);
+	
+		//print_r($data);
+	
+	}
+	
+		
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
 	 */

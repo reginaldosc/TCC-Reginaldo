@@ -31,7 +31,7 @@
 			<tr>	
 				<td>{departamentoNome}</td>
 				<td>{unidadeNome}</td>
-				<td><a href="editDepartamento/{departamentoID}" class='icon-edit'> <a/></td>
+				<td><a href="buscaDepartamento/{departamentoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveDepartamento("{departamentoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				</tr>
 			{/departamentos}

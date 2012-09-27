@@ -54,6 +54,36 @@ class Departamento_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	/**
+	 * Busca um departamento
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT departamentoID, departamentoNome, unidadeID FROM Departamento
+				 WHERE departamentoID = '$id' LIMIT 1");
+	
+		return $query->result();
+	
+	}
+	
+	
+	/**
+	 * Edita
+	 */
+	function editar($data)
+	{
+		$id 			= $data['departamentoID'];
+	
+		$nome 			= $data['departamentoNome'];
+		
+		$unidade		= $data['unidadeID'];
+	
+		$query = $this->db->query("UPDATE Departamento SET departamentoNome='$nome', unidadeID='$unidade'
+				 WHERE departamentoID='$id'");
+			
+	}
+	
 
 	/**
 	 * Procura e deleta na BD

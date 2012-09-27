@@ -52,6 +52,30 @@ class Unidade_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	/**
+	 * Busca unidade
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT unidadeID, unidadeNome FROM Unidade WHERE unidadeID = '$id' LIMIT 1");
+	
+		return $query->result();
+	}
+	
+	
+	/**
+	* Edita
+	 */
+	 function editar($data)
+	 {
+	 $id 		= $data['unidadeID'];
+	
+	 $nome 		= $data['unidadeNome'];
+	
+	 $query = $this->db->query("UPDATE Unidade SET UnidadeNome='$nome' WHERE unidadeID='$id'");
+	 			
+	 }
 
 	/**
 	 * Procura e deleta na BD

@@ -19,6 +19,7 @@
 					</div>
 				</div>
 
+			{cargo}	
 				<div class="control-group">
 					<label class="control-label" for="select01">Funcao</label>
 					<div class="controls">
@@ -31,8 +32,9 @@
 						</select>
 					</div>
 				</div>
-
-
+			{/cargo}
+			
+			{unidade}
 				<div class="control-group">
 					<label class="control-label" for="select01">Unidade</label>
 					<div class="controls">
@@ -44,8 +46,9 @@
 						</select>
 					</div>
 				</div>
-
-
+			{/unidade}
+				
+			{departamento}
 				<div class="control-group">
 					<label class="control-label" for="select01">Departamento</label>
 					<div class="controls">
@@ -56,8 +59,9 @@
 						</select>
 					</div>
 				</div>
-
-
+			{/departamento}
+				
+			{tipo}
 				<div class="control-group">
 					<label class="control-label" for="select01">Tipo de usuario</label>
 					<div class="controls">
@@ -68,7 +72,8 @@
 						</select>
 					</div>
 				</div>
-
+			{/tipo}
+				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Salvar</button>
 					<button class="btn">Limpar</button>

@@ -30,7 +30,7 @@
 			<tr>	
 				<td>{projetoNome}</td>
 				<td>{departamentoNome}</td>
-				<td><a href="editProjeto/{projetoID}" class='icon-edit'> <a/></td>
+				<td><a href="buscaProjeto/{projetoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveProjeto("{projetoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				</tr>
 			{/projetos}

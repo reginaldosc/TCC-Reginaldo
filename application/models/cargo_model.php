@@ -35,6 +35,33 @@ class Cargo_model extends CI_Model {
 
 
 	/**
+	 * Busca um cargo
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT cargoID, cargoNome FROM Cargo WHERE cargoID = '$id' LIMIT 1");
+	
+		return $query->result();
+	
+	}
+	
+	
+	/**
+	 * Edita
+	 */
+	function editar($data)
+	{
+		$id 			= $data['cargoID'];
+	
+		$nome 			= $data['cargoNome'];
+	
+		$query = $this->db->query("UPDATE Cargo SET cargoNome='$nome' WHERE cargoID='$id'");
+			
+	}
+	
+	
+	
+	/**
 	 * Procura e deleta na BD
 	 */
     function deletar($id)

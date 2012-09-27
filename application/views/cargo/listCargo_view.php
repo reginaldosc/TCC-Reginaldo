@@ -28,7 +28,7 @@
 			{cargos}
 			<tr>	
 				<td>{cargoNome}</td>
-				<td><a href="editCargo/{cargoID}" class='icon-edit'> <a/></td>
+				<td><a href="buscaCargo/{cargoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveCargo("{cargoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				</tr>
 			{/cargos}
