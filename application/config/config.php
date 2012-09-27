@@ -251,7 +251,7 @@ $config['encryption_key'] = 'gJ1o,%]A/x*VFk.c3S3Z*xxK$mm1?-cq';
 |
 */
 $config['sess_cookie_name']		= 'rg_session';
-$config['sess_expiration']		= 3600;
+$config['sess_expiration']		= 7200;//TODO diminuir qdo for publicar a página
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= FALSE;
 $config['sess_use_database']	= FALSE;
