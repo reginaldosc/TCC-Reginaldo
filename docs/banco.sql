@@ -157,6 +157,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   
   auditoriaID INT NOT NULL AUTO_INCREMENT ,
   auditorID INT NOT NULL ,
+  acompanhanteID INT,
   projetoID INT NOT NULL ,
   auditoriaDataInicio DATE NOT NULL ,
   auditoriaDataFinal DATE NULL ,
@@ -166,7 +167,8 @@ CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   
   FOREIGN KEY (projetoID) REFERENCES rg_quality.Projeto (projetoID) ,
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
-  FOREIGN KEY (auditorID) REFERENCES rg_quality.Usuario (usuarioID)
+  FOREIGN KEY (auditorID) REFERENCES rg_quality.Usuario (usuarioID),
+  FOREIGN KEY (acompanhanteID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
 
@@ -231,37 +233,6 @@ CREATE TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
 
   )ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table rg_quality.Auditoria_Usuario
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS rg_quality.Auditoria_Usuario (
-  
-  auditoriaID INT NOT NULL ,
-  acompanhanteID INT NOT NULL ,
-  
-  PRIMARY KEY (auditoriaID,acompanhanteID) ,
-
-  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID) ,
-  FOREIGN KEY (acompanhanteID) REFERENCES rg_quality.Usuario (usuarioID)
-
-  )ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table rg_quality.AuditoriaExec
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS rg_quality.AuditoriaExec (
-  
-  auditoriaExecID 	INT NOT NULL AUTO_INCREMENT ,
-  auditoriaID 		INT NOT NULL ,
-  
-  PRIMARY KEY (auditoriaExecID),
-  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria(auditoriaID)
-
-  )ENGINE = InnoDB;
-
 
 
 /*

@@ -9,93 +9,59 @@
 	</div>
 
 			
-	<fieldset>
-
 		{auditorias}
 
-		<div class="control-group">
-				<label class="control-label" for="">Auditor</label>
-				<div class="controls">
-					<input class="input-xlarge" id="disabledInput" type="text" value="{usuarioNome}" disabled>
-				</div>
-		</div>
+			<strong> Auditor: </strong> {usuarioNome}
+			<br>
+
+			<strong> Unidade: </strong> {unidadeNome}
+			<br>			
 			
-		<div class="control-group">
-			<label class="control-label" for="">Unidade</label>
-			<div class="controls">
-					
-					<input class="input-xlarge" id="disabledInput" type="text" value="{unidadeNome}" disabled>
-					
-			</div>
-		</div>
+			<strong> Departamento: </strong> {departamentoNome}
+			<br>
 
-		<div class="control-group">
-			<label class="control-label" for="">Departamento</label>
-			<div class="controls">
-					<input class="input-xlarge" id="disabledInput" type="text" value="{departamentoNome}" disabled>
-			</div>
-		</div>
+			<strong> Projeto: </strong> {projetoNome}
+			<br>
 
-		<div class="control-group">
-			<label class="control-label" for="">Projeto</label>
-			<div class="controls">
-					<input type="hidden" name="Projeto" value="{projetoID}">
-					<input class="input-xlarge" id="disabledInput" type="text" value="{projetoNome}"  disabled>
-			</div>
-		</div>
+			<strong> Data Agendada: </strong> {auditoriaDataInicio}
+			<br>
 
-
-		<div class="control-group">
-			
-			<label class="control-label" for="">Data Execução</label>
-			<div class="controls">
-				
-				<input type="datetime" class="input-xlarge" id="disabledInput" value="{auditoriaDataInicio}" disabled>
-						
-			</div>
-		</div>
-
-
-		<div class="control-group">
-			
-			<label class="control-label" for="">Acompanhante</label>
-			<div class="controls">
-				
-				<input type="datetime" class="input-xlarge" id="disabledInput" value="{acompanhanteNome}" disabled>
-						
-			</div>
-		</div>							
-		
-
-		<table class='table table-bordered table-striped'>
-		<thead>
-			<tr>
-				<th>Artefato</th>
-				<th>Resultado</th>
-				<th>NC</th>				
-						
-			</tr>
-		</thead>
-				
-		<tbody>
-	
-			<tr>	
-			    <td><strong>{artefatoNome}</strong></td>
-				<td> 
-					<span id="status" class="label label-{statusCode}">{statusNome}</span></td>	
-				</td>
-
-				<td>
-					teste	
-				</td>
-			</tr>
-
-		</tbody>
-		</table>
-
+			<strong> Data da execução: </strong> {auditoriaDataInicio}
+			<br>
 		{/auditorias}
-	</fieldset>
 
+		
+		{acompanhante}
+
+			<strong> Acompanhante: </strong> {usuarioNome}
+			<br>
+			<br>
+		{/acompanhante}
+
+			<table class='table table-bordered table-striped'>
+				<thead>
+					<tr>
+						<th>Artefato</th>
+						<th>Resultado</th>
+						<th>NC</th>				
+						
+					</tr>
+				</thead>
+			
+			{projetos_artefatos}
+				<tbody>
+					<tr>	
+				   	 	<td> <strong> {artefatoNome} </strong> </td>
+					
+						<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
+
+						<td> teste </td>
+					</tr>
+
+				</tbody>
+
+			{/projetos_artefatos}
+			</table>
 
 
 

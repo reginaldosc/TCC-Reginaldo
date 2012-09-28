@@ -124,18 +124,12 @@ class Auditoria extends CI_Controller {
 		 }
 
 
-		// Cadastrar na tabela de Auditoria_Usuario //
-		$data2 ['acompanhanteID'] = $this->input->post('Acompanhante');
-		$data2 ['auditoriaID']  = $this->input->post('Auditoria');
- 		
-		$this->auditoria_model->cadastrarAU($data2);
-
-
 		// Atualiza status auditoria //
 		$id  = $this->input->post('Auditoria');
-		$status ['statusID']  = 2;
+		$data2 ['acompanhanteID'] = $this->input->post('Acompanhante');
+		$data2 ['statusID']  = 2;
 
-		$this->auditoria_model->atualizaAuditoria($id, $status);
+		$this->auditoria_model->atualizaAuditoria($id, $data2);
 
 		redirect('auditoria/listAll','refresh');
 
@@ -179,9 +173,18 @@ class Auditoria extends CI_Controller {
 	 */
 	public function visualizarAuditoria($id)
 	{
-
+		
 		// Lista todas as auditorias //
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
+
+
+		$projeto = $data['auditorias'][0]->projetoID;
+		$acompanhante = $data['auditorias'][0]->acompanhanteID;
+
+		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
+		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+
+		//print_r($data);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/auditoria_view';
