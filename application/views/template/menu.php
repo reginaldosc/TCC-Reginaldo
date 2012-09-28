@@ -9,14 +9,18 @@
 				
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
 					
-					<?php $usuario = $this->session->userdata('usuarioLogin'); ?>
+					<?php $usuario = $this->session->userdata('usuarioLogin'); 
+					
+					?>
 					
 					<i class="icon-user"> </i> <?php echo $usuario ?> <span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><?php echo anchor('usuario/pageUser','Perfil');?></li>
+					<input type="hidden" class="input-xlarge" id="login" value='{usuarioLogin}' name="login">
+					<li><?php echo anchor("usuario/pageUser/$usuario",'Perfil');?></li>
 					<li class="divider"></li>
 					<li><?php echo anchor('login/logout','Sair');?></li>
+					
 				</ul>
 			</div>
 
@@ -79,4 +83,15 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+
+
+function PegaID()
+{
+	document.getElementById("usuarioID").value = $id;
+}
+	
+</script>
 

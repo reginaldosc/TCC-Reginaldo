@@ -82,6 +82,48 @@ class Usuario_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	
+	/**
+	 * Busca unidade
+	 */
+	function buscar($id)
+	{
+		$query = $this->db->query("SELECT usuarioNome, usuarioMatricula, usuarioLogin, usuarioPassword, 
+				usuarioEmail, tipoID FROM Usuario WHERE usuarioID = '$id' LIMIT 1");
+		
+		//$query = $this->db->tipo_model->buscar('tipoID');
+	
+		return $query->result();
+	}
+	
+	
+	/**
+	 * Busca unidade
+	 */
+	function buscarByLogin($login)
+	{
+		$query = $this->db->query("SELECT usuarioNome, usuarioMatricula, usuarioLogin, usuarioPassword,
+				usuarioEmail, tipoID FROM Usuario WHERE usuarioLogin = '$login' LIMIT 1");
+	
+		return $query->result();
+	}
+	
+	
+	/**
+	 * Edita
+	 */
+	function editar($data)
+	{
+		$id 		= $data['unidadeID'];
+	
+		$nome 		= $data['unidadeNome'];
+	
+		$query = $this->db->query("UPDATE Unidade SET UnidadeNome='$nome' WHERE unidadeID='$id'");
+			
+	}
+	
+
 
 	/**
 	 * Procura e deleta usuario do BD 

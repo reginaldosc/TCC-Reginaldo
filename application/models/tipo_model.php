@@ -33,6 +33,19 @@ class Tipo_model extends CI_Model {
 		return $query->result();
 	}
 
+	
+	/**
+	 * Busca permissao
+	 */
+	function buscar($id2)
+	{
+		$query = $this->db->query("SELECT tipoNome FROM Tipo WHERE tipoID = '$id2' LIMIT 1");
+	
+		//print_($query);
+		
+		return $query->result();
+	}
+	
 
 	/**
 	 * Procura e deleta na BD

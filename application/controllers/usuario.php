@@ -128,14 +128,22 @@ class Usuario extends CI_Controller {
 	/**
 	 * Apresenta a view de informacoes do usuario
 	 */
-	public function pageUser()
+	public function pageUser($login)
 	{
-
+			
 		// Carrega a view correspondende //
 		$data['main_content'] = 'usuario/pageUser_view';
 		
-		//$data['usuario'] = $this->usuario_model->buscar();
-
+		//print_r($data);
+				
+		$data['usuario'] = $this->usuario_model->buscarByLogin($login);
+		
+		//$tipo = $data['tipoID'];
+		
+		$data['tipo'] = $this->tipo_model->buscar('3');
+		
+		//print_($data);
+		
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);
 	}

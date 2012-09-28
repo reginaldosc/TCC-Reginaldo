@@ -15,34 +15,34 @@
 	<ul class="thumbnails">
   	
   	<li class="span">
-    
-    <div class="thumbnail">
+    <div class="thumbnail" align = "center">
       <img src="<?php echo base_url();?>img/user.jpg"  alt="">
-     
-      <p><small>{TipoDeUsuario}</small></p>
+{usuario} 
+		{tipo}    
+      		<p><small>{tipoNome}</small></p>
+      	{/tipo}
     </div>
-
   	</li>
 
   	<li class="span">
       
       <h3>{usuarioNome}</h3>
-      <br>
+      	<br>
 			
-      <h4>Email: <small> {usuarioEmail}</small></h4>
+      		<h4>Email: <small> {usuarioEmail}</small></h4>
 
  			<h4>Matricula: <small> {usuarioMatricula}</small></h4>
 
- 			<h4>Departamento: <small> {departamentoNome}</small></h4>
+ 			<h4>Login: <small> {usuarioLogin}</small></h4>
 
  		 	<h4>Senha: <small> {usuarioPassword}</small></h4>
- 		 	<br>
+ 		<br>
  		 	<button class="btn btn-warning">Alterar a senha</button>
  	</li>
 	</ul>
 
 	</div>
-
+{/usuario}
 </div>	
 	<br>
 
