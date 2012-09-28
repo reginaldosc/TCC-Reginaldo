@@ -135,6 +135,21 @@ class Usuario_model extends CI_Model {
 
 	}
 
+	
+	function getUsuario($id)
+	{
+		
+		$this->db->select('*');
+
+		$this->db->from('Usuario');
+		
+	    $this->db->where('usuarioID', $id);
+		
+		$query = $this->db->get();
+		
+		return $query->result();
+
+	}
 
 
 }
