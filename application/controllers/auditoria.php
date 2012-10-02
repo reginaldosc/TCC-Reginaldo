@@ -37,6 +37,9 @@ class Auditoria extends CI_Controller {
 		// Lista todas as auditorias //
 		$data['auditorias'] = $this->auditoria_model->listar();
 
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data);
+
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/listAuditoria_view';
 		
@@ -141,6 +144,14 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
+		$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
+
+		$projetoID = $data['projeto'][0]->projetoID;
+		
+		// Deletar dados da tabela Projeto_Artefato //
+		$this->auditoria_model->deletarPA($projetoID);
+
+		// Deletar dados da tabela Auditoria //
 		$this->auditoria_model->deletar($id);
 		
 		redirect('auditoria/listAll','refresh');
@@ -153,6 +164,9 @@ class Auditoria extends CI_Controller {
 	{
 
 		$data['auditorias'] = $this->auditoria_model->executar($id);
+
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data);
 
 		// Lista todos os usuarios //
 		$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
@@ -173,18 +187,18 @@ class Auditoria extends CI_Controller {
 	 */
 	public function visualizarAuditoria($id)
 	{
-		
+				
 		// Lista todas as auditorias //
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
 
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data);
 
 		$projeto = $data['auditorias'][0]->projetoID;
 		$acompanhante = $data['auditorias'][0]->acompanhanteID;
 
 		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
 		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
-
-		//print_r($data);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/auditoria_view';

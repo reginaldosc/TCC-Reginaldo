@@ -67,10 +67,9 @@
 			</div>
 
 			<div class="control-group">
-				<label class="control-label" for="">Data Execução</label>
+				<label class="control-label" for="">Data da auditoria</label>
 				<div class="controls">
-					<input type="datetime" class="input-xlarge" id="" placeholder="Ex: dd/mm/aaaa" name="Data" rel="popover" 
-					data-content="Data da auditoria no formato dd/mm/aaaa" data-original-title="Data" value="" autocomplete="off" >
+						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="dp3" name="Data">
 				</div>
 			</div>				
 			
@@ -92,4 +91,11 @@
 <script src="<?php echo base_url();?>js/bootstrap-tooltip.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-popover.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
+
+<script type="text/javascript">
+	
+	$('#dp3').datepicker()
+
+</script>

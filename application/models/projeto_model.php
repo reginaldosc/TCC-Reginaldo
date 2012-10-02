@@ -64,4 +64,17 @@ class Projeto_model extends CI_Model {
 	    $this->db->delete('Projeto');
 
 	}
+
+	/**
+	 * 
+	 */
+	function getProjetoFromAuditoria($id)
+	{
+		$this->db->select('projetoID')->from('Auditoria')->where('auditoriaID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+
+	}
 }

@@ -12,6 +12,7 @@
 <!-- Le styles -->
 <link href="<?php echo base_url();?>css/bootstrap.css" rel="stylesheet">
 <link href="<?php echo base_url();?>css/bootstrap-responsive.css" rel="stylesheet">
+<link href="<?php echo base_url();?>css/datepicker.css" rel="stylesheet">
 <style>
 body {
 	padding-top: 60px;

@@ -49,7 +49,7 @@
 
 			<div class="control-group">
 				
-				<label class="control-label" for="">Data Execução</label>
+				<label class="control-label" for="">Data agendada</label>
 				<div class="controls">
 					
 					<input type="datetime" class="input-xlarge" id="disabledInput" value="{auditoriaDataInicio}" disabled>

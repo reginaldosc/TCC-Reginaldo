@@ -96,7 +96,7 @@ $(document).ready(function(){
 
 			Data:{
 				required: "Informe a data para auditoria",
-				dateISO: "Informe uma data valida, ex: dd/mm/aaaa",
+				dateISO: "Informe uma data valida, exemplo: dd/mm/aaaa",
 			},
 			
 		},

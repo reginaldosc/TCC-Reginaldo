@@ -79,9 +79,6 @@ class Usuario extends CI_Controller {
 	 */
 	public function cadastrarUser() 
 	{
-
-		// Carrega helper para usar a funcao create_username(); //
-		$this->load->helper('user');
 	
 		// Recupera dos dados a serem cadastrados //
 		$data['usuarioNome']     	= $this->input->post('Nome');

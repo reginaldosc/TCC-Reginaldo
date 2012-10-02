@@ -97,6 +97,16 @@ class Auditoria_model extends CI_Model {
 
 	}
 
+	/**
+	 * Procura e deleta na BD
+	 */
+    function deletarPA($id)
+    {
+	    $this->db->where('projetoID', $id);
+	    $this->db->delete('Projeto_Artefato');
+
+	}
+
 
 	function executar($id)
 	{
@@ -162,4 +172,5 @@ class Auditoria_model extends CI_Model {
 		return $query->result();	
 
 	}
+
 }
