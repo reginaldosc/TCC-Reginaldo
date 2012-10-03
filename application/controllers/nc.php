@@ -35,7 +35,7 @@ class NC extends CI_Controller {
 		$data['ncs'] = $this->nc_model->listar();
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'listNc_view';
+		$data['main_content'] = 'nc/listNc_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -63,17 +63,24 @@ class NC extends CI_Controller {
 	 */
 	public function cadastrarNc() 
 	{
+
+		// Recupera a data informada pelo usuario //
+		$date = $this->input->post('Data');
+
+		// Converte a dada informada para o formato mysql //
+		$date_mysql = implode("-",array_reverse(explode("/",$date)));
 		
 		// Recupera dos dados a serem cadastrados //
-		$data['ncDescricao']   = $this->input->post('Descricao');
-		$data['ncStatus']   = $this->input->post('Status');
-		$data['ncDataFinalprev']   = $this->input->post('DataFimPrev');
-		$data['ncDataFinal']   = $this->input->post('DataFinal');
-		$data['ncComentario']   = $this->input->post('Comentario');
-		$data['ncDataFinal']   = $this->input->post('DataFinal');
+		$data['ncDescricao']   		= $this->input->post('Descricao');
+		$data['ncDataFinalprev']   	= $date_mysql;
+		$data['ncComentario']  		= $this->input->post('Comentario');
+		$data['auditoriaID']  		= $this->input->post('Auditoria');
+
+		$data['statusID']   		= '1';
+		
 		$this->nc_model->cadastrar($data);
 
-		redirect('nc/listAll');
+		//redirect('nc/listAll');
 
 	}
 

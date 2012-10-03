@@ -69,7 +69,7 @@
 			<div class="control-group">
 				<label class="control-label" for="">Data da auditoria</label>
 				<div class="controls">
-						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="dp3" name="Data">
+						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>				
 			
@@ -93,9 +93,4 @@
 <script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
-
-<script type="text/javascript">
-	
-	$('#dp3').datepicker()
-
-</script>
+<script src="<?php echo base_url();?>js/misc.js"></script>
