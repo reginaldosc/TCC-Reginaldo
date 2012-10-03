@@ -201,15 +201,13 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   ncDataFinal DATE NULL ,
   ncComentario VARCHAR(45) NULL ,
 
-  escalonamentoID INT NOT NULL ,
-  acID INT NOT NULL ,
+  acID INT NULL ,
   auditoriaID INT NOT NULL ,
-  ncStatus INT NOT NULL ,  
+  statusID INT NOT NULL ,  
 
-  PRIMARY KEY (ncID) ,
+  PRIMARY KEY (ncID),
 
-  FOREIGN KEY (ncStatus) REFERENCES rg_quality.Status (statusID) ,
-  FOREIGN KEY (escalonamentoID) REFERENCES rg_quality.Escalonamento (escalonamentoID) ,
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (acID) REFERENCES rg_quality.AC (acID) ,
   FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
 

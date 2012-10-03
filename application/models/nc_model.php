@@ -30,6 +30,8 @@ class NC_model extends CI_Model {
 		
 		$this->db->from('NC');
 
+		$this->db->join('Status' , 'Status.statusID = NC.statusID');
+
 		$query = $this->db->get();
 		
 		return $query->result();

@@ -16,7 +16,7 @@
 					<label class="control-label" for="">Auditor</label>
 					<div class="controls">
 			{auditorias}
-						<input type="hidden" name="Auditoria" value="{auditoriaID}">
+						<input type="hidden" id="Auditoria" name="Auditoria" value="{auditoriaID}">
 						<input class="input-xlarge" id="disabledInput" type="text" value="{usuarioNome}" disabled>
 						
 					</div>
@@ -98,7 +98,7 @@
 					</label>
 
 					<label class="radio inline">
-						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6" onclick='cadastraNC("{auditoriaID}")' data-toggle="modal" href="#NCmodal">
+						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6" data-toggle="modal" href="#NCmodal">
 						<p class="label label-important">Não Conforme</p>
 					</label>
 				
@@ -135,21 +135,21 @@
 			<div class="control-group">
 				<label class="control-label" for="">Descrição</label>
 				<div class="controls">
-						<input class="input-xlarge" id="" type="text" value="">
+						<input class="input-xlarge" id="Descricao" type="text">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Data Final Prevista</label>
 				<div class="controls">
-						<input class="input-xlarge" id="" type="text" value="">
+						<input class="input-xlarge"type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Comentário</label>
 				<div class="controls">
-						<input class="input-xlarge" id="" type="text" value="">
+						<input class="input-xlarge" id="Comentario" type="text">
 				</div>
 			</div>
 
@@ -157,7 +157,7 @@
 
 		<div class="modal-footer">
 			<a href="" class="btn" data-dismiss="modal">Voltar</a>
-			<a href="" class="btn btn-danger" id="Excluir">Cadastrar NC</a>
+			<button class="btn btn-danger" id="submit_nc"type="submit">Enviar</button>
 	 	</div>
 
 </div> <!-- Fim Modal NC -->  
@@ -171,7 +171,9 @@
 <script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-alert.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-modal.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
+<script src="<?php echo base_url();?>js/misc.js"></script>
 
 
 <script type="text/javascript">
@@ -196,12 +198,12 @@ function PegaChecked()
 	document.getElementById("allArtefatos").value = array_produtos;
 }
 
-// Chama modal para cadastro de NC //
-function cadastraNC(id){
+// // Chama modal para cadastro de NC //
+// function cadastraNC(id){
 
-	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="Teste"+id;
+// 	document.getElementById("dd");
+// 	document.getElementById('dd').href="Teste"+id;
+// }
 
-}	
 </script>
 
