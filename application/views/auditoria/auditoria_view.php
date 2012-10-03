@@ -23,7 +23,7 @@
 			<strong> Projeto: </strong> {projetoNome}
 			<br>
 
-			<strong> Data Agendada: </strong> {auditoriaDataInicio}
+			<strong> Data agendada: </strong> {auditoriaDataInicio}
 			<br>
 
 			<strong> Data da execução: </strong> {auditoriaDataInicio}
@@ -62,8 +62,6 @@
 
 			{/projetos_artefatos}
 			</table>
-
-
 
 
 <!-- javascript -->

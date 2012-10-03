@@ -22,7 +22,7 @@
 				<th>Unidade</th>
 				<th>Departamento</th>
 				<th>Projeto</th>
-				<th>Data Inicial</th>
+				<th>Data agendada</th>
 				<th>Status</th>
 				<th>Editar</th>
 				<th>Excluir</th>
@@ -42,7 +42,7 @@
 				<td>{auditoriaDataInicio}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="editAuditoria/{auditoriaID}" class='icon-edit'> <a/></td>
-				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#RemoveModal" class='icon-trash'></a></td>
 				<td><a href="execAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
 				<td><a href="visualizarAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
 				
@@ -53,7 +53,7 @@
 	<br>
 
 
-<div class="modal hide" id="myModal">
+<div class="modal hide" id="RemoveModal">
 		<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">×</button>
 			<h3>Excluir</h3>
