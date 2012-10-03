@@ -138,17 +138,29 @@ class Usuario extends CI_Controller {
 				
 		$data['usuario'] = $this->usuario_model->buscarByLogin($login);
 		
-		//$tipo = $data['tipoID'];
+		$tipo = $data['usuario'][0]->tipoID;
 		
-		$data['tipo'] = $this->tipo_model->buscar('3');
-		
-		//print_($data);
+		$data['tipo'] = $this->tipo_model->buscar($tipo);
 		
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);
 	}
 
-
+	
+	public function mudaSenha($id)
+	{
+		
+		$data['usuarioPWD']     = $this->input->post('senha');
+		
+		echo($id);
+		
+		//$data['usuario'] 		= buscar($id);
+				
+		print_r($data);
+		
+		//atualizaSenha($data);
+	}
+	
 }
 
 
