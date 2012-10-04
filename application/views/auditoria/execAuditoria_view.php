@@ -98,7 +98,7 @@
 					</label>
 
 					<label class="radio inline">
-						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6" data-toggle="modal" href="#NCmodal">
+						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6">
 						<p class="label label-important">Não Conforme</p>
 					</label>
 				
@@ -130,33 +130,39 @@
 			<h3>Cadastro de Não Conformidade</h3>
 		</div>
 
+		<!--  Mensagem de cadastro efetuado com sucesso -->
+		<div class="alert hide alert-success" id="alert-msg">
+				<p> Não conformidade cadastrada com sucesso !</p>
+		</div>
+		<!-- Fim msg -->  
+
 		<div class="modal-body">
 			
 			<div class="control-group">
 				<label class="control-label" for="">Descrição</label>
 				<div class="controls">
-						<input class="input-xlarge" id="Descricao" type="text">
+						<input class="input-xlarge" id="Descricao" name="Descricao" type="text" autocomplete="off" placeholder="Informe uma descrição">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Data Final Prevista</label>
 				<div class="controls">
-						<input class="input-xlarge"type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
+						<input class="input-xlarge"type="text" placeholder="Informe uma data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Comentário</label>
 				<div class="controls">
-						<input class="input-xlarge" id="Comentario" type="text">
+						<input class="input-xlarge" id="Comentario" placeholder="Adicione mais informações." type="text">
 				</div>
 			</div>
 
 		</div>
 
 		<div class="modal-footer">
-			<a href="" class="btn" data-dismiss="modal">Voltar</a>
+			<button class="btn" id="submit_voltar" data-dismiss="modal" aria-hidden="true">Voltar</button>
 			<button class="btn btn-danger" id="submit_nc"type="submit">Enviar</button>
 	 	</div>
 
@@ -197,13 +203,6 @@ function PegaChecked()
 	}
 	document.getElementById("allArtefatos").value = array_produtos;
 }
-
-// // Chama modal para cadastro de NC //
-// function cadastraNC(id){
-
-// 	document.getElementById("dd");
-// 	document.getElementById('dd').href="Teste"+id;
-// }
 
 </script>
 

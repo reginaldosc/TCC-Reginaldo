@@ -20,6 +20,7 @@
 				<th>Comentário</th>
 				<th>Status</th>
 				<th>AC</th>
+				<th>Excluir</th>
 			</tr>
 		</thead>
 				
@@ -32,6 +33,7 @@
 				<td>{ncComentario}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="execAC/{auditoriaID}" class='icon-play'> <a/></td>
+				<td><a onclick='RemoveNc("{ncID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
 			{/ncs}
 		</tbody>
@@ -46,7 +48,7 @@
 		</div>
 
 		<div class="modal-body">
-		<p>Deseja realmente excluir a ação corretiva ?</p>
+		<p>Deseja realmente excluir a Não Conformidade ?</p>
 		</div>
 
 		 <div class="modal-footer">
@@ -66,10 +68,10 @@
 
 <script type="text/javascript">
 
-function RemoveAc(id){
+function RemoveNc(id){
 
 	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="deleteAc/"+id;
+	document.getElementById('Excluir').href="deleteNc/"+id;
 
 }	
 
