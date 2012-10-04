@@ -14,25 +14,24 @@
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Descrição</th>
-				<th>Data</th>
-				<th>Auditoria</th>
-				<th>Comentário</th>
+				<th>Item não conforme</th>
+				<th>Não conformidade</th>
+				<th>Data prevista</th>
 				<th>Status</th>
-				<th>AC</th>
+				<th>Visualizar</th>
 				<th>Excluir</th>
+				
 			</tr>
 		</thead>
 				
 		<tbody>
 			{ncs}
 			<tr>	
+				<td>{artefatoNome}</td>
 				<td>{ncDescricao}</td>
 				<td>{ncDataFinalprev}</td>
-				<td>{auditoriaID}</td>
-				<td>{ncComentario}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
-				<td><a href="execAC/{auditoriaID}" class='icon-play'> <a/></td>
+				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'> <a/></td>
 				<td><a onclick='RemoveNc("{ncID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
 			{/ncs}

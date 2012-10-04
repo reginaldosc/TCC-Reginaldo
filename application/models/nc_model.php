@@ -31,9 +31,30 @@ class NC_model extends CI_Model {
 		$this->db->from('NC');
 
 		$this->db->join('Status' , 'Status.statusID = NC.statusID');
+		$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
 
 		$query = $this->db->get();
 		
+		return $query->result();
+	}
+	
+	
+	/**
+	 * Lista dados
+	 */
+	function listarNc($id)
+	{
+		$this->db->select('*');
+		
+		$this->db->from('NC');
+	
+		$this->db->where('ncID', $id);
+	
+		$this->db->join('Status' , 'Status.statusID = NC.statusID');
+		$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
+	
+		$query = $this->db->get();
+	
 		return $query->result();
 	}
 

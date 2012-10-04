@@ -130,13 +130,24 @@
 			<h3>Cadastro de Não Conformidade</h3>
 		</div>
 
-		<!--  Mensagem de cadastro efetuado com sucesso -->
+		<!--  Mensagem -->
+		
+		<!-- Cadastro efetuado com sucesso -->
 		<div class="alert hide alert-success" id="alert-msg">
-				<p> Não conformidade cadastrada com sucesso !</p>
+				<p> NC cadastrada com sucesso !</p>
+		</div>
+		
+		<!-- Cadastro Error -->
+		<div class="alert hide alert-error" id="alert-msg-error">
+				<p> Não foi possivel cadastrar NC !</p>
 		</div>
 		<!-- Fim msg -->  
 
 		<div class="modal-body">
+		
+			<!-- Artefato que será inserido via jquery -->
+			<input type="hidden" id="Artefato" name="" value="">
+			<!-- Fim  -->
 			
 			<div class="control-group">
 				<label class="control-label" for="">Descrição</label>
@@ -148,14 +159,14 @@
 			<div class="control-group">
 				<label class="control-label" for="">Data Final Prevista</label>
 				<div class="controls">
-						<input class="input-xlarge"type="text" placeholder="Informe uma data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
+						<input class="input-xlarge"type="text" placeholder="Informe uma data" autocomplete="off" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>
 
 			<div class="control-group">
 				<label class="control-label" for="">Comentário</label>
 				<div class="controls">
-						<input class="input-xlarge" id="Comentario" placeholder="Adicione mais informações." type="text">
+						<input class="input-xlarge" id="Comentario" autocomplete="off" placeholder="Adicione mais informações." type="text">
 				</div>
 			</div>
 

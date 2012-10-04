@@ -203,12 +203,14 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
 
   acID INT NULL ,
   auditoriaID INT NOT NULL ,
-  statusID INT NOT NULL ,  
+  statusID INT NOT NULL ,
+  artefatoID INT NOT NULL ,   
 
   PRIMARY KEY (ncID),
 
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (acID) REFERENCES rg_quality.AC (acID) ,
+  FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID) ,
   FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
 
 
@@ -245,6 +247,7 @@ INSERT INTO rg_quality.Status VALUES (null, 'Andamento'     , 'warning');
 INSERT INTO rg_quality.Status VALUES (null, 'Não Aplicável' , 'info');
 INSERT INTO rg_quality.Status VALUES (null, 'Conforme'      , 'success');
 INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme'  , 'important');
+INSERT INTO rg_quality.Status VALUES (null, 'Aberta'        , 'important');
 
 
 -- Inserindo Unidades de negocio --

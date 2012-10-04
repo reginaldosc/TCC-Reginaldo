@@ -75,8 +75,9 @@ class NC extends CI_Controller {
 		$data['ncDataFinalprev']   	= $date_mysql;
 		$data['ncComentario']  		= $this->input->post('Comentario');
 		$data['auditoriaID']  		= $this->input->post('Auditoria');
+		$data['artefatoID']  		= $this->input->post('Artefato');
 
-		$data['statusID']   		= '1';
+		$data['statusID']   		= '7';
 		
 		$this->nc_model->cadastrar($data);
 
@@ -93,6 +94,35 @@ class NC extends CI_Controller {
 		$this->nc_model->deletar($id);
 		
 		redirect('nc/listAll','refresh');
+	}
+	
+	/**
+	 * Visualiza nao conformidade
+	 */
+	public function visualizarNc($id)
+	{
+	
+		// Lista todas as auditorias //
+		$data['ncs'] = $this->nc_model->listarNc($id);
+		
+		
+		$auditoria = $data['ncs'][0]->auditoriaID;
+		
+		$data['auditorias'] = $this->auditoria_model->listarAuditoria($auditoria);
+		
+		$projeto = $data['auditorias'][0]->projetoID;
+		$acompanhante = $data['auditorias'][0]->acompanhanteID;
+
+		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
+		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+		
+	
+		// Carrega a view correspondende //
+		$data['main_content'] = 'nc/nc_view';
+	
+		// Envia todas as informacoes para tela //
+		$this->parser->parse('template', $data);
+	
 	}
 }
 
