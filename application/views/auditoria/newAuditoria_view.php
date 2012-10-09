@@ -8,8 +8,17 @@
 			</h2>
 	</div>
 
-	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAuditoria">  
-			
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAuditoria">			
+
+			 <?php 
+			 	// Mensagens de erro //
+			 
+			 	echo form_error('Projeto', '<div class="alert alert-error">', '</div>');
+
+			 	echo form_error('Data', '<div class="alert alert-error">', '</div>');  
+
+			 ?>
+ 			
 			<fieldset>
 
 			<div class="control-group">
@@ -92,5 +101,6 @@
 <script src="<?php echo base_url();?>js/bootstrap-popover.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-alert.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
 <script src="<?php echo base_url();?>js/misc.js"></script>

@@ -40,10 +40,10 @@
 				<td>{departamentoNome}</td>
 				<td>{projetoNome}</td>
 				<td>{auditoriaDataInicio}</td>
-				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
+				<td><span id="status" value="statusNome}" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="editAuditoria/{auditoriaID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveAuditoria("{auditoriaID}")' data-toggle="modal" href="#RemoveModal" class='icon-trash'></a></td>
-				<td><a href="execAuditoria/{auditoriaID}" class='icon-play'> <a/></td>
+				<td><a href="execAuditoria/{auditoriaID}"  class='icon-play'> <a/></td>
 				<td><a href="visualizarAuditoria/{auditoriaID}" class='icon-eye-open'> <a/></td>
 				
 			</tr>
@@ -88,5 +88,3 @@ function RemoveAuditoria(id){
 }	
 
 </script>
-
-
