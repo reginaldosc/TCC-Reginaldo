@@ -123,10 +123,10 @@ class NC extends CI_Controller {
 
 
 		// Lista todos os Ação corretivas //
-		$data['acs'] = $this->ac_model->listar();
+		$data['acs'] = $this->ac_model->listarAC($id);
 
 		// converte as datas do formato mysql para formato dd/mm/aaaa
-		$data = convert_date($data,'acs','acDataAgendada');
+		$data = convert_date($data,'acs','acDataFinal');
 		
 	
 		// Carrega a view correspondende //

@@ -69,7 +69,6 @@
 		<thead>
 			<tr>
 				<th>Descrição</th>
-				<th>Data Agendada</th>
 				<th>Data Realizada</th>
 				<th>Status</th>
 				<th>Editar</th>
@@ -81,8 +80,7 @@
 		<tbody>
 			{acs}
 			<tr>
-				<td>{acDescricao}</td>	
-				<td>{acDataAgendada}</td>
+				<td>{acAcao}</td>	
 				<td>{acDataFinal}</td>
 				<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
 				<td><a href="editAc/{acID}" class='icon-edit'> <a/></td>
