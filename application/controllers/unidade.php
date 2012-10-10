@@ -66,7 +66,7 @@ class Unidade extends CI_Controller {
 		
 
 		// Recupera dos dados a serem cadastrados //
-		$data['unidadeNome']   = $this->input->post('Nome');
+		$data['unidadeNome']   = $this->input->post('Nome2');
 					 
 		$this->unidade_model->cadastrar($data);
 

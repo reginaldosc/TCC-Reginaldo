@@ -20,10 +20,10 @@ $(document).ready(function(){
 			},
 
 			/* Valida campos Nome em cadastros */
-			abc:
+			Nome2:
 			{
 				required: true,
-				minlength: 2,
+				minlength: 3,
 				maxlength: 45
 			},
 			
@@ -68,7 +68,7 @@ $(document).ready(function(){
 				maxlength:"O nome do novo usuario deve ser menor que 45 caracteres ",
 			},
 			
-			abc:{
+			Nome2:{
 				required: "Informe o nome Válido",
 				minlength:"O nome deve ser maior que 2 caracteres ",
 				maxlength:"O nome deve ser menor que 45 caracteres ",
