@@ -64,7 +64,7 @@ class NC_model extends CI_Model {
 	 */
     	function deletar($id)
     	{
-	    $this->db->where('ncID', $id);
+	    $this->db->where('auditoriaID', $id);
 	    $this->db->delete('NC');
 
 	}

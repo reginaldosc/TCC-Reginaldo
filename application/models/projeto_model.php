@@ -108,4 +108,18 @@ class Projeto_model extends CI_Model {
 		return $query->result();
 
 	}
+
+
+	/**
+	 * Verifica se o projeto está associado a alguma auditoria.
+	 */
+	function projetoAuditado($id)
+	{
+		$this->db->select('projetoID')->from('Auditoria')->where('projetoID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+
+	}
 }

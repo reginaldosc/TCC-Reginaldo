@@ -46,9 +46,10 @@ class AC extends CI_Controller {
 	/**
 	 * Apresenta view de cadastro de novos projetos
 	 */
-	public function newAc()
+	public function newAc($id)
 	{
 
+		$data['ncID'] = $id;
 		// Carrega a view correspondende //
 		$data['main_content'] = 'ac/newAc_view';
 
@@ -57,6 +58,22 @@ class AC extends CI_Controller {
 		
 	}
 
+	/**
+	 * Executa Ação Corretiva 
+	 */
+	public function execAC($id)
+
+	{
+
+		$data['statusID']		= 3;
+		$data['acDataFinal']	= date_now_mysql();
+
+		// Envia msg para usuario auditor //
+		// Mandar E-mail para auditor //
+		$this->ac_model->cadastrar($data);
+
+
+	}
 
 	/**
 	 * Recupera as informações do cadastro e grava no bando de dados
@@ -64,13 +81,22 @@ class AC extends CI_Controller {
 	public function cadastrarAc() 
 	{
 		
+		// Recupera a data informada pelo usuario //
+		$date = $this->input->post('Data');
+
+		// Converte a dada informada para o formato mysql //
+		$date_mysql = implode("-",array_reverse(explode("/",$date)));
+
+
 		// Recupera dos dados a serem cadastrados //
-		$data['acDataFinal']   = $this->input->post('Nata');
-		$data['acDescricao']   = $this->input->post('Descricao');
-					 
+		$data['acDescricao']	= $this->input->post('Descricao');
+		$data['acDataAgendada']	= $date_mysql;
+		$data['ncID']			= $this->input->post('NC');
+		$data['statusID']		= 1;
+
 		$this->ac_model->cadastrar($data);
 
-		redirect('ac/listAll');
+		redirect('nc/listAll','refresh');
 
 	}
 
@@ -82,7 +108,7 @@ class AC extends CI_Controller {
 
 		$this->ac_model->deletar($id);
 		
-		redirect('ac/listAll','refresh');
+		redirect('nc/listAll','refresh');
 	}	
 
 }

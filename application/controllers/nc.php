@@ -34,6 +34,9 @@ class NC extends CI_Controller {
 		// Lista todos os projetos //
 		$data['ncs'] = $this->nc_model->listar();
 
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'ncs','ncDataFinalprev');
+
 		// Carrega a view correspondende //
 		$data['main_content'] = 'nc/listNc_view';
 		
@@ -105,7 +108,9 @@ class NC extends CI_Controller {
 		// Lista todas as auditorias //
 		$data['ncs'] = $this->nc_model->listarNc($id);
 		
-		
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'ncs','ncDataFinalprev');
+
 		$auditoria = $data['ncs'][0]->auditoriaID;
 		
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($auditoria);
@@ -115,6 +120,13 @@ class NC extends CI_Controller {
 
 		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
 		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+
+
+		// Lista todos os Ação corretivas //
+		$data['acs'] = $this->ac_model->listar();
+
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'acs','acDataAgendada');
 		
 	
 		// Carrega a view correspondende //

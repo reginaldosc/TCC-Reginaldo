@@ -38,7 +38,7 @@ class Auditoria extends CI_Controller {
 		$data['auditorias'] = $this->auditoria_model->listar();
 
 		// converte as datas do formato mysql para formato dd/mm/aaaa
-		$data = convert_date($data);
+		$data = convert_date($data, 'auditorias', 'auditoriaDataInicio');
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/listAuditoria_view';
@@ -81,28 +81,95 @@ class Auditoria extends CI_Controller {
 	 */
 	public function cadastrarAuditoria() 
 	{
-		// Recupera a data informada pelo usuario //
-		$date = $this->input->post('Data');
 
-		// Converte a dada informada para o formato mysql //
-		$date_mysql = implode("-",array_reverse(explode("/",$date)));
-		
+		$this->form_validation->set_rules('Projeto', 'projeto', 'callback_projeto_check');
+		$this->form_validation->set_rules('Data', 'data', 'callback_date_check');
 
-		// Recupera dos dados a serem cadastrados //
+		if ($this->form_validation->run() == FALSE)
+		{
+			// Lista todos os usuarios //
+			$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
+			
+			// Lista todas as unidades de negocio //
+			$data['unidades'] = $this->unidade_model->listar();
 
-		$data['auditorID'] 				= $this->input->post('Auditor');
+			// Lista todos os departamentos //
+			$data['departamentos'] = $this->departamento_model->listar();
 
-		$data['projetoID']   			= $this->input->post('Projeto');
-		
-		$data['statusID']				= '1';
+			// Lista todos os projetos //
+			$data['projetos'] = $this->projeto_model->listar();
 
-		$data['auditoriaDataInicio']   	= $date_mysql;
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/newAuditoria_view';
 
-		
-		$this->auditoria_model->cadastrar($data);
+			// Envia todas as informações para tela //			
+			$this->parser->parse('template', $data);
+		}
+		else
+		{
 
-		redirect('auditoria/listAll','refresh');
+			// Recupera a data informada pelo usuario //
+			$date = $this->input->post('Data');
 
+			// Converte a dada informada para o formato mysql //
+			$date_mysql = implode("-",array_reverse(explode("/",$date)));
+			
+
+			// Recupera dos dados a serem cadastrados //
+
+			$data['auditorID'] 				= $this->input->post('Auditor');
+
+			$data['projetoID']   			= $this->input->post('Projeto');
+			
+			$data['statusID']				= '1';
+
+			$data['auditoriaDataInicio']   	= $date_mysql;
+
+			
+			$this->auditoria_model->cadastrar($data);
+
+			redirect('auditoria/listAll','refresh');
+		}
+
+	}
+
+
+	/**
+	 * Analisa se projeto já está em uma auditoria
+	 */
+	public function projeto_check($id)
+	{
+
+		$data['auditado'] = $this->projeto_model->projetoAuditado($id);
+
+		if (!empty($data['auditado']) and ($id == $data['auditado'][0]->projetoID) )
+		{
+			$this->form_validation->set_message('projeto_check', ' - O %s está sendo auditado em outra auditoria. Favor selecionar outro projeto.');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
+	}
+
+	/**
+	 * Analisa se a data é maior que a data atual
+	 */
+	public function date_check($date)
+	{
+
+		$retorno = date_is_bigger($date);
+
+		if(!$retorno)  
+		{
+			$this->form_validation->set_message('date_check', ' - A %s não pode ser menor que a data atual.');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
 	}
 
 	/**
@@ -144,6 +211,8 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
+		$this->nc_model->deletar($id);
+
 		$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
 
 		$projetoID = $data['projeto'][0]->projetoID;
@@ -165,18 +234,31 @@ class Auditoria extends CI_Controller {
 
 		$data['auditorias'] = $this->auditoria_model->executar($id);
 
-		// converte as datas do formato mysql para formato dd/mm/aaaa
-		$data = convert_date($data);
+		if ($data['auditorias'][0]->statusID == 1)
+		{
 
-		// Lista todos os usuarios //
-		$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
+			// converte as datas do formato mysql para formato dd/mm/aaaa
+			$data = convert_date($data, 'auditorias', 'auditoriaDataInicio');
 
-		// Lista todos os artefatos //
-		$data['artefatos'] = $this->artefato_model->listar();
+			// Lista todos os usuarios //
+			$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
 
-		// Carrega a view correspondende //
-		$data['main_content'] = 'auditoria/execAuditoria_view';
+			// Lista todos os artefatos //
+			$data['artefatos'] = $this->artefato_model->listar();
 
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/execAuditoria_view';
+
+		}
+		else 
+		{
+
+			$data['mensagem'] = 'Auditoria já foi executada, somente é possivel executar uma auditoria uma vez.';
+
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/msg_view';
+
+		}
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data); 
 		
@@ -191,17 +273,30 @@ class Auditoria extends CI_Controller {
 		// Lista todas as auditorias //
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
 
-		// converte as datas do formato mysql para formato dd/mm/aaaa
-		$data = convert_date($data);
 
-		$projeto = $data['auditorias'][0]->projetoID;
-		$acompanhante = $data['auditorias'][0]->acompanhanteID;
+		if ($data['auditorias'][0]->statusID != 1)
+		{
 
-		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
-		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+			// converte as datas do formato mysql para formato dd/mm/aaaa
+			$data = convert_date($data, 'auditorias', 'auditoriaDataInicio');
 
-		// Carrega a view correspondende //
-		$data['main_content'] = 'auditoria/auditoria_view';
+			$projeto = $data['auditorias'][0]->projetoID;
+			$acompanhante = $data['auditorias'][0]->acompanhanteID;
+
+			$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
+			$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/auditoria_view';
+		}
+		else
+		{
+
+			$data['mensagem'] = ' - Para visualizar uma auditoria é necessario primeiramente executa-la.';
+
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/msg_view';
+		}
 
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);
