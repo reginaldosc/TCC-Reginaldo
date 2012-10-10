@@ -173,22 +173,6 @@ CREATE TABLE IF NOT EXISTS rg_quality.Auditoria (
   )ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table rg_quality.AC
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS rg_quality.AC (
- 
-  acID INT NOT NULL AUTO_INCREMENT ,
-  acDataFinal DATE NULL ,
-  acDescricao TEXT NOT NULL ,
-  acStatus INT NOT NULL ,	
-  
-  PRIMARY KEY (acID),
-
-  FOREIGN KEY (acStatus) REFERENCES rg_quality.Status (statusID)
-  
-  )ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table rg_quality.NC
@@ -201,7 +185,6 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   ncDataFinal DATE NULL ,
   ncComentario VARCHAR(45) NULL ,
 
-  acID INT NULL ,
   auditoriaID INT NOT NULL ,
   statusID INT NOT NULL ,
   artefatoID INT NOT NULL ,   
@@ -209,11 +192,30 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   PRIMARY KEY (ncID),
 
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
-  FOREIGN KEY (acID) REFERENCES rg_quality.AC (acID) ,
   FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID) ,
   FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
 
 
+  )ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table rg_quality.AC
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS rg_quality.AC (
+ 
+  acID INT NOT NULL AUTO_INCREMENT ,
+  acDescricao TEXT NOT NULL ,
+  acDataAgendada DATE NOT NULL ,
+  acDataFinal DATE NULL ,
+  statusID INT NOT NULL ,
+  ncID INT NOT NULL ,   
+  
+  PRIMARY KEY (acID) ,
+
+  FOREIGN KEY (ncID) REFERENCES rg_quality.NC (ncID) ,
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
+  
   )ENGINE = InnoDB;
 
 
@@ -248,6 +250,7 @@ INSERT INTO rg_quality.Status VALUES (null, 'Não Aplicável' , 'info');
 INSERT INTO rg_quality.Status VALUES (null, 'Conforme'      , 'success');
 INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme'  , 'important');
 INSERT INTO rg_quality.Status VALUES (null, 'Aberta'        , 'important');
+INSERT INTO rg_quality.Status VALUES (null, 'Fechada'       , 'success');
 
 
 -- Inserindo Unidades de negocio --

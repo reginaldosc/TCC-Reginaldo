@@ -19,7 +19,7 @@
 				<th>Data prevista</th>
 				<th>Status</th>
 				<th>Visualizar</th>
-				<th>Excluir</th>
+				<th>Cadastrar Ação Corretiva</th>
 				
 			</tr>
 		</thead>
@@ -31,8 +31,9 @@
 				<td>{ncDescricao}</td>
 				<td>{ncDataFinalprev}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
-				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'> <a/></td>
-				<td><a onclick='RemoveNc("{ncID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
+				<td><a href="../ac/newAC/{ncID}"  class='icon-plus'><a/></td>
+
 			</tr>
 			{/ncs}
 		</tbody>

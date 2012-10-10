@@ -8,15 +8,24 @@
 			</h2>
 	</div>
 
-	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAc">  
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="../cadastrarAc">  
 			
 		<fieldset>
 
+			<input type="hidden" id="nc" name="NC" value="{ncID}">
+			
 			<div class="control-group">
-				<label class="control-label" for="">Data Finalização</label>
+				<label class="control-label" for="">Descrição</label>
 				<div class="controls">
-					<input type="datetime" class="input-xlarge" id="" placeholder="Ex: dd/mm/aaaa" name="DataFinalPrev" rel="popover" 
-					data-content="Data da AC no formato dd/mm/aaaa" data-original-title="Data" value="" autocomplete="off">
+					<input type="text" class="input-xlarge" id="" placeholder="Descreva a Ação Corretiva" name="Descricao" rel="popover" 
+					data-content="Descrição da Ação Corretiva" data-original-title="Descrição" value="" autocomplete="off">
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="">Data Final Prevista</label>
+				<div class="controls">
+						<input class="input-xlarge" type="datetime" placeholder="Informe a data" autocomplete="off" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>				
 			
@@ -38,4 +47,8 @@
 <script src="<?php echo base_url();?>js/bootstrap-tooltip.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-popover.js"></script>
 <script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-alert.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-modal.js"></script>
+<script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
+<script src="<?php echo base_url();?>js/misc.js"></script>

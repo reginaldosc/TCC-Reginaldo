@@ -9,9 +9,7 @@
 				
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
 					
-					<?php $usuario = $this->session->userdata('usuarioLogin'); 
-					
-					?>
+					<?php $usuario = $this->session->userdata('usuarioLogin');?>
 					
 					<i class="icon-user"> </i> <?php echo $usuario ?> <span class="caret"></span>
 				</a>
@@ -27,6 +25,7 @@
 
 
 			<div class="nav-collapse">
+				
 				<ul class="nav">
 
 					<li class="">
@@ -42,11 +41,10 @@
 					</li>
 					
 				
-					<li class="">
-						<?php echo anchor('ac/listAll','Ação Corretiva');?>
-					</li>
-				
-					<li class="dropdown"><a class="dropdown-toggle" href="#">Cadastro</a>
+					<li class="dropdown">
+						
+						<a class="dropdown-toggle" href="#">Cadastro</a>
+						
 						<ul class="dropdown-menu">
 							<li class="">
 								<?php echo anchor('artefato/listAll','Artefato');?>
@@ -76,6 +74,7 @@
 								<?php echo anchor('usuario/listAll','Usuário');?>
 							</li>
 						</ul>
+					</li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

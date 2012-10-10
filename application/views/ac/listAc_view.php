@@ -9,10 +9,6 @@
 		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
 	</form>
 
-	<!-- Adicionar novo usuario -->
-	<a href="newAc" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Nova Ação Corretiva </a>
-	<br>
-	<br>
 
 	<!-- Tabela com a lista dos usuarios do sistema -->
 	<table class='table table-bordered table-striped'>

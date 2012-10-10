@@ -120,6 +120,13 @@ class NC extends CI_Controller {
 
 		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
 		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+
+
+		// Lista todos os Ação corretivas //
+		$data['acs'] = $this->ac_model->listar();
+
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'acs','acDataAgendada');
 		
 	
 		// Carrega a view correspondende //

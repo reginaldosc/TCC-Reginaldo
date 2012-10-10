@@ -42,8 +42,7 @@
 				<thead>
 					<tr>
 						<th>Artefato</th>
-						<th>Resultado</th>
-						<th>NC</th>				
+						<th>Resultado</th>			
 						
 					</tr>
 				</thead>
@@ -54,8 +53,6 @@
 				   	 	<td> <strong> {artefatoNome} </strong> </td>
 					
 						<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
-
-						<td> teste </td>
 					</tr>
 
 				</tbody>

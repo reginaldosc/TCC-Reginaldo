@@ -66,6 +66,38 @@ if ( !function_exists('date_is_bigger'))
 }
 
 
+/**
+ * Retorna a data do sistema no formato dd/mm/aaaa
+ */
+if ( !function_exists('date_now'))
+{
+	function date_now()
+	{
+		$CI =& get_instance();
+		date_default_timezone_set('America/Sao_Paulo');
+
+		return date("d/m/Y");
+
+	}	
+}
+
+
+/**
+ * Retorna a data do sistema no formato dd/mm/aaaa
+ */
+if ( !function_exists('date_now_mysql'))
+{
+	function date_now_mysql()
+	{
+		$CI =& get_instance();
+		date_default_timezone_set('America/Sao_Paulo');
+
+		return date("Y/m/d");
+
+	}	
+}
+
+
 
 
 /* End of file user_helper.php */

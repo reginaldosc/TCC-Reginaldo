@@ -20,6 +20,14 @@ class AC_model extends CI_Model {
 		return $this->db->insert('AC', $data);
 	}
 
+	/**
+	* Atualiza Ac
+	*/ 
+	function atualizaAc($id, $data) 
+	{
+		$this->db->update('AC', $data, "acID = $id");
+	}
+
 
 	/**
 	 * Lista dados
@@ -29,6 +37,8 @@ class AC_model extends CI_Model {
 		$this->db->select('*');
 		
 		$this->db->from('AC');
+
+		$this->db->join('Status' , 'Status.statusID = AC.statusID');
 
 		$query = $this->db->get();
 		

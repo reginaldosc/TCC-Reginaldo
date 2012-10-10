@@ -211,6 +211,8 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
+		$this->nc_model->deletar($id);
+
 		$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
 
 		$projetoID = $data['projeto'][0]->projetoID;
