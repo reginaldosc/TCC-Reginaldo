@@ -98,7 +98,7 @@ class Auditoria_model extends CI_Model {
 	}
 
 	/**
-	 * Procura e deleta na BD
+	 * Procura e deleta no BD
 	 */
     function deletarPA($id)
     {

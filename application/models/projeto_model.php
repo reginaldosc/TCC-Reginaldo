@@ -96,6 +96,18 @@ class Projeto_model extends CI_Model {
 
 	}
 
+	
+	/**
+	 * Procura e deleta no BD
+	 */
+	function deletarPA($id)
+	{
+		$this->db->where('projetoID', $id);
+		$this->db->delete('Projeto_Artefato');
+	
+	}
+	
+	
 	/**
 	 * 
 	 */

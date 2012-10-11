@@ -79,6 +79,16 @@ class Artefato_model extends CI_Model {
 		 
 	}
 	
+	
+	/**
+	 * Procura e deleta no BD
+	 */
+	function deletarPA($id)
+	{
+		$this->db->where('artefatoID', $id);
+		$this->db->delete('Projeto_Artefato');
+	
+	}
 
 	/**
 	 * Procura e deleta na BD

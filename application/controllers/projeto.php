@@ -126,6 +126,9 @@ class Projeto extends CI_Controller {
 	public function deleteProjeto($id)
 	{
 
+		// Deletar dados da tabela Projeto_Artefato //
+		$this->projeto_model->deletarPA($id);
+		
 		$this->projeto_model->deletar($id);
 		
 		redirect('projeto/listAll','refresh');
