@@ -28,19 +28,19 @@
 					data-content="Deve ter no minimo 6 caracteres e no maxímo 45 caracteres." data-original-title="Nome" value="" autocomplete="off">
 				</div>
 				</div>
-
+			{/projeto}
 				<div class="control-group">
 					<label class="control-label" for="">Departamento</label>
 				<div class="controls">
 					<select id="" name="Departamento" class="input-xlarge">						
-						{departamentos}		
+						{departamentos}
 						   <option value="{departamentoID}"> {departamentoNome} </option>
 						{/departamentos}
 						
 				    </select>
 				</div>
 				</div>
-				{/projeto}
+				
 		
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Salvar</button>

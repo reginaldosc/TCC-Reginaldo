@@ -90,8 +90,9 @@ class Projeto extends CI_Controller {
 	
 		$data['projetoNome']   		= $this->input->post('Nome');
 	
-		$data['departamentoID']  		= $this->input->post('Departamento');
+		$data['departamentoID']  	= $this->input->post('Departamento');
 	
+		//print_r($data);
 		$this->projeto_model->editar($data);
 	
 		redirect('projeto/listAll');
@@ -101,7 +102,7 @@ class Projeto extends CI_Controller {
 	
 	/**
 	 *
-	 * Apresenta view de edicao de um artefato
+	 * 
 	 *
 	 */
 	public function buscaProjeto($id)
@@ -110,7 +111,7 @@ class Projeto extends CI_Controller {
 	
 		$data['projeto'] 		= $this->projeto_model->buscar($id);
 		
-		// Lista todas as unidades de negocio //
+		// Lista todos os departamentos//
 		$data['departamentos'] = $this->departamento_model->listar();
 		
 		$this->parser->parse('template', $data);
