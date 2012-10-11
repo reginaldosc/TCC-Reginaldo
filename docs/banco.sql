@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS rg_quality.Status (
   )ENGINE = InnoDB;
 
 
-
 -- -----------------------------------------------------
 -- Table rg_quality.Unidade
 -- -----------------------------------------------------
@@ -107,17 +106,23 @@ CREATE TABLE IF NOT EXISTS rg_quality.Usuario (
   )ENGINE = InnoDB;
 
 
+
 -- -----------------------------------------------------
--- Table rg_quality.Escalonamento
+-- Table rg_quality.Mensagem
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS rg_quality.Escalonamento (
+CREATE TABLE IF NOT EXISTS rg_quality.Mensagem (
   
-  escalonamentoID INT NOT NULL AUTO_INCREMENT ,
-  escalonamentoData DATE NOT NULL ,
+  mensagemID 	INT NOT NULL AUTO_INCREMENT ,
+  mensagemBody	VARCHAR(45) NOT NULL ,
+  mensagemData 	TIMESTAMP NOT NULL ,
+  usuarioID 	INT NOT NULL ,
   
-  PRIMARY KEY (escalonamentoID)
+  PRIMARY KEY (mensagemID) ,
+
+  FOREIGN KEY (usuarioID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
@@ -242,6 +247,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
 */
 
 
+
 -- Inserindo Status --
 INSERT INTO rg_quality.Status VALUES (null, 'Agendada'      , 'info');
 INSERT INTO rg_quality.Status VALUES (null, 'Realizada'     , 'success');
@@ -251,6 +257,7 @@ INSERT INTO rg_quality.Status VALUES (null, 'Conforme'      , 'success');
 INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme'  , 'important');
 INSERT INTO rg_quality.Status VALUES (null, 'Aberta'        , 'important');
 INSERT INTO rg_quality.Status VALUES (null, 'Fechada'       , 'success');
+INSERT INTO rg_quality.Status VALUES (null, 'Executada'     , 'warning');
 
 
 -- Inserindo Unidades de negocio --

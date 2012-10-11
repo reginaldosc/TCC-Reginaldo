@@ -2,7 +2,7 @@
 <div class="container">
 
 	<br>
-
+	<?php echo date("Y-m-d G:i:s"); ?>
 	<!-- Buscador -->
 	<form class="well form-search">
 		<input type="text" class="input-xlarge search-query">
@@ -10,28 +10,28 @@
 	</form>
 
 
-	<!-- Tabela com a lista dos usuarios do sistema -->
+	<!-- Tabela com a lista das unidades do sistema -->
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Descrição</th>
-				<th>Data Realizada</th>
-				<th>Status</th>
-				<th>Editar</th>
+				<th>Remetente</th>
+				<th>Mensagem</th>
+				<th>Data</th>
+				<th>Ler</th>
 				<th>Excluir</th>
 			</tr>
 		</thead>
 				
 		<tbody>
-			{acs}
+			{mensagens}
 			<tr>
-				<td>{acAcao}</td>	
-				<td>{acDataFinal}</td>
-				<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
-				<td><a href="editAc/{acID}" class='icon-edit'> <a/></td>
-				<td><a onclick='RemoveAc("{acID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td>{usuarioNome}</td>	
+				<td>{mensagemBody}</td>
+				<td>{mensagemData}</td>
+				<td><a href="buscaArtefato/{artefatoID}" class='icon-edit'> <a/></td>
+				<td><a onclick='RemoveArtefato("{artefatoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
-			{/acs}
+			{/mensagens}
 		</tbody>
 	</table>
 	<br>
@@ -44,7 +44,7 @@
 		</div>
 
 		<div class="modal-body">
-		<p>Deseja realmente excluir a ação corretiva ?</p>
+		<p>Deseja realmente excluir o Artefato ?</p>
 		</div>
 
 		 <div class="modal-footer">
@@ -64,10 +64,10 @@
 
 <script type="text/javascript">
 
-function RemoveAc(id){
+function RemoveArtefato(id){
 
 	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="deleteAc/"+id;
+	document.getElementById('Excluir').href="deleteArtefato/"+id;
 
 }	
 

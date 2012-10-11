@@ -33,6 +33,9 @@ class AC extends CI_Controller {
 
 		// Lista todos os projetos //
 		$data['acs'] = $this->ac_model->listar();
+		
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'acs','acDataFinal');
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'ac/listAc_view';
@@ -62,18 +65,19 @@ class AC extends CI_Controller {
 	 * Executa Ação Corretiva 
 	 */
 	public function execAC($id)
-
 	{
-
-		$data['statusID']		= 3;
+		
+		$tipo = "Ac";
+		$status = 9;
+		
+		
+		$data['statusID']		= $status;
 		$data['acDataFinal']	= date_now_mysql();
-
-		// Envia msg para usuario auditor //
-		// Mandar E-mail para auditor //
 		
 		$this->ac_model->atualizaAc($id, $data);
 		
-		redirect('nc/listAll','refresh');
+		// Envia mensagem no formtado Tipo, id, status//
+		redirect("mensagem/sendMensagem/$tipo/$id/$status");
 	}
 
 	/**

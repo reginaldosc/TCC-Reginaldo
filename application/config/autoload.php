@@ -119,7 +119,8 @@ $autoload['model'] = array(
 							'tipo_model',
 							'artefato_model',
 							'ac_model',
-							'nc_model'
+							'nc_model',
+							'mensagem_model'
 							);
 
 

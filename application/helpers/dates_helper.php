@@ -98,6 +98,22 @@ if ( !function_exists('date_now_mysql'))
 }
 
 
+/**
+ * Retorna a data do sistema no formato dd/mm/aaaa
+ */
+if ( !function_exists('date_now_mysql_with_seconds'))
+{
+	function date_now_mysql_with_seconds()
+	{
+		$CI =& get_instance();
+		date_default_timezone_set('America/Sao_Paulo');
+
+		return date("Y/m/d h:i:s");
+
+	}
+}
+
+
 
 
 /* End of file user_helper.php */
