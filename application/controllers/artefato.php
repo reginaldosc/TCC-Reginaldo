@@ -118,6 +118,9 @@ class Artefato extends CI_Controller {
 	public function deleteArtefato($id)
 	{
 
+		// Deletar dados da tabela Projeto_Artefato //
+		$this->artefato_model->deletarPA($id);
+		
 		$this->artefato_model->deletar($id);
 		
 		redirect('artefato/listAll','refresh');

@@ -25,7 +25,7 @@
 					<label class="control-label" for="">Nome</label>
 				<div class="controls">
 					<input type="text" class="input-xlarge" id="Nome" value='{unidadeNome}' name="Nome" rel="popover" 
-					data-content="Deve ter no minimo 6 caracteres e no maxímo 45 caracteres." data-original-title="Nome" value="" autocomplete="off">
+					data-content="Deve ter no minimo 3 caracteres e no maxímo 45 caracteres." data-original-title="Nome" value="" autocomplete="off">
 				</div>
 				</div>
 
@@ -36,7 +36,7 @@
 					<button class="btn">Limpar</button>
 				</div>
 			</fieldset>
-
+			</form>
 
 	<!-- FIM estrutura -->
 
@@ -56,4 +56,6 @@
 	<script src="<?=base_url();?>js/bootstrap-collapse.js"></script>
 	<script src="<?=base_url();?>js/bootstrap-carousel.js"></script>
 	<script src="<?=base_url();?>js/bootstrap-typeahead.js"></script>
+	<script src="<?base_url();?>js/valida.js"></script>
+	
 
