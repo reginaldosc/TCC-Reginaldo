@@ -74,13 +74,14 @@ class Projeto_model extends CI_Model {
 	 */
 	 function editar($data)
 	 {
-	 $id 			= $data['projetoID'];
-	
-	 $nome 			= $data['projetoNome'];
-	
-	 $departamento 	= $data['departamentoID'];
-	
-	 $query = $this->db->query("UPDATE Projeto SET projetoNome='$nome', departamentoID='$departamento'
+	 	
+		 $id 			= $data['projetoID'];
+		
+		 $nome 			= $data['projetoNome'];
+		
+		 $departamento 	= $data['departamentoID'];
+		
+		 $query = $this->db->query("UPDATE Projeto SET projetoNome='$nome', departamentoID='$departamento'
 	 		WHERE projetoID='$id'");
 	 			
 	 }

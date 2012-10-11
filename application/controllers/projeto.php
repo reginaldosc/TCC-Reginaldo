@@ -90,7 +90,7 @@ class Projeto extends CI_Controller {
 	
 		$data['projetoNome']   		= $this->input->post('Nome');
 	
-		$data['departamento']  		= $this->input->post('Departamento');
+		$data['departamentoID']  		= $this->input->post('Departamento');
 	
 		$this->projeto_model->editar($data);
 	
