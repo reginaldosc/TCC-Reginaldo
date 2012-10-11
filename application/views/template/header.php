@@ -22,4 +22,5 @@ body {
 
 </head>
 
-<body>
+<body data-spy="scroll" data-target=".bs-docs-sidebar">
+
