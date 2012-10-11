@@ -183,7 +183,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
   ncDescricao VARCHAR(45) NOT NULL ,
   ncDataFinalprev DATE NOT NULL ,
   ncDataFinal DATE NULL ,
-  ncComentario VARCHAR(45) NULL ,
+  ncComentario TEXT NOT NULL,
 
   auditoriaID INT NOT NULL ,
   statusID INT NOT NULL ,
@@ -206,8 +206,8 @@ CREATE TABLE IF NOT EXISTS rg_quality.AC (
  
   acID INT NOT NULL AUTO_INCREMENT ,
   acDescricao TEXT NOT NULL ,
-  acDataAgendada DATE NOT NULL ,
   acDataFinal DATE NULL ,
+  acAcao VARCHAR(45) NOT NULL,
   statusID INT NOT NULL ,
   ncID INT NOT NULL ,   
   

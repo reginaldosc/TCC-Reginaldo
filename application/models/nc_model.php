@@ -57,6 +57,22 @@ class NC_model extends CI_Model {
 	
 		return $query->result();
 	}
+	
+	/**
+	 * Lista dados
+	 */
+	function listarNcFromAuditoria($id)
+	{
+		$this->db->select('ncID');
+	
+		$this->db->from('NC');
+	
+		$this->db->where('auditoriaID', $id);
+	
+		$query = $this->db->get();
+	
+		return $query->result();
+	}
 
 
 	/**

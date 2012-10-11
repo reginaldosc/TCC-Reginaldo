@@ -44,15 +44,46 @@ class AC_model extends CI_Model {
 		
 		return $query->result();
 	}
+	
+	
+	/**
+	 * Lista dados
+	 */
+	function listarAC($id)
+	{
+		$this->db->select('*');
+	
+		$this->db->from('AC');
+		$this->db->where('ncID', $id);
+	
+		$this->db->join('Status' , 'Status.statusID = AC.statusID');
+	
+		$query = $this->db->get();
+	
+		return $query->result();
+	}
 
 
 	/**
 	 * Procura e deleta na BD
 	 */
-    	function deletar($id)
-    	{
+    function deletar($id)
+    {
 	    $this->db->where('acID', $id);
 	    $this->db->delete('AC');
 
 	}
+	
+	/**
+	 * Procura e deleta na BD
+	 */
+	function deletarAcFromNC($id)
+	{
+		$this->db->where('ncID', $id);
+		$this->db->delete('AC');
+	
+	}
+	
+
+	
 }

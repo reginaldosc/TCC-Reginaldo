@@ -211,8 +211,23 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
-		$this->nc_model->deletar($id);
+		$data['ncs'] = $this->nc_model->listarNcFromAuditoria($id);
 
+		// Deleta as AC relacionadas as NC //
+		if (!empty($data['ncs']))
+		{
+			$tamanho = sizeof($data['ncs']);
+		
+			for ($i=0; $i < $tamanho; $i++)
+			{
+				$ncID = $data['ncs'][$i]->ncID;
+				$this->ac_model->deletarAcFromNC($ncID);
+			}
+		}
+		
+		// Deletar todos as nao conformidades //
+		$this->nc_model->deletar($id);
+		
 		$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
 
 		$projetoID = $data['projeto'][0]->projetoID;
@@ -220,6 +235,7 @@ class Auditoria extends CI_Controller {
 		// Deletar dados da tabela Projeto_Artefato //
 		$this->auditoria_model->deletarPA($projetoID);
 
+		
 		// Deletar dados da tabela Auditoria //
 		$this->auditoria_model->deletar($id);
 		

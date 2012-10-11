@@ -15,17 +15,18 @@
 			<input type="hidden" id="nc" name="NC" value="{ncID}">
 			
 			<div class="control-group">
-				<label class="control-label" for="">Descrição</label>
+				<label class="control-label" for="">Ação</label>
 				<div class="controls">
-					<input type="text" class="input-xlarge" id="" placeholder="Descreva a Ação Corretiva" name="Descricao" rel="popover" 
-					data-content="Descrição da Ação Corretiva" data-original-title="Descrição" value="" autocomplete="off">
+					<input type="text" class="input-xlarge" id="" placeholder="Que será executada" name="Acao" rel="popover" 
+					data-content="Ação corretiva" data-original-title="Ação" value="" autocomplete="off">
 				</div>
 			</div>
-
+			
+						
 			<div class="control-group">
-				<label class="control-label" for="">Data Final Prevista</label>
+				<label class="control-label" for="">Descrição</label>
 				<div class="controls">
-						<input class="input-xlarge" type="datetime" placeholder="Informe a data" autocomplete="off" data-date-format="dd/mm/yyyy" id="Data" name="Data">
+					<textarea class="span5" rows="8" type="text" name="Descricao"  placeholder="Descreva detalhamente como a ação corretiva que será executada."></textarea>
 				</div>
 			</div>				
 			

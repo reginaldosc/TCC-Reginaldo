@@ -1,9 +1,15 @@
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container">
-			<a class="btn btn-navbar" data-toggle="collapse"
-				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
-				class="icon-bar"></span> <span class="icon-bar"></span>
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-inverse navbar-fixed-top">
+  	<div class="navbar-inner">
+    	<div class="container">
+
+	    	<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+	      	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	        	<span class="icon-bar"></span>
+	      	</a>
 
 			<div class="btn-group pull-right">
 				
@@ -24,60 +30,40 @@
 
 
 
-			<div class="nav-collapse">
-				
-				<ul class="nav">
+          	<div class="nav-collapse">
+            	
+            	<ul class="nav">
+              		
+					<li><?php echo anchor('app/home','Home');?></li>
 
-					<li class="">
-						<?php echo anchor('app/home','Home');?>
-					</li>
+					<li><?php echo anchor('auditoria/listAll','Auditoria');?></li>
+					
+					<li><?php echo anchor('nc/listAll','Não Conformidade');?></li>
 
-					<li class="">
-						<?php echo anchor('auditoria/listAll','Auditoria');?>
-					</li>
-					
-					<li class="">
-						<?php echo anchor('nc/listAll','Não Conformidade');?>
-					</li>
-					
+					<li><?php echo anchor('ac/listAll','Acão Corretiva');?></li>
+
 				
 					<li class="dropdown">
 						
-						<a class="dropdown-toggle" href="#">Cadastro</a>
+						<a class="dropdown-toggle" href="#">Cadastro </a>
 						
 						<ul class="dropdown-menu">
-							<li class="">
-								<?php echo anchor('artefato/listAll','Artefato');?>
-							</li>
 							
-							<li class="">
-								<?php echo anchor('cargo/listAll','Cargo');?>
-							</li>
-
-							<li class="">
-								<?php echo anchor('departamento/listAll','Departamento');?>
-							</li>
+							<li><?php echo anchor('artefato/listAll','Artefato');?></li>
 							
-							<li class="">
-								<?php echo anchor('escalonamento/listAll','Escalonamento');?>
-							</li>
+							<li><?php echo anchor('cargo/listAll','Cargo');?></li>
 
-							<li class="">
-								<?php echo anchor('projeto/listAll','Projeto');?>
-							</li>
+							<li><?php echo anchor('departamento/listAll','Departamento');?></li>
+							
+							<li><?php echo anchor('projeto/listAll','Projeto');?></li>
   
-							<li class="">
-								<?php echo anchor('unidade/listAll','Unidade');?>
-							</li>
+							<li><?php echo anchor('unidade/listAll','Unidade');?></li>
 
-							<li class="">
-								<?php echo anchor('usuario/listAll','Usuário');?>
-							</li>
+							<li><?php echo anchor('usuario/listAll','Usuário');?></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
-			<!--/.nav-collapse -->
 
 		</div>
 	</div>
