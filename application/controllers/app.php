@@ -20,6 +20,18 @@ class App extends CI_Controller {
 		$data['main_content'] = 'home/home_view';
 		$this->load->view('template',$data);
 	}
+	
+	
+	/**
+	 *
+	 * Apresenta view do SQAP do sistema
+	 *
+	 */
+	public function SQAP()
+	{
+		$data['main_content'] = 'SQAP/SQAP_view';
+		$this->load->view('template',$data);
+	}
 
 	/**
 	 * Verifica se o usuario está logado
