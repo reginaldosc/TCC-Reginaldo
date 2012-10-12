@@ -42,6 +42,7 @@
 
 					<li><?php echo anchor('ac/listAll','Acão Corretiva');?></li>
 
+					<li><?php echo anchor('app/SQAP/','SQAP');?></li>
 				
 					<li class="dropdown">
 						

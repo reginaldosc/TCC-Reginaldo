@@ -318,8 +318,58 @@ class Auditoria extends CI_Controller {
 		$this->parser->parse('template', $data);
 
 	}
-}
 
+
+
+	public function editAuditoria($id)
+	{
+		
+		$data['id'] = $id;
+		// Lista todos os usuarios //
+		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
+		
+		// Lista todas as unidades de negocio //
+		$data['unidades'] = $this->unidade_model->listar();
+
+		// Lista todos os departamentos //
+		$data['departamentos'] = $this->departamento_model->listar();
+
+		// Lista todos os projetos //
+		$data['projetos'] = $this->projeto_model->listar();
+
+		// Carrega a view correspondende //
+		$data['main_content'] = 'auditoria/editAuditoria_view';
+
+		// Envia todas as informações para tela //			
+		$this->parser->parse('template', $data);
+		
+		//print_r($data);
+	}
+	
+	
+	public function editarAuditoria()
+	{
+			
+		$data['auditoriaID']		= $this->input->post('Auditoria');
+		
+		$data['auditor']			= $this->input->post('Auditor');
+	
+		$data['unidade']   			= $this->input->post('Unidade');
+	
+		$data['departamento']  		= $this->input->post('Setor');
+	
+		$data['projeto'] 			= $this->input->post('Projeto');
+	
+		$data['data'] 				= $this->input->post('Data');
+	
+		$this->auditoria_model->editar($data);
+	
+		redirect('auditoria/listAll');
+	
+		//print_r($data);
+	}
 
 /* End of file auditoria.php */
 /* Location: ./application/controllers/auditoria.php */
+
+}
