@@ -21,6 +21,18 @@ class App extends CI_Controller {
 		$this->load->view('template',$data);
 	}
 
+	
+	/**
+	 *
+	 * Apresenta view do plano de garantia da qualidade
+	 *
+	 */
+	public function SQAP()
+	{
+		$data['main_content'] = 'SQAP/sqap_view';
+		$this->load->view('template',$data);
+	}
+	
 	/**
 	 * Verifica se o usuario está logado
 	 */
