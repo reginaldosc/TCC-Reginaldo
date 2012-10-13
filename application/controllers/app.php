@@ -33,6 +33,7 @@ class App extends CI_Controller {
 		$this->load->view('template',$data);
 	}
 
+	
 	/**
 	 * Verifica se o usuario está logado
 	 */
