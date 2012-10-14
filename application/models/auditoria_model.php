@@ -69,6 +69,7 @@ class Auditoria_model extends CI_Model {
 	*/ 
 	function atualizaAuditoria($id, $data) 
 	{
+		
 		$this->db->update('Auditoria', $data, "auditoriaID = $id");
 	}
 
@@ -171,6 +172,30 @@ class Auditoria_model extends CI_Model {
 		
 		return $query->result();	
 
+	}
+	
+	
+	
+	function editar($data)
+	{
+		
+		print_r($data);
+		
+		$id 				= $data['auditoriaID'];
+		
+		$auditor			= $data['auditor'];
+		
+		$unidade			= $data['unidade'];
+		
+		$departamento		= $data['departamento'];
+		
+		$projeto			= $data['projeto'];
+		
+		$date				= $data['data'];
+		
+		$query = $this->db->query("UPDATE Auditoria SET auditorID='$auditor', projetoID='$projeto',
+				auditoriaDataInicio='$date'	WHERE auditoriaID='$id'");
+		
 	}
 
 }

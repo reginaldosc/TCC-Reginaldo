@@ -104,13 +104,57 @@ class Usuario extends CI_Controller {
 	 * Apresenta view de edicao de um usuario
 	 *
 	 */
-	public function editUser()
+	public function editUser($id)
 	{
-		$data['main_content'] = 'usuario/editUser_view';		
-		$this->parser->parse('template', $data);
+		$data2['main_content']	= 'usuario/editUser_view';	
+
+		$data['usuario'] 		= $this->usuario_model->buscar($id);
+
+		//print_r($data);
+		
+		$data2['usuarioID'] 	= $data['usuario'][0]->usuarioID;
+		
+		$data2['usuarioNome'] 	= $data['usuario'][0]->usuarioNome;
+		
+		$data2['usuarioEmail'] 	= $data['usuario'][0]->usuarioEmail;
+		
+		$data2['cargos']		= $this->cargo_model->listar();
+		
+		$data2['unidades']		= $this->unidade_model->listar();
+		
+		$data2['departamentos']	= $this->departamento_model->listar();
+		
+		$data2['tipos']			= $this->tipo_model->listar();
+				
+		$this->parser->parse('template', $data2);
 	}
 
 
+	/**
+	 * Recupera as informacoes da view newUser, e carrega o model para gravar no banco os dados
+	 */
+	public function editUsuario()
+	{
+	
+		// Recupera dos dados a serem cadastrados //
+		$id							= $this->input->post('ID');
+		$data['usuarioNome']     	= $this->input->post('Nome');
+		$data['usuarioEmail']    	= $this->input->post('Email');
+		$data['cargoID']    		= $this->input->post('Cargo');
+		$data['departamentoID']		= $this->input->post('Setor');
+		$data['tipoID']   		    = $this->input->post('Tipo');
+	
+		//print_r($data);	
+		// Insere os dados do novo usuario no bd //
+		$this->usuario_model->atualizaUsuario($id, $data);
+	
+		redirect('usuario/listAll');
+	
+	}
+	
+	
+	
+	
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
 	 */

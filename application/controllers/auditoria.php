@@ -318,6 +318,59 @@ class Auditoria extends CI_Controller {
 		$this->parser->parse('template', $data);
 
 	}
+
+
+
+	public function editAuditoria($id)
+	{
+		
+		$data['id'] = $id;
+		
+		// Lista todos os usuarios //
+		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
+		
+		// Lista todas as unidades de negocio //
+		$data['unidades'] = $this->unidade_model->listar();
+
+		// Lista todos os departamentos //
+		$data['departamentos'] = $this->departamento_model->listar();
+
+		// Lista todos os projetos //
+		$data['projetos'] = $this->projeto_model->listar();
+
+		// Carrega a view correspondende //
+		$data['main_content'] = 'auditoria/editAuditoria_view';
+
+		// Envia todas as informações para tela //			
+		$this->parser->parse('template', $data);
+		
+		//print_r($data);
+	}
+	
+	
+	public function editarAuditoria()
+	{
+			
+		$id								= $this->input->post('Auditoria');
+		
+		$data['auditorID']				= $this->input->post('Auditor');
+	
+		$data['projetoID'] 				= $this->input->post('Projeto');
+		
+		// Recupera a data informada pelo usuario //
+		$date 							= $this->input->post('Data');
+		
+		// Converte a dada informada para o formato mysql //
+		$date_mysql 					= implode("-",array_reverse(explode("/",$date)));
+	
+		$data['auditoriaDataInicio']	= $date_mysql;
+		
+		$this->auditoria_model->atualizaAuditoria($id, $data);
+	
+		redirect('auditoria/listAll');
+	
+		//print_r($data);
+	}
 }
 
 
