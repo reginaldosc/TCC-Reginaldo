@@ -91,6 +91,7 @@ class Departamento_model extends CI_Model {
     function deletar($id)
     {
 	    $this->db->where('departamentoID', $id);
+	    
 	    $this->db->delete('Departamento');
 
 	}
