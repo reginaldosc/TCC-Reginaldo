@@ -2,6 +2,7 @@
 <div class="container">
 
 	<br>
+
 	<!-- Buscador -->
 	<form class="well form-search">
 		<input type="text" class="input-xlarge search-query">

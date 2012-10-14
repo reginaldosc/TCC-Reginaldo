@@ -339,6 +339,7 @@ class Auditoria extends CI_Controller {
 
 	}
 
+
 	public function editAuditoria($id)
 	{
 		
@@ -388,6 +389,7 @@ class Auditoria extends CI_Controller {
 		redirect('auditoria/listAll');
 	
 	}
+
 }
 
 
