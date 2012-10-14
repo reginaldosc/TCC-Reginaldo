@@ -64,22 +64,9 @@
 					
 					<a href="<?php echo site_url()?>/mensagem/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
 					
-					<a href="<?php echo site_url()?>/mensagem/listAll" class="btn btn-inverse"> <i class="icon-print icon-white"></i></a>
 				</ul>
 			</div>
 
 		</div>
 	</div>
 </div>
-
-
-<script type="text/javascript">
-
-
-function PegaID()
-{
-	document.getElementById("usuarioID").value = $id;
-}
-	
-</script>
-

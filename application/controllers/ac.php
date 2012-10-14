@@ -25,6 +25,11 @@ class AC extends CI_Controller {
 	}
 
 	
+	public function getName()
+	{
+		return "ação corretiva";
+	}
+
 	/**
 	 * Apresenta a view com todos os projetos cadastrados no sistema 
 	 */
@@ -66,18 +71,16 @@ class AC extends CI_Controller {
 	 */
 	public function execAC($id)
 	{
-		
-		$tipo = "Ac";
-		$status = 9;
-		
-		
-		$data['statusID']		= $status;
+					
+		$data['statusID']		= MSG::Executada;
 		$data['acDataFinal']	= date_now_mysql();
 		
 		$this->ac_model->atualizaAc($id, $data);
 		
-		// Envia mensagem no formtado Tipo, id, status//
-		redirect("mensagem/sendMensagem/$tipo/$id/$status");
+		// Envia mensagem no formtado id, status//
+		$this->inbox->sendMsg($id ,MSG::Executada);
+		
+		redirect('ac/listAll','refresh');
 	}
 
 	/**
@@ -90,9 +93,12 @@ class AC extends CI_Controller {
 		$data['acDescricao']		= $this->input->post('Descricao');
 		$data['acAcao']				= $this->input->post('Acao');
 		$data['ncID']				= $this->input->post('NC');
-		$data['statusID']			= 1;
+		$data['statusID']			= MSG::Agendada;
 
 		$this->ac_model->cadastrar($data);
+
+		// Envia mensagem no formtado id, status//
+		$this->inbox->sendMsg($id , MSG::Agendada);
 
 		redirect('nc/listAll','refresh');
 
@@ -107,7 +113,16 @@ class AC extends CI_Controller {
 		$this->ac_model->deletar($id);
 		
 		redirect('nc/listAll','refresh');
-	}	
+	}
+
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+	}
 
 }
 

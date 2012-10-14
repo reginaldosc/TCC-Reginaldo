@@ -24,6 +24,11 @@ class NC extends CI_Controller {
 		}		
 	}
 
+
+	public function getName()
+	{
+		return "não conformidade";
+	}
 	
 	/**
 	 * Apresenta a view com todos os projetos cadastrados no sistema 
@@ -135,6 +140,15 @@ class NC extends CI_Controller {
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 	
+	}
+
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
 	}
 }
 

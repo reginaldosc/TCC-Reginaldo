@@ -27,6 +27,11 @@ class Auditoria extends CI_Controller {
 		}		
 	}
 
+
+	public function getName()
+	{
+		return "auditoria";
+	}
 	
 	/**
 	 * Apresenta a view com todas as auditorias cadastradas no sistema 
@@ -121,12 +126,15 @@ class Auditoria extends CI_Controller {
 
 			$data['projetoID']   			= $this->input->post('Projeto');
 			
-			$data['statusID']				= '1';
+			$data['statusID']				= MSG::Agendada;
 
 			$data['auditoriaDataInicio']   	= $date_mysql;
 
 			
 			$this->auditoria_model->cadastrar($data);
+
+			// Envia mensagem no formtado id, status//
+			$this->inbox->sendMsg($id , MSG::Agendada);
 
 			redirect('auditoria/listAll','refresh');
 		}
@@ -197,9 +205,12 @@ class Auditoria extends CI_Controller {
 		// Atualiza status auditoria //
 		$id  = $this->input->post('Auditoria');
 		$data2 ['acompanhanteID'] = $this->input->post('Acompanhante');
-		$data2 ['statusID']  = 2;
+		$data2 ['statusID']  = MSG::Executada;
 
 		$this->auditoria_model->atualizaAuditoria($id, $data2);
+
+		// Envia mensagem no formtado id, status//
+		$this->inbox->sendMsg($id,MSG::Executada);
 
 		redirect('auditoria/listAll','refresh');
 
@@ -317,6 +328,15 @@ class Auditoria extends CI_Controller {
 		// Envia todas as informacoes para tela //			
 		$this->parser->parse('template', $data);
 
+	}
+
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
 	}
 }
 

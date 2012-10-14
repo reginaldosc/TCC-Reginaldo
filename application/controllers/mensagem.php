@@ -6,7 +6,7 @@ class Mensagem extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//$this->logged();
+		$this->logged();
 
 	}
 
@@ -47,113 +47,23 @@ class Mensagem extends CI_Controller {
 
 
 	/**
-	 * Envia uma mensagem
+	 * Envia mensagem ao usuário 
 	 */
-	public function sendMensagem($tipo, $id, $status)
+	public function cadastrarMsg($data)
 	{
-		
-		switch ($tipo)
-		{
-			
-			// Auditoria //
-			case "Auditoria":
-				$this->sendMsgAuditoria($status,$id);
-				break;
-				
-			
-			// Ação corretiva //	
-			case "Ac":
-				$this->sendMsgAc($status,$id);
-				break;
-			
-			
-			// Não Conformidade //
-			case "Nc":
-				$this->sendMsgNc($status,$id);
-				break;
-			
-		}
-
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
 	}
 
 
 	/**
-	 * Envia mensagem ao usuário
+	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
 	 */
-	public function sendMsgAuditoria($status,$id) 
+	public function deleteMensagem($id)
 	{
-		
-		switch ($status)
-		{
-					
-			case 1:
-				echo "Auditoria foi Agendada";
-				break;
-						
-			case 2:
-				echo "Auditoria foi realizada";
-				break;
-				
-		}
 
-		//redirect('nc/listAll');
-	}
-	
-	
-	/**
-	 * Envia mensagem ao usuário
-	 */
-	public function sendMsgAc($status,$id) 
-	{
+		$this->mensagem_model->deletar($id);
 		
-		switch ($status)
-		{
-					
-			case 1:
-				echo "Ação corretiva foi Agendada";
-				break;
-						
-			case 9:
-				$data['mensagemBody']	= "Ação corretiva foi executada";	
-				$data['mensagemData']	= now();
-				$data['usuarioID']		= 4;
-				
-				$this->mensagem_model->cadastrarUsuarioMensagem($data);
-				break;
-						
-			case 8:
-				echo "Ação corretiva foi Fechada";
-				break;
-				
-			case 10:
-				echo "Ação corretiva foi Retornada";
-				break;
-					
-		}
-
-	redirect('nc/listAll');
-	}
-	
-	
-	/**
-	 * Envia mensagem ao usuário
-	 */
-	public function sendMsgNc($status,$id)
-	{
-	
-		switch ($status)
-		{
-				case 7:
-					echo "Ação corretiva foi Aberta";
-				break;
-						
-				case 8:
-					echo "Ação corretiva foi Fechada";
-					break;
-											
-		}
-	
-		//redirect('nc/listAll');
+		redirect('mensagem/listAll','refresh');
 	}
 	
 		
