@@ -16,7 +16,7 @@
   	
   	<li class="span">
     <div class="thumbnail" align = "center">
-      <img src="<?php echo base_url();?>img/user.jpg"  alt="">
+      <img src="<?php echo base_url();?>img/users.jpg"  alt="">
 {usuario} 
 		{tipo}    
       		<p><small>{tipoNome}</small></p>

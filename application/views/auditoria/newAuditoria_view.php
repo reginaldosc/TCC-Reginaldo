@@ -78,7 +78,8 @@
 			<div class="control-group">
 				<label class="control-label" for="">Data da auditoria</label>
 				<div class="controls">
-						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
+						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data"
+						autocomplete="off">
 				</div>
 			</div>				
 			

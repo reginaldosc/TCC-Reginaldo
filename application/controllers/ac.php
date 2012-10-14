@@ -106,8 +106,27 @@ class AC extends CI_Controller {
 
 		$this->ac_model->deletar($id);
 		
-		redirect('nc/listAll','refresh');
-	}	
+		redirect('ac/listAll','refresh');
+	}
+
+	
+	function updateAcCloseStatus($id)
+	{
+		$data['statusID'] = '8'; 
+		
+		$this->ac_model->atualizaAc($id, $data);
+		
+		redirect('ac/listAll','refresh');
+	}
+	
+	function updateAcOpenStatus($id)
+	{
+		$data['statusID'] = '7';
+	
+		$this->ac_model->atualizaAc($id, $data);
+	
+		redirect('ac/listAll','refresh');
+	}
 
 }
 

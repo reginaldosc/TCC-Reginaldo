@@ -2,7 +2,7 @@
 <div class="container">
 
 	<br>
-	<?php echo date("Y-m-d G:i:s"); ?>
+	
 	<!-- Buscador -->
 	<form class="well form-search">
 		<input type="text" class="input-xlarge search-query">
@@ -17,6 +17,7 @@
 				<th>Remetente</th>
 				<th>Mensagem</th>
 				<th>Data</th>
+				<th>Horário</th>
 				<th>Ler</th>
 				<th>Excluir</th>
 			</tr>
@@ -27,7 +28,8 @@
 			<tr>
 				<td>{usuarioNome}</td>	
 				<td>{mensagemBody}</td>
-				<td>{mensagemData}</td>
+				<td><?php echo date("Y-m-d"); ?></td>
+				<td><?php echo date("G:i:s"); ?></td>
 				<td><a href="buscaArtefato/{artefatoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveArtefato("{artefatoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
