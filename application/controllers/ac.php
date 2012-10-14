@@ -122,6 +122,7 @@ class AC extends CI_Controller {
 	public function cadastrarMsg($data)
 	{
 		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+
 		redirect('ac/listAll','refresh');
 	}
 
@@ -135,6 +136,7 @@ class AC extends CI_Controller {
 		redirect('ac/listAll','refresh');
 	}
 	
+
 	function updateAcOpenStatus($id)
 	{
 		$data['statusID'] = '7';
@@ -144,7 +146,7 @@ class AC extends CI_Controller {
 		redirect('ac/listAll','refresh');
 
 	}
-
+	
 }
 
 
