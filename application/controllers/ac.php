@@ -98,11 +98,21 @@ class AC extends CI_Controller {
 		$this->ac_model->cadastrar($data);
 
 		// Envia mensagem no formtado id, status//
-		$this->inbox->sendMsg($id , MSG::Agendada);
+		$this->inbox->sendMsg($data['ncID'], MSG::Agendada);
 
 		redirect('nc/listAll','refresh');
 
 	}
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+	}
+
+
 
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
@@ -117,20 +127,25 @@ class AC extends CI_Controller {
 	
 	function updateAcCloseStatus($id)
 	{
-		$data['statusID'] = '8'; 
+		$data['statusID'] = MSG::Fechada; 
 		
 		$this->ac_model->atualizaAc($id, $data);
+
+		// Envia mensagem no formtado id, status//
+		$this->inbox->sendMsg($id, MSG::Fechada);
 		
 		redirect('ac/listAll','refresh');
 	}
 	
 
-
 	function updateAcOpenStatus($id)
 	{
-		$data['statusID'] = '7';
+		$data['statusID'] = MSG::Aberta;
 	
 		$this->ac_model->atualizaAc($id, $data);
+
+		// Envia mensagem no formtado id, status//
+		$this->inbox->sendMsg($id, MSG::Aberta);
 	
 		redirect('ac/listAll','refresh');
 	}

@@ -26,7 +26,7 @@ class Inbox {
 				$name = $CI->getName();
 
 				$data['mensagemBody']	= "A $name foi agendada";  	
-				$data['mensagemData']	= time();
+				$data['mensagemData']	= now();
 				$data['usuarioID']		= 4;
 
 				$CI->cadastrarMsg($data);
@@ -48,6 +48,18 @@ class Inbox {
 				$name = $CI->getName(); 
 				
 				$data['mensagemBody']	= "A $name foi aberta";	
+				$data['mensagemData']	= now();
+				$data['usuarioID']		= 4;
+
+				$CI->cadastrarMsg($data);
+				break;
+
+
+			case MSG::Fechada:
+
+				$name = $CI->getName(); 
+				
+				$data['mensagemBody']	= "A $name foi fechada";	
 				$data['mensagemData']	= now();
 				$data['usuarioID']		= 4;
 

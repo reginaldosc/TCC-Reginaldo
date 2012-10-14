@@ -5,12 +5,6 @@
 
 class Msg {
 
-	const AcExecutada			= 'Acão Corretiva foi executada';
-	const AcAgendada			= 'Acão Corretiva foi agendada';
-	const AuditoriaAgendada		= 'Auditoria foi agendada';
-	const AuditoriaRealizada	= 'Auditoria foi realizada';
-
-
 	// Status do sistema //
 
 	const Agendada 		= 1;
