@@ -4,11 +4,11 @@
 
 	<div class="page-header">
 			<h2>
-				Cadastro <small> de nova Auditoria</small>
+				Edição <small> de Auditoria</small>
 			</h2>
 	</div>
 
-	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAuditoria">			
+	<form class="form-horizontal" id="FormCadastro" method="POST" action="../editarAuditoria">			
 
 			 <?php 
 			 	// Mensagens de erro //
@@ -20,14 +20,16 @@
 			 ?>
  			
 			<fieldset>
-
+			
 			<div class="control-group">
 				<label class="control-label" for="">Auditor</label>
 				<div class="controls">
+					<input type="hidden" id="Auditoria" name="Auditoria" value="{id}">
+						
 					<select id="" name="Auditor" class="input-xlarge">
 						
 						{usuarios}		
-						<option value="{usuarioID}"> {usuarioNome} </option>
+							<option value="{usuarioID}"> {usuarioNome} </option>
 						{/usuarios}
 						
 				    </select>
@@ -38,10 +40,10 @@
 			<div class="control-group">
 				<label class="control-label" for="">Unidade</label>
 				<div class="controls">
-					<select id="" class="input-xlarge" >
+					<select id="" name="Unidade" class="input-xlarge" >
 						
 						{unidades}		
-						<option value="{unidadeID}"> {unidadeNome} </option>
+							<option value="{unidadeID}"> {unidadeNome} </option>
 						{/unidades}
 						
 				    </select>
@@ -78,8 +80,7 @@
 			<div class="control-group">
 				<label class="control-label" for="">Data da auditoria</label>
 				<div class="controls">
-						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data"
-						autocomplete="off">
+						<input type="text" placeholder="Informe a data" data-date-format="dd/mm/yyyy" id="Data" name="Data">
 				</div>
 			</div>				
 			
@@ -91,17 +92,3 @@
 	
 		</fieldset>
 	</form>
-
-
-
-<!-- javascript -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="<?php echo base_url();?>js/jquery.js"></script>
-<script src="<?php echo base_url();?>js/jquery.validate.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-tooltip.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-popover.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-alert.js"></script>
-<script src="<?php echo base_url();?>js/valida.js"></script>
-<script src="<?php echo base_url();?>js/misc.js"></script>

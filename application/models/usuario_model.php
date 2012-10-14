@@ -85,7 +85,7 @@ class Usuario_model extends CI_Model {
 	
 	
 	/**
-	 * Busca unidade
+	 * Busca usuario
 	 */
 	function buscar($id)
 	{
@@ -150,4 +150,13 @@ class Usuario_model extends CI_Model {
 	}
 
 
+/**
+	* Atualiza status da auditoria
+	*/ 
+	function atualizaUsuario($id, $data) 
+	{
+		
+		$this->db->update('Usuario', $data, "usuarioID = $id");
+	}
+	
 }

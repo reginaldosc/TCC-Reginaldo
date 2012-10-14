@@ -41,7 +41,7 @@
 					<li><?php echo anchor('nc/listAll','Não Conformidade');?></li>
 
 					<li><?php echo anchor('ac/listAll','Acão Corretiva');?></li>
-									
+					
 					<li class="dropdown">
 						
 						<a class="dropdown-toggle" href="#">Cadastro </a>
@@ -61,6 +61,8 @@
 							<li><?php echo anchor('usuario/listAll','Usuário');?></li>
 						</ul>
 					</li>
+					
+					<a href="<?php echo site_url()?>/app/SQAP" class="btn btn-inverse">SQAP<i></i></a>
 					
 					<a href="<?php echo site_url()?>/mensagem/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
 					

@@ -1,86 +1,93 @@
 
-	<div class="container">
+<div
+	class="container">
 
-		<form class="form-horizontal">
-			<fieldset>
-				<legend>Editar</legend>
+	<div class="page-header">
+		<h2>
+			Edição <small> de Usuário</small>
+		</h2>
+	</div>
 
-				<div class="control-group">
-					<label class="control-label" for="input01">Nome</label>
-					<div class="controls">
-						<input type="text" class="input-xlarge" id="input01" value=''>
-					</div>
-				</div>
+	<?php
+	$atributos = array('form class'=>'form-horizontal',  'id'=>'FormCadastro', 'method'=>'POST');
+	echo form_open('usuario/editUsuario', $atributos);
+	?>
 
-				<div class="control-group">
-					<label class="control-label" for="input01">E-mail</label>
-					<div class="controls">
-						<input type="text" class="input-xlarge" id="input01" value=''>
-					</div>
-				</div>
+	<fieldset>
 
-			{cargo}	
-				<div class="control-group">
-					<label class="control-label" for="select01">Funcao</label>
-					<div class="controls">
-						<select id="select01">
-							<option>Analista</option>
-							<option>Engenheiro</option>
-							<option>Tecnico</option>
-							<option>Supervisor</option>
-							<option>Gerente</option>
-						</select>
-					</div>
-				</div>
-			{/cargo}
-			
-			{unidade}
-				<div class="control-group">
-					<label class="control-label" for="select01">Unidade</label>
-					<div class="controls">
-						<select id="select01">
-							<option>ISOL</option>
-							<option>ICORP</option>
-							<option>INET</option>
-							<option>ISEC</option>
-						</select>
-					</div>
-				</div>
-			{/unidade}
-				
-			{departamento}
-				<div class="control-group">
-					<label class="control-label" for="select01">Departamento</label>
-					<div class="controls">
-						<select id="select01">
-							<option>SIP e REDE</option>
-							<option>UC</option>
-							<option>Grandes Sistemas</option>
-						</select>
-					</div>
-				</div>
-			{/departamento}
-				
-			{tipo}
-				<div class="control-group">
-					<label class="control-label" for="select01">Tipo de usuario</label>
-					<div class="controls">
-						<select id="select01">
-							<option>Auditor</option>
-							<option>Administrador</option>
-							<option>Supervisor</option>
-						</select>
-					</div>
-				</div>
-			{/tipo}
-				
-				<div class="form-actions">
-					<button type="submit" class="btn btn-primary">Salvar</button>
-					<button class="btn">Limpar</button>
-				</div>
-			</fieldset>
-		</form>
+		<div class="control-group">
+			<div class="controls">
+				<input type="hidden" class="input-xlarge" id="ID"
+					value='{usuarioID}' name="ID">
+			</div>
+		</div>
 
+		<div class="control-group">
+			<label class="control-label" for="input01">Nome</label>
+			<div class="controls">
+				<input type="text" name="Nome" class="input-xlarge" id="input01"
+					value='{usuarioNome}'>
+			</div>
+		</div>
 
+		<div class="control-group">
+			<label class="control-label" for="input01">E-mail</label>
+			<div class="controls">
+				<input type="text" name="Email" class="input-xlarge" id="input01"
+					value="{usuarioEmail}">
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="">Função</label>
+			<div class="controls">
+				<select id="" name="Cargo" class="input-xlarge"> 
+				{cargos}
+					<option value="{cargoID}">{cargoNome}</option> 
+				{/cargos}
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="">Unidade</label>
+			<div class="controls">
+				<select id="" class="input-xlarge"> 
+				{unidades}
+					<option value="{unidadeID}">{unidadeNome}</option> 
+				{/unidades}
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="">Departamento</label>
+			<div class="controls">
+				<select id="" name="Setor" class="input-xlarge"> 
+				{departamentos}
+					<option value="{departamentoID}">{departamentoNome}</option>
+				{/departamentos}
+
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="">Tipo de usuário</label>
+			<div class="controls">
+				<select id="" name="Tipo" class="input-xlarge"> 
+				{tipos}
+					<option value="{tipoID}">{tipoNome}</option> 
+				{/tipos}
+
+				</select>
+			</div>
+		</div>
+
+		<div class="form-actions">
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button class="btn">Limpar</button>
+		</div>
+	</fieldset>
+	</form>
 <!-- FIM -->
-
