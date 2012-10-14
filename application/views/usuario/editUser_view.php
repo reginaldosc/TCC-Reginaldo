@@ -22,7 +22,6 @@
 			</div>
 		</div>
 
-
 		<div class="control-group">
 			<label class="control-label" for="input01">Nome</label>
 			<div class="controls">

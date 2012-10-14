@@ -330,6 +330,7 @@ class Auditoria extends CI_Controller {
 
 	}
 
+
 	/**
 	 * Envia mensagem ao usuário
 	 */
@@ -366,7 +367,7 @@ class Auditoria extends CI_Controller {
 		//print_r($data);
 	}
 	
-	
+
 	public function editarAuditoria()
 	{
 			
