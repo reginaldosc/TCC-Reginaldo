@@ -25,6 +25,11 @@ class AC extends CI_Controller {
 	}
 
 	
+	public function getName()
+	{
+		return "ação corretiva";
+	}
+
 	/**
 	 * Apresenta a view com todos os projetos cadastrados no sistema 
 	 */
@@ -66,18 +71,16 @@ class AC extends CI_Controller {
 	 */
 	public function execAC($id)
 	{
-		
-		$tipo = "Ac";
-		$status = 9;
-		
-		
-		$data['statusID']		= $status;
+					
+		$data['statusID']		= STATUS_EXECUTADA;
 		$data['acDataFinal']	= date_now_mysql();
 		
 		$this->ac_model->atualizaAc($id, $data);
 		
-		// Envia mensagem no formtado Tipo, id, status//
-		redirect("mensagem/sendMensagem/$tipo/$id/$status");
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_EXECUTADA);
+		
+		redirect('ac/listAll','refresh');
 	}
 
 	/**
@@ -90,13 +93,26 @@ class AC extends CI_Controller {
 		$data['acDescricao']		= $this->input->post('Descricao');
 		$data['acAcao']				= $this->input->post('Acao');
 		$data['ncID']				= $this->input->post('NC');
-		$data['statusID']			= 1;
+		$data['statusID']			= STATUS_AGENDADA;
 
 		$this->ac_model->cadastrar($data);
+
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_AGENDADA);
 
 		redirect('nc/listAll','refresh');
 
 	}
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+	}
+
+
 
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
@@ -105,29 +121,35 @@ class AC extends CI_Controller {
 	{
 
 		$this->ac_model->deletar($id);
-		
 		redirect('ac/listAll','refresh');
 	}
 
 	
 	function updateAcCloseStatus($id)
 	{
-		$data['statusID'] = '8'; 
+		$data['statusID'] = STATUS_FECHADA; 
 		
 		$this->ac_model->atualizaAc($id, $data);
+
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_FECHADA);
 		
 		redirect('ac/listAll','refresh');
 	}
 	
+
 	function updateAcOpenStatus($id)
 	{
-		$data['statusID'] = '7';
+		$data['statusID'] = STATUS_ABERTA;
 	
 		$this->ac_model->atualizaAc($id, $data);
+
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_ABERTA);
 	
 		redirect('ac/listAll','refresh');
 	}
-
+	
 }
 
 

@@ -27,6 +27,11 @@ class Auditoria extends CI_Controller {
 		}		
 	}
 
+
+	public function getName()
+	{
+		return "auditoria";
+	}
 	
 	/**
 	 * Apresenta a view com todas as auditorias cadastradas no sistema 
@@ -87,23 +92,8 @@ class Auditoria extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			// Lista todos os usuarios //
-			$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
-			
-			// Lista todas as unidades de negocio //
-			$data['unidades'] = $this->unidade_model->listar();
-
-			// Lista todos os departamentos //
-			$data['departamentos'] = $this->departamento_model->listar();
-
-			// Lista todos os projetos //
-			$data['projetos'] = $this->projeto_model->listar();
-
-			// Carrega a view correspondende //
-			$data['main_content'] = 'auditoria/newAuditoria_view';
-
-			// Envia todas as informações para tela //			
-			$this->parser->parse('template', $data);
+			// se conter error, retorna tela de cadastro de newAuditoria
+			$this->newAuditoria();
 		}
 		else
 		{
@@ -121,56 +111,21 @@ class Auditoria extends CI_Controller {
 
 			$data['projetoID']   			= $this->input->post('Projeto');
 			
-			$data['statusID']				= '1';
+			$data['statusID']				= STATUS_AGENDADA;
 
 			$data['auditoriaDataInicio']   	= $date_mysql;
 
 			
 			$this->auditoria_model->cadastrar($data);
 
+			// Envia mensagem no formato id do usuario, status //
+			$this->mensagem->sendMsg( $data['auditorID'] , STATUS_AGENDADA);
+
 			redirect('auditoria/listAll','refresh');
 		}
 
 	}
 
-
-	/**
-	 * Analisa se projeto já está em uma auditoria
-	 */
-	public function projeto_check($id)
-	{
-
-		$data['auditado'] = $this->projeto_model->projetoAuditado($id);
-
-		if (!empty($data['auditado']) and ($id == $data['auditado'][0]->projetoID) )
-		{
-			$this->form_validation->set_message('projeto_check', ' - O %s está sendo auditado em outra auditoria. Favor selecionar outro projeto.');
-			return FALSE;
-		}
-		else
-		{
-			return TRUE;
-		}
-	}
-
-	/**
-	 * Analisa se a data é maior que a data atual
-	 */
-	public function date_check($date)
-	{
-
-		$retorno = date_is_bigger($date);
-
-		if(!$retorno)  
-		{
-			$this->form_validation->set_message('date_check', ' - A %s não pode ser menor que a data atual.');
-			return FALSE;
-		}
-		else
-		{
-			return TRUE;
-		}
-	}
 
 	/**
 	 * Recupera as informacoes do cadastro e grava no bando de dados
@@ -197,9 +152,12 @@ class Auditoria extends CI_Controller {
 		// Atualiza status auditoria //
 		$id  = $this->input->post('Auditoria');
 		$data2 ['acompanhanteID'] = $this->input->post('Acompanhante');
-		$data2 ['statusID']  = 2;
+		$data2 ['statusID']  = STATUS_EXECUTADA;
 
 		$this->auditoria_model->atualizaAuditoria($id, $data2);
+
+			// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg( $data2 ['acompanhanteID'] , STATUS_EXECUTADA);
 
 		redirect('auditoria/listAll','refresh');
 
@@ -250,7 +208,7 @@ class Auditoria extends CI_Controller {
 
 		$data['auditorias'] = $this->auditoria_model->executar($id);
 
-		if ($data['auditorias'][0]->statusID == 1)
+		if ($data['auditorias'][0]->statusID == STATUS_AGENDADA)
 		{
 
 			// converte as datas do formato mysql para formato dd/mm/aaaa
@@ -290,7 +248,7 @@ class Auditoria extends CI_Controller {
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
 
 
-		if ($data['auditorias'][0]->statusID != 1)
+		if ($data['auditorias'][0]->statusID == STATUS_EXECUTADA)
 		{
 
 			// converte as datas do formato mysql para formato dd/mm/aaaa
@@ -320,7 +278,6 @@ class Auditoria extends CI_Controller {
 	}
 
 
-
 	public function editAuditoria($id)
 	{
 		
@@ -347,7 +304,7 @@ class Auditoria extends CI_Controller {
 		//print_r($data);
 	}
 	
-	
+
 	public function editarAuditoria()
 	{
 			
@@ -369,8 +326,69 @@ class Auditoria extends CI_Controller {
 	
 		redirect('auditoria/listAll');
 	
-		//print_r($data);
 	}
+
+
+	/**
+	 * Salva mensagem 
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+
+	}
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Callbacks
+	|--------------------------------------------------------------------------
+	|
+	| Funcoes de callback para validacao de dados
+	|
+	*/
+
+
+	/**
+	 * Analisa se projeto já está em uma auditoria
+	 */
+	public function projeto_check($id)
+	{
+
+		$data['auditado'] = $this->projeto_model->projetoAuditado($id);
+
+		if (!empty($data['auditado']) and ($id == $data['auditado'][0]->projetoID) )
+		{
+			$this->form_validation->set_message('projeto_check', ' - O %s está sendo auditado em outra auditoria. Favor selecionar outro projeto.');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
+	}
+
+
+	/**
+	 * Analisa se a data é maior que a data atual
+	 */
+	public function date_check($date)
+	{
+
+		$retorno = date_is_bigger($date);
+
+		if(!$retorno)  
+		{
+			$this->form_validation->set_message('date_check', ' - A %s não pode ser menor que a data atual.');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
+	}
+
+
 }
 
 

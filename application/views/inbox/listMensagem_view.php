@@ -2,7 +2,7 @@
 <div class="container">
 
 	<br>
-	
+
 	<!-- Buscador -->
 	<form class="well form-search">
 		<input type="text" class="input-xlarge search-query">
@@ -14,11 +14,9 @@
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Remetente</th>
+				<th>Destinatário</th>
 				<th>Mensagem</th>
 				<th>Data</th>
-				<th>Horário</th>
-				<th>Ler</th>
 				<th>Excluir</th>
 			</tr>
 		</thead>
@@ -28,10 +26,8 @@
 			<tr>
 				<td>{usuarioNome}</td>	
 				<td>{mensagemBody}</td>
-				<td><?php echo date("Y-m-d"); ?></td>
-				<td><?php echo date("G:i:s"); ?></td>
-				<td><a href="buscaArtefato/{artefatoID}" class='icon-edit'> <a/></td>
-				<td><a onclick='RemoveArtefato("{artefatoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td>{mensagemData}</td>
+				<td><a onclick='RemoveArtefato("{mensagemID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
 			{/mensagens}
 		</tbody>
@@ -46,7 +42,7 @@
 		</div>
 
 		<div class="modal-body">
-		<p>Deseja realmente excluir o Artefato ?</p>
+		<p>Deseja realmente excluir a Mensagem ?</p>
 		</div>
 
 		 <div class="modal-footer">
@@ -55,24 +51,14 @@
 	 	</div>
 </div>
 
-
-<!-- javascript -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="<?php echo base_url();?>js/jquery.js"></script>
-<script src="<?php echo base_url();?>js/jquery.validate.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-dropdown.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-alert.js"></script>
-<script src="<?php echo base_url();?>js/bootstrap-modal.js"></script>
-
+<!-- FIM -->
 <script type="text/javascript">
 
-function RemoveArtefato(id){
+	function RemoveArtefato(id){
 
-	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="deleteArtefato/"+id;
+		document.getElementById("Excluir");
+		document.getElementById('Excluir').href="deleteMensagem/"+id;
 
-}	
+	}	
 
 </script>
-
-

@@ -15,7 +15,11 @@
 				
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> 
 					
-					<?php $usuario = $this->session->userdata('usuarioLogin');?>
+					<?php 
+
+						$usuario = $this->session->userdata('usuarioLogin');
+						$tipo 	 = $this->session->userdata('usuarioTipo');
+					?>
 					
 					<i class="icon-user"> </i> <?php echo $usuario ?> <span class="caret"></span>
 				</a>
@@ -62,26 +66,13 @@
 						</ul>
 					</li>
 					
-					<a href="<?php echo site_url()?>/app/SQAP" class="btn btn-inverse">SQAP<i></i></a>
+					<a href="<?php echo site_url()?>/app/SQAP" class="btn btn-inverse">SQAP</a>
 					
-					<a href="<?php echo site_url()?>/mensagem/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
+					<a href="<?php echo site_url()?>/inbox/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
 					
-					<a href="<?php echo site_url()?>/mensagem/listAll" class="btn btn-inverse"> <i class="icon-print icon-white"></i></a>
 				</ul>
 			</div>
 
 		</div>
 	</div>
 </div>
-
-
-<script type="text/javascript">
-
-
-function PegaID()
-{
-	document.getElementById("usuarioID").value = $id;
-}
-	
-</script>
-

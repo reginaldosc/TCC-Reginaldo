@@ -24,6 +24,11 @@ class NC extends CI_Controller {
 		}		
 	}
 
+
+	public function getName()
+	{
+		return "não conformidade";
+	}
 	
 	/**
 	 * Apresenta a view com todos os projetos cadastrados no sistema 
@@ -47,21 +52,6 @@ class NC extends CI_Controller {
 
 
 	/**
-	 * Apresenta view de cadastro de novos projetos
-	 */
-	public function newNc()
-	{
-
-		// Carrega a view correspondende //
-		$data['main_content'] = 'newNc_view';
-
-		// Envia todas as informações para tela //			
-		$this->parser->parse('template', $data);
-		
-	}
-
-
-	/**
 	 * Recupera as informações do cadastro e grava no bando de dados
 	 */
 	public function cadastrarNc() 
@@ -80,11 +70,12 @@ class NC extends CI_Controller {
 		$data['auditoriaID']  		= $this->input->post('Auditoria');
 		$data['artefatoID']  		= $this->input->post('Artefato');
 
-		$data['statusID']   		= '7';
+		$data['statusID']   		= STATUS_ABERTA;
 		
 		$this->nc_model->cadastrar($data);
 
-		//redirect('nc/listAll');
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_ABERTA);
 
 	}
 
@@ -135,6 +126,15 @@ class NC extends CI_Controller {
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 	
+	}
+
+
+	/**
+	 * Envia mensagem ao usuário
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
 	}
 }
 
