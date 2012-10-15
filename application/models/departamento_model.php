@@ -41,16 +41,34 @@ class Departamento_model extends CI_Model {
 	/**
 	 * Lista dados
 	 */
-	function listar() 
-	{
-		$this->db->select('*');
-
-		$this->db->from('Departamento');
-
-		$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
-
-		$query = $this->db->get();
-		
+	function listar($opcao)
+		{
+			//lista somente os ativos
+			if($opcao == 2)
+			{
+				$this->db->select('*');
+				$this->db->from('Departamento');
+				$this->db->where('departamentoAtivo', 'SIM');
+				$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
+				$query = $this->db->get();
+			}
+			//lista somente os inativos
+			elseif($opcao == 1)
+			{
+				$this->db->select('*');
+				$this->db->from('Departamento');
+				$this->db->where('departamentoAtivo', 'NÃO');
+				$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
+				$query = $this->db->get();
+			}
+			//lista todos (ativos + inativos)
+			else
+			{
+				$this->db->select('*');
+				$this->db->from('Departamento');
+				$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
+				$query = $this->db->get();
+			}
 		return $query->result();
 	}
 
@@ -60,7 +78,7 @@ class Departamento_model extends CI_Model {
 	 */
 	function buscar($id)
 	{
-		$query = $this->db->query("SELECT departamentoID, departamentoNome, unidadeID FROM Departamento
+		$query = $this->db->query("SELECT departamentoID, departamentoNome, unidadeID, departamentoAtivo FROM Departamento
 				 WHERE departamentoID = '$id' LIMIT 1");
 	
 		return $query->result();
@@ -79,8 +97,10 @@ class Departamento_model extends CI_Model {
 		
 		$unidade		= $data['unidadeID'];
 	
-		$query = $this->db->query("UPDATE Departamento SET departamentoNome='$nome', unidadeID='$unidade'
-				 WHERE departamentoID='$id'");
+		$ativo			= $data['departamentoAtivo'];
+		
+		$query = $this->db->query("UPDATE Departamento SET departamentoNome='$nome', unidadeID='$unidade',
+				 departamentoAtivo='$ativo' WHERE departamentoID='$id'");
 			
 	}
 	
@@ -90,9 +110,10 @@ class Departamento_model extends CI_Model {
 	 */
     function deletar($id)
     {
-	    $this->db->where('departamentoID', $id);
-	    
-	    $this->db->delete('Departamento');
+	    $ativo			= 'NÃO';
+		
+		$query = $this->db->query("UPDATE Departamento SET departamentoAtivo='$ativo' 
+				WHERE departamentoID='$id'");
 
 	}
 }

@@ -32,7 +32,7 @@ class Artefato extends CI_Controller {
 	{
 
 		// Lista todos os artefatos //
-		$data['artefatos'] = $this->artefato_model->listar();
+		$data['artefatos'] = $this->artefato_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'artefato/listArtefato_view';
@@ -68,6 +68,8 @@ class Artefato extends CI_Controller {
 		$data['artefatoNome']   	= $this->input->post('Nome');
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
+		
+		$data['artefatoAtivo']		= 'SIM';
 					 
 		$this->artefato_model->cadastrar($data);
 
@@ -87,6 +89,8 @@ class Artefato extends CI_Controller {
 		$data['artefatoNome']   	= $this->input->post('Nome');
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
+		
+		$data['artefatoAtivo']		= $this->input->post('Ativo');
 		
 		$this->artefato_model->editar($data);
 		
@@ -129,5 +133,3 @@ class Artefato extends CI_Controller {
 
 
 }
-
-

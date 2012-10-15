@@ -53,8 +53,8 @@ class Usuario extends CI_Controller {
 	 */
 	public function newUser()
 	{
-		// Lista todos os cargos //
-		$data['cargos'] = $this->cargo_model->listar();
+		// Lista todos os cargos Ativos no sistema//
+		$data['cargos'] = $this->cargo_model->listar(2);
 
 		// Lista todos os departamentos //
 		$data['departamentos'] = $this->departamento_model->listar();
@@ -118,7 +118,7 @@ class Usuario extends CI_Controller {
 		
 		$data2['usuarioEmail'] 	= $data['usuario'][0]->usuarioEmail;
 		
-		$data2['cargos']		= $this->cargo_model->listar();
+		$data2['cargos']		= $this->cargo_model->listar(2);
 		
 		$data2['unidades']		= $this->unidade_model->listar();
 		

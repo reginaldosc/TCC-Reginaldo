@@ -41,11 +41,31 @@ class Artefato_model extends CI_Model {
 	/**
 	 * Lista dados
 	 */
-	function listar() 
+	function listar($opcao) 
 	{
-		$this->db->select('*');
-		$this->db->from('Artefato');
-		$query = $this->db->get();
+	//lista somente os ativos
+		if($opcao == 2)								
+		{
+			$this->db->select('*');
+			$this->db->from('Artefato');
+			$this->db->where('artefatoAtivo', 'SIM');
+			$query = $this->db->get();			
+		}
+		//lista somente os inativos
+		elseif($opcao == 1)
+		{
+			$this->db->select('*');
+			$this->db->from('Artefato');
+			$this->db->where('artefatoAtivo', 'NÃO');
+			$query = $this->db->get();	
+		}
+		//lista todos (ativos + inativos)
+		else 
+		{
+			$this->db->select('*');
+			$this->db->from('Artefato');
+			$query = $this->db->get();
+		}
 		
 		return $query->result();
 	}
@@ -56,7 +76,7 @@ class Artefato_model extends CI_Model {
 	 */
 	function buscar($id)
 	{
-		$query = $this->db->query("SELECT artefatoID, artefatoNome, artefatoDescricao 
+		$query = $this->db->query("SELECT artefatoID, artefatoNome, artefatoDescricao, artefatoAtivo 
 				FROM Artefato WHERE artefatoID = '$id' LIMIT 1");
 		
 		return $query->result();		
@@ -74,8 +94,10 @@ class Artefato_model extends CI_Model {
 
 		$descricao 	= $data['artefatoDescricao']; 
 		
-		$query = $this->db->query("UPDATE Artefato SET artefatoNome='$nome', artefatoDescricao='$descricao'
-				 WHERE artefatoID='$id'");
+		$ativo		= $data['artefatoAtivo'];
+		
+		$query = $this->db->query("UPDATE Artefato SET artefatoNome='$nome', artefatoDescricao='$descricao',
+				artefatoAtivo='$ativo' WHERE artefatoID='$id'");
 		 
 	}
 	

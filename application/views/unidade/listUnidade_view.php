@@ -19,6 +19,7 @@
 		<thead>
 			<tr>
 				<th>Unidade</th>
+				<th>Ativo</th>
 				<th>Editar</th>
 				<th>Excluir</th>
 			</tr>
@@ -28,6 +29,7 @@
 			{unidades}
 			<tr>	
 				<td>{unidadeNome}</td>
+				<td>{unidadeAtivo}</td>
 				<td><a href="buscaUnidade/{unidadeID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveUnidade("{unidadeID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>

@@ -32,7 +32,7 @@ class Unidade extends CI_Controller {
 	{
 
 		// Lista todos os projetos //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'unidade/listUnidade_view';
@@ -66,7 +66,9 @@ class Unidade extends CI_Controller {
 		
 
 		// Recupera dos dados a serem cadastrados //
-		$data['unidadeNome']   = $this->input->post('Nome2');
+		$data['unidadeNome']	= $this->input->post('Nome2');
+		
+		$data['unidadeAtivo']	= 'SIM';
 					 
 		$this->unidade_model->cadastrar($data);
 
@@ -83,7 +85,9 @@ class Unidade extends CI_Controller {
 		// Recupera dos dados a serem cadastrados //
 		$data['unidadeID']			= $this->input->post('ID');
 	
-		$data['unidadeNome']  	 	= $this->input->post('Nome');
+		$data['unidadeNome']  	 	= $this->input->post('Nome2');
+		
+		$data['unidadeAtivo']  	 	= $this->input->post('Ativo');
 	
 		$this->unidade_model->editar($data);
 	

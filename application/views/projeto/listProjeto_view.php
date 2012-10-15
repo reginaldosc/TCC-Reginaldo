@@ -20,6 +20,7 @@
 			<tr>
 				<th>Projeto</th>
 				<th>Departamento</th>
+				<th>Ativo</th>
 				<th>Editar</th>
 				<th>Excluir</th>
 			</tr>
@@ -30,6 +31,7 @@
 			<tr>	
 				<td>{projetoNome}</td>
 				<td>{departamentoNome}</td>
+				<td>{projetoAtivo}</td>
 				<td><a href="buscaProjeto/{projetoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveProjeto("{projetoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				</tr>

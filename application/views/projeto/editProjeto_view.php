@@ -41,6 +41,15 @@
 				</div>
 				</div>
 				
+				<div class="control-group">
+					<label class="control-label" for="">Ativo</label>
+				<div class="controls">
+					<select id="Ativo" name="Ativo" class="input-xlarge">						
+						<option value="SIM"> SIM </option>
+						<option value="NÃO"> NÃO </option>						
+				    </select>
+				</div>
+				</div>
 		
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Salvar</button>

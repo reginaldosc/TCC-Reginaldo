@@ -64,13 +64,13 @@ class Auditoria extends CI_Controller {
 		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
 		
 		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(2);
 
 		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(2);
 
 		// Lista todos os projetos //
-		$data['projetos'] = $this->projeto_model->listar();
+		$data['projetos'] = $this->projeto_model->listar(2);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/newAuditoria_view';
@@ -218,7 +218,7 @@ class Auditoria extends CI_Controller {
 			$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
 
 			// Lista todos os artefatos //
-			$data['artefatos'] = $this->artefato_model->listar();
+			$data['artefatos'] = $this->artefato_model->listar(2);
 
 			// Carrega a view correspondende //
 			$data['main_content'] = 'auditoria/execAuditoria_view';
@@ -287,13 +287,13 @@ class Auditoria extends CI_Controller {
 		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
 		
 		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(2);
 
 		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(2);
 
 		// Lista todos os projetos //
-		$data['projetos'] = $this->projeto_model->listar();
+		$data['projetos'] = $this->projeto_model->listar(2);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/editAuditoria_view';

@@ -42,6 +42,16 @@
 				</div>
 				</div>
 
+				<div class="control-group">
+					<label class="control-label" for="">Ativo</label>
+				<div class="controls">
+					<select id="" name="Ativo" class="input-xlarge">
+						<option value="SIM"> SIM </option>
+						<option value="NÃO"> NÃO </option>
+				    </select>
+				</div>
+				</div>
+				
 				{/departamento}
 		
 				<div class="form-actions">

@@ -32,7 +32,7 @@ class Projeto extends CI_Controller {
 	{
 
 		// Lista todos os projetos //
-		$data['projetos'] = $this->projeto_model->listar();
+		$data['projetos'] = $this->projeto_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'projeto/listProjeto_view';
@@ -50,7 +50,7 @@ class Projeto extends CI_Controller {
 	{
 
 		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(2);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'projeto/newProjeto_view';
@@ -72,6 +72,8 @@ class Projeto extends CI_Controller {
 		$data['projetoNome']   	= $this->input->post('Nome');
 		
 		$data['departamentoID'] = $this->input->post('Setor');
+		
+		$data['projetoAtivo'] = 'SIM';
 				 
 		$this->projeto_model->cadastrar($data);
 
@@ -91,6 +93,8 @@ class Projeto extends CI_Controller {
 		$data['projetoNome']   		= $this->input->post('Nome');
 	
 		$data['departamentoID']  	= $this->input->post('Departamento');
+		
+		$data['projetoAtivo']		= $this->input->post('Ativo');
 	
 		//print_r($data);
 		$this->projeto_model->editar($data);
@@ -112,7 +116,7 @@ class Projeto extends CI_Controller {
 		$data['projeto'] 		= $this->projeto_model->buscar($id);
 		
 		// Lista todos os departamentos//
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(2);
 		
 		$this->parser->parse('template', $data);
 		

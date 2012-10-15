@@ -32,7 +32,7 @@ class Departamento extends CI_Controller {
 	{
 
 		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'departamento/listDepartamento_view';
@@ -53,7 +53,7 @@ class Departamento extends CI_Controller {
 		$data['main_content'] = 'departamento/newDepartamento_view';
 
 		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(2);
 
 		// Envia todas as informações para tela //			
 		$this->parser->parse('template', $data);
@@ -69,7 +69,7 @@ class Departamento extends CI_Controller {
 		// Recupera dos dados a serem cadastrados //
 		$data['departamentoNome']   = $this->input->post('Nome');
 		$data['unidadeID']   		= $this->input->post('Unidade');
-	
+		$data['departemantoAtivo']	= $this->input->post('Ativo');
 			 
 		$this->departamento_model->cadastrar($data);
 
@@ -88,6 +88,8 @@ class Departamento extends CI_Controller {
 		$data['departamentoNome']   	= $this->input->post('Nome');
 		
 		$data['unidadeID']				= $this->input->post('Unidade');
+		
+		$data['departamentoAtivo']		= $this->input->post('Ativo');
 	
 		$this->departamento_model->editar($data);
 	
@@ -98,7 +100,7 @@ class Departamento extends CI_Controller {
 	
 	/**
 	 *
-	 * Apresenta view de edicao de um cargo
+	 * 
 	 *
 	 */
 	public function buscaDepartamento($id)
@@ -108,7 +110,7 @@ class Departamento extends CI_Controller {
 		$data['departamento'] 	= $this->departamento_model->buscar($id);
 		
 		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(2);
 	
 		$this->parser->parse('template', $data);
 	

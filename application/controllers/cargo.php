@@ -26,13 +26,13 @@ class Cargo extends CI_Controller {
 
 	
 	/**
-	 * Apresenta a view com todos os projetos cadastrados no sistema 
+	 * Apresenta a view com todos os cargos cadastrados no sistema 
 	 */
 	public function listAll()
 	{
 
 		// Lista todos os projetos //
-		$data['cargos'] = $this->cargo_model->listar();
+		$data['cargos'] = $this->cargo_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'cargo/listCargo_view';
@@ -115,7 +115,7 @@ class Cargo extends CI_Controller {
 	
 		
 	/**
-	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
+	 * Chama o model para deletar o cargo selecionado, apos essa operacao retorna a view de listagem de cargos
 	 */
 	public function deleteCargo($id)
 	{

@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Unidade (
   
   unidadeID INT NOT NULL AUTO_INCREMENT ,
   unidadeNome VARCHAR(45) NOT NULL ,
-  
+  unidadeAtivo VARCHAR(3) NOT NULL,  
   PRIMARY KEY (unidadeID)
 
   )ENGINE = InnoDB;
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Departamento (
   departamentoID INT NOT NULL AUTO_INCREMENT ,
   departamentoNome VARCHAR(45) NOT NULL ,
   unidadeID INT NOT NULL ,
+  departamentoAtivo VARCHAR(3) NOT NULL,
   
   PRIMARY KEY (departamentoID) ,
   FOREIGN KEY (unidadeID) REFERENCES rg_quality.Unidade(unidadeID)
@@ -97,6 +98,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Usuario (
   cargoID INT NOT NULL ,
   departamentoID INT NOT NULL ,
   tipoID INT NOT NULL ,
+  usuarioAtivo VARCHAR(3) NOT NULL,
   
   PRIMARY KEY (usuarioID) ,
 
@@ -134,6 +136,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
   artefatoID INT NOT NULL AUTO_INCREMENT ,
   artefatoNome VARCHAR(45) NOT NULL ,
   artefatoDescricao TEXT NOT NULL ,
+  artefatoAtivo VARCHAR(3) NOT NULL,
   
   PRIMARY KEY (artefatoID)
 
@@ -148,6 +151,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Projeto (
   projetoID INT NOT NULL AUTO_INCREMENT ,
   projetoNome VARCHAR(45) NOT NULL ,
   departamentoID INT NOT NULL ,
+  projetoAtivo VARCHAR(3) NOT NULL,
   
   PRIMARY KEY (projetoID) ,
   
@@ -262,17 +266,17 @@ INSERT INTO rg_quality.Status VALUES (null, 'Executada'     , 'warning');
 
 
 -- Inserindo Unidades de negocio --
-INSERT INTO rg_quality.Unidade VALUES (null, 'ISOL');
-INSERT INTO rg_quality.Unidade VALUES (null, 'INET');
-INSERT INTO rg_quality.Unidade VALUES (null, 'ISEC');
+INSERT INTO rg_quality.Unidade VALUES (null, 'ISOL', 'SIM');
+INSERT INTO rg_quality.Unidade VALUES (null, 'INET', 'SIM');
+INSERT INTO rg_quality.Unidade VALUES (null, 'ISEC', 'SIM');
 
 
 -- Inserindo departamentos --
-INSERT INTO rg_quality.Departamento VALUES (null, 'SIP e Rede', 1);
-INSERT INTO rg_quality.Departamento VALUES (null, 'UC', 1);
-INSERT INTO rg_quality.Departamento VALUES (null, 'Grandes Sistemas', 1);
-INSERT INTO rg_quality.Departamento VALUES (null, 'BroadBand', 2);
-INSERT INTO rg_quality.Departamento VALUES (null, 'Cameras IP', 3);
+INSERT INTO rg_quality.Departamento VALUES (null, 'SIP e Rede', 1, 'SIM');
+INSERT INTO rg_quality.Departamento VALUES (null, 'UC', 1, 'SIM');
+INSERT INTO rg_quality.Departamento VALUES (null, 'Grandes Sistemas', 1, 'SIM');
+INSERT INTO rg_quality.Departamento VALUES (null, 'BroadBand', 2, 'SIM');
+INSERT INTO rg_quality.Departamento VALUES (null, 'Cameras IP', 3, 'SIM');
 
 
 -- Inserindo tipos de usuario --
@@ -290,19 +294,19 @@ INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro', 'SIM');
 
 -- Inserindo Usuario --
 --									  (ID, Nome, Matricula, Login, Password, Email, cargoID, departamentoID, tipoID) --
-INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1);
-INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello',000002, 'marcelo','marcelo','marcelo@auditor.com', 2, 1, 2);
-INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane',000003, 'fabiane','fabiane','fabiane@supervisor.com', 2, 1, 3);
-INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra',000004, 'alessandra','alessandra','alessandra@usuario.com', 2, 1, 4);
+INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello',000002, 'marcelo','marcelo','marcelo@auditor.com', 2, 1, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane',000003, 'fabiane','fabiane','fabiane@supervisor.com', 2, 1, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra',000004, 'alessandra','alessandra','alessandra@usuario.com', 2, 1, 4, 'SIM');
 
 
 -- Inserindo Projeto --
-INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1);
-INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4);
+INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1, 'SIM');
+INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4, 'SIM');
 
 
 -- Inserindo Artefatos --
-INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto');
-INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto');
-INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema');
+INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema', 'SIM');
 

@@ -24,15 +24,34 @@ class Cargo_model extends CI_Model {
 	/**
 	 * Lista dados
 	 */
-	function listar() 
+	function listar($opcao)
 	{
-		$this->db->select('*');
-		$this->db->from('Cargo');
-		$query = $this->db->get();
-		
+		//lista somente os ativos
+		if($opcao == 2)								
+		{
+			$this->db->select('*');
+			$this->db->from('Cargo');
+			$this->db->where('cargoAtivo', 'SIM');
+			$query = $this->db->get();			
+		}
+		//lista somente os inativos
+		elseif($opcao == 1)
+		{
+			$this->db->select('*');
+			$this->db->from('Cargo');
+			$this->db->where('cargoAtivo', 'NÃO');
+			$query = $this->db->get();	
+		}
+		//lista todos (ativos + inativos)
+		else 
+		{
+			$this->db->select('*');
+			$this->db->from('Cargo');
+			$query = $this->db->get();
+		}
 		return $query->result();
 	}
-
+	
 
 	/**
 	 * Busca um cargo
