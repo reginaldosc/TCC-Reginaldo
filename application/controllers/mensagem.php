@@ -51,7 +51,6 @@ class Mensagem extends CI_Controller {
 	 */
 	public function sendMensagem($tipo, $id, $status)
 	{
-		
 		switch ($tipo)
 		{
 			
@@ -82,7 +81,6 @@ class Mensagem extends CI_Controller {
 	 */
 	public function sendMsgAuditoria($status,$id) 
 	{
-		
 		switch ($status)
 		{
 					
@@ -105,7 +103,6 @@ class Mensagem extends CI_Controller {
 	 */
 	public function sendMsgAc($status,$id) 
 	{
-		
 		switch ($status)
 		{
 					
