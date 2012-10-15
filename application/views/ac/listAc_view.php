@@ -17,8 +17,6 @@
 				<th>Descrição</th>
 				<th>Data Realizada</th>
 				<th>Status</th>
-				<th>Editar</th>
-				<th>Excluir</th>
 				<th>Fechar</th>
 				<th>Retornar</th>
 			</tr>
@@ -30,8 +28,6 @@
 				<td>{acAcao}</td>	
 				<td>{acDataFinal}</td>
 				<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
-				<td><a href="editAc/{acID}" class='icon-edit'> <a/></td>
-				<td><a onclick='RemoveAc("{acID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				<td><a href="updateAcCloseStatus/{acID}" class=' icon-check'></a></td>
 				<td><a href="updateAcOpenStatus/{acID}" class=' icon-repeat'></a></td>
 			</tr>

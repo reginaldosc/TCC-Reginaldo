@@ -1,6 +1,6 @@
 <?php 
 
-class Mensagem extends CI_Controller {
+class Inbox extends CI_Controller {
 
 
 	public function __construct()
@@ -38,20 +38,11 @@ class Mensagem extends CI_Controller {
 		//$data = convert_date($data,'mensagens','mensagemData');
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'mensagem/listMensagem_view';
+		$data['main_content'] = 'inbox/listMensagem_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
 
-	}
-
-
-	/**
-	 * Envia mensagem ao usuário 
-	 */
-	public function cadastrarMsg($data)
-	{
-		$this->mensagem_model->cadastrarUsuarioMensagem($data);
 	}
 
 
@@ -63,7 +54,7 @@ class Mensagem extends CI_Controller {
 
 		$this->mensagem_model->deletar($id);
 		
-		redirect('mensagem/listAll','refresh');
+		redirect('inbox/listAll','refresh');
 	}
 	
 		

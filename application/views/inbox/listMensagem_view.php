@@ -14,10 +14,9 @@
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Remetente</th>
+				<th>Destinatário</th>
 				<th>Mensagem</th>
 				<th>Data</th>
-				<th>Ler</th>
 				<th>Excluir</th>
 			</tr>
 		</thead>
@@ -28,7 +27,6 @@
 				<td>{usuarioNome}</td>	
 				<td>{mensagemBody}</td>
 				<td>{mensagemData}</td>
-				<td><a href="buscaArtefato/{mensagemID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveArtefato("{mensagemID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
 			{/mensagens}

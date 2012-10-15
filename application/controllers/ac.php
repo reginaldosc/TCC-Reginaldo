@@ -72,13 +72,13 @@ class AC extends CI_Controller {
 	public function execAC($id)
 	{
 					
-		$data['statusID']		= MSG::Executada;
+		$data['statusID']		= STATUS_EXECUTADA;
 		$data['acDataFinal']	= date_now_mysql();
 		
 		$this->ac_model->atualizaAc($id, $data);
 		
-		// Envia mensagem no formtado id, status//
-		$this->inbox->sendMsg($id ,MSG::Executada);
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_EXECUTADA);
 		
 		redirect('ac/listAll','refresh');
 	}
@@ -93,12 +93,12 @@ class AC extends CI_Controller {
 		$data['acDescricao']		= $this->input->post('Descricao');
 		$data['acAcao']				= $this->input->post('Acao');
 		$data['ncID']				= $this->input->post('NC');
-		$data['statusID']			= MSG::Agendada;
+		$data['statusID']			= STATUS_AGENDADA;
 
 		$this->ac_model->cadastrar($data);
 
-		// Envia mensagem no formtado id, status//
-		$this->inbox->sendMsg($data['ncID'], MSG::Agendada);
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_AGENDADA);
 
 		redirect('nc/listAll','refresh');
 
@@ -127,12 +127,12 @@ class AC extends CI_Controller {
 	
 	function updateAcCloseStatus($id)
 	{
-		$data['statusID'] = MSG::Fechada; 
+		$data['statusID'] = STATUS_FECHADA; 
 		
 		$this->ac_model->atualizaAc($id, $data);
 
-		// Envia mensagem no formtado id, status//
-		$this->inbox->sendMsg($id, MSG::Fechada);
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_FECHADA);
 		
 		redirect('ac/listAll','refresh');
 	}
@@ -140,12 +140,12 @@ class AC extends CI_Controller {
 
 	function updateAcOpenStatus($id)
 	{
-		$data['statusID'] = MSG::Aberta;
+		$data['statusID'] = STATUS_ABERTA;
 	
 		$this->ac_model->atualizaAc($id, $data);
 
-		// Envia mensagem no formtado id, status//
-		$this->inbox->sendMsg($id, MSG::Aberta);
+		// Envia mensagem no formato id do usuario, status //
+		$this->mensagem->sendMsg(4, STATUS_ABERTA);
 	
 		redirect('ac/listAll','refresh');
 	}
