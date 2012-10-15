@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Cargo (
   
   cargoID INT NOT NULL AUTO_INCREMENT ,
   cargoNome VARCHAR(45) NOT NULL ,
+  cargoAtivo VARCHAR(3) NOT NULL, 	
   
   PRIMARY KEY (cargoID)
 
@@ -282,9 +283,9 @@ INSERT INTO rg_quality.Tipo VALUES (null, 'Usuario');
 
 
 -- Inserindo Cargo --
-INSERT INTO rg_quality.Cargo VALUES (null, 'Técnico');
-INSERT INTO rg_quality.Cargo VALUES (null, 'Analista');
-INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Técnico', 'SIM');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Analista', 'SIM');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro', 'SIM');
 
 
 -- Inserindo Usuario --

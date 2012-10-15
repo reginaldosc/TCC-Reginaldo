@@ -39,7 +39,7 @@ class Cargo_model extends CI_Model {
 	 */
 	function buscar($id)
 	{
-		$query = $this->db->query("SELECT cargoID, cargoNome FROM Cargo WHERE cargoID = '$id' LIMIT 1");
+		$query = $this->db->query("SELECT cargoID, cargoNome, cargoAtivo FROM Cargo WHERE cargoID = '$id' LIMIT 1");
 	
 		return $query->result();
 	
@@ -54,8 +54,10 @@ class Cargo_model extends CI_Model {
 		$id 			= $data['cargoID'];
 	
 		$nome 			= $data['cargoNome'];
+		
+		$ativo			= $data['cargoAtivo'];
 	
-		$query = $this->db->query("UPDATE Cargo SET cargoNome='$nome' WHERE cargoID='$id'");
+		$query = $this->db->query("UPDATE Cargo SET cargoNome='$nome', cargoAtivo='$ativo' WHERE cargoID='$id'");
 			
 	}
 	
@@ -66,8 +68,9 @@ class Cargo_model extends CI_Model {
 	 */
     function deletar($id)
     {
-	    $this->db->where('cargoID', $id);
-	    $this->db->delete('Cargo');
+	    //$this->db->where('cargoID', $id);
+	    //$this->db->delete('Cargo');
+    	$query = $this->db->query("UPDATE Cargo SET cargoAtivo='NÃO' WHERE cargoID='$id'");
 
 	}
 }

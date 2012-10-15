@@ -66,7 +66,9 @@ class Cargo extends CI_Controller {
 		
 
 		// Recupera dos dados a serem cadastrados //
-		$data['cargoNome']   = $this->input->post('Nome');
+		$data['cargoNome']  	= $this->input->post('Nome');
+		
+		$data['cargoAtivo']		= 'SIM';
 					 
 		$this->cargo_model->cadastrar($data);
 
@@ -84,6 +86,8 @@ class Cargo extends CI_Controller {
 		$data['cargoID']			= $this->input->post('ID');
 	
 		$data['cargoNome']   		= $this->input->post('Nome');
+		
+		$data['cargoAtivo']			=$this->input->post('Ativo');
 	
 		$this->cargo_model->editar($data);
 	
