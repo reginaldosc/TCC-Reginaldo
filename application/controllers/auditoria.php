@@ -222,19 +222,19 @@ class Auditoria extends CI_Controller {
 
 			// Carrega a view correspondende //
 			$data['main_content'] = 'auditoria/execAuditoria_view';
+			
+			// Envia todas as informacoes para tela //
+			$this->parser->parse('template', $data);
 
 		}
 		else 
 		{
 
-			$data['mensagem'] = 'Auditoria já foi executada, somente é possivel executar uma auditoria uma vez.';
+			$this->session->set_userdata('msg', 'Essa auditoria já foi executada.');
 
-			// Carrega a view correspondende //
-			$data['main_content'] = 'auditoria/msg_view';
+			redirect('auditoria/listAll');
 
 		}
-		// Envia todas as informacoes para tela //			
-		$this->parser->parse('template', $data); 
 		
 	}
 
@@ -262,18 +262,17 @@ class Auditoria extends CI_Controller {
 
 			// Carrega a view correspondende //
 			$data['main_content'] = 'auditoria/auditoria_view';
+			
+			// Envia todas as informacoes para tela //
+			$this->parser->parse('template', $data);
 		}
 		else
 		{
+			
+			$this->session->set_userdata('msg', 'É necessário executar a auditoria, para poder visualizá-la.');
 
-			$data['mensagem'] = ' - Para visualizar uma auditoria é necessario primeiramente executa-la.';
-
-			// Carrega a view correspondende //
-			$data['main_content'] = 'auditoria/msg_view';
+			redirect('auditoria/listAll');
 		}
-
-		// Envia todas as informacoes para tela //			
-		$this->parser->parse('template', $data);
 
 	}
 
@@ -281,27 +280,37 @@ class Auditoria extends CI_Controller {
 	public function editAuditoria($id)
 	{
 		
-		$data['id'] = $id;
+		// Lista todas as auditorias //
+		$data['auditorias'] = $this->auditoria_model->listarAuditoria($id);
 		
-		// Lista todos os usuarios //
-		$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
+		if ($data['auditorias'][0]->statusID == STATUS_AGENDADA)
+		{
 		
-		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar(2);
-
-		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar(2);
-
-		// Lista todos os projetos //
-		$data['projetos'] = $this->projeto_model->listar(2);
-
-		// Carrega a view correspondende //
-		$data['main_content'] = 'auditoria/editAuditoria_view';
-
-		// Envia todas as informações para tela //			
-		$this->parser->parse('template', $data);
+			$data['id'] = $id;
+			
+			// Lista todas as unidades de negocio //
+			$data['unidades'] = $this->unidade_model->listar(2);
+	
+			// Lista todos os departamentos //
+			$data['departamentos'] = $this->departamento_model->listar(2);
+	
+			// Lista todos os projetos //
+			$data['projetos'] = $this->projeto_model->listar(2);
+	
+			// Carrega a view correspondende //
+			$data['main_content'] = 'auditoria/editAuditoria_view';
+	
+			// Envia todas as informações para tela //			
+			$this->parser->parse('template', $data);
 		
-		//print_r($data);
+		}
+		else
+		{
+			$this->session->set_userdata('msg', 'Essa auditoria já foi executada, não é possivel edita-la.');
+			
+			redirect('auditoria/listAll');
+			
+		}
 	}
 	
 

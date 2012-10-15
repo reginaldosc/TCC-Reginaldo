@@ -13,6 +13,17 @@
 	<a href="newAuditoria" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Nova Auditoria </a>
 	<br>
 	<br>
+	
+	
+	<?php 
+		
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+			echo "<div class='alert alert-error'> $msg </div>";
+		
+		$this->session->unset_userdata('msg');
+	?>
 
 	<!-- Tabela com a lista dos usuarios do sistema -->
 	<table class='table table-bordered table-striped'>
