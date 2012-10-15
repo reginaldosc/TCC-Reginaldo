@@ -35,7 +35,7 @@ class Usuario extends CI_Controller {
 	{
 
 		// Lista todos os usuarios //
-		$data['usuarios'] = $this->usuario_model->listar();
+		$data['usuarios'] = $this->usuario_model->listar(0);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'usuario/listUser_view';
@@ -120,12 +120,12 @@ class Usuario extends CI_Controller {
 		
 		$data2['cargos']		= $this->cargo_model->listar(2);
 		
-		$data2['unidades']		= $this->unidade_model->listar();
+		$data2['unidades']		= $this->unidade_model->listar(2);
 		
-		$data2['departamentos']	= $this->departamento_model->listar();
+		$data2['departamentos']	= $this->departamento_model->listar(2);
 		
-		$data2['tipos']			= $this->tipo_model->listar();
-				
+		$data2['tipos']			= $this->tipo_model->listar(2);
+		
 		$this->parser->parse('template', $data2);
 	}
 
@@ -143,6 +143,7 @@ class Usuario extends CI_Controller {
 		$data['cargoID']    		= $this->input->post('Cargo');
 		$data['departamentoID']		= $this->input->post('Setor');
 		$data['tipoID']   		    = $this->input->post('Tipo');
+		$data['usuarioAtivo']		= $this->input->post('Ativo');
 	
 		//print_r($data);	
 		// Insere os dados do novo usuario no bd //
@@ -151,9 +152,7 @@ class Usuario extends CI_Controller {
 		redirect('usuario/listAll');
 	
 	}
-	
-	
-	
+		
 	
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
