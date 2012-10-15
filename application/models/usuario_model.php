@@ -38,23 +38,44 @@ class Usuario_model extends CI_Model {
 	/**
 	 * Lista usuarios do banco de dados
 	 */
-	function listar() 
+	function listar($opcao) 
 	{
+	//lista somente os ativos
+		if($opcao == 2)								
+		{
+			$this->db->select('*');
+			$this->db->from('Usuario');
+			$this->db->where('usuarioAtivo', 'SIM');
+			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
+			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
+			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
+			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$query = $this->db->get();			
+		}
+		//lista somente os inativos
+		elseif($opcao == 1)
+		{
+			$this->db->select('*');
+			$this->db->from('Usuario');
+			$this->db->where('usuarioAtivo', 'NÃO');
+			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
+			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
+			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
+			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$query = $this->db->get();	
+		}
+		//lista todos (ativos + inativos)
+		else 
+		{
+			$this->db->select('*');
+			$this->db->from('Usuario');
+			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
+			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
+			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
+			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$query = $this->db->get();
+		}
 
-		$this->db->select('*');
-
-		$this->db->from('Usuario');
-		
-		$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
-		
-		$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
-		
-		$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
-		
-		$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
-		
-		$query = $this->db->get();
-		
 		return $query->result();
 	}
 
@@ -64,13 +85,14 @@ class Usuario_model extends CI_Model {
 	 */
 	function listarPorTipo($id) 
 	{
-
 		$this->db->select('*');
 
 		$this->db->from('Usuario');
 		
 	    $this->db->where('tipoID', $id);
-
+	    
+	    $this->db->where('usuarioAtivo', 'SIM'); //somente ativos
+	    
 		$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 		
 		$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
@@ -90,7 +112,7 @@ class Usuario_model extends CI_Model {
 	function buscar($id)
 	{
 		$query = $this->db->query("SELECT usuarioID, usuarioNome, usuarioMatricula, usuarioLogin, usuarioPassword, 
-				usuarioEmail, tipoID FROM Usuario WHERE usuarioID = '$id' LIMIT 1");
+				usuarioEmail, tipoID, usuarioAtivo FROM Usuario WHERE usuarioID = '$id' LIMIT 1");
 		
 		//$query = $this->db->tipo_model->buscar('tipoID');
 	
@@ -104,7 +126,7 @@ class Usuario_model extends CI_Model {
 	function buscarByLogin($login)
 	{
 		$query = $this->db->query("SELECT usuarioID, usuarioNome, usuarioMatricula, usuarioLogin, usuarioPassword,
-				usuarioEmail, tipoID FROM Usuario WHERE usuarioLogin = '$login' LIMIT 1");
+				usuarioEmail, tipoID, usuarioAtivo FROM Usuario WHERE usuarioLogin = '$login' LIMIT 1");
 	
 		return $query->result();
 	}

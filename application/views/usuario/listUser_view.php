@@ -25,6 +25,7 @@
 				<th>EAG</th>
 				<th>Departamento</th>
 				<th>Tipo de usuario</th>
+				<th>Ativo</th>
 				<th>Editar</th>
 				<th>Excluir</th>
 			</tr>
@@ -40,6 +41,7 @@
 				<td>{departamentoNome}</td>
 				<td>{unidadeNome}</td>
 				<td>{tipoNome}</td>
+				<td>{usuarioAtivo}</td>
 				<td><a href="editUser/{usuarioID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveUser("{usuarioID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 			</tr>
