@@ -64,6 +64,23 @@ class AC_model extends CI_Model {
 	}
 
 
+	/**
+	 * Buscar AC
+	 */
+	function buscarAC($id) 
+	{
+		$this->db->select('*');
+		
+		$this->db->from('AC');
+
+		$this->db->where('acID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+
+
 	function buscaStatus($id)
 	{
 			$this->db->select('statusID');

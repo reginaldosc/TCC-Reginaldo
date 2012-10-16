@@ -46,6 +46,21 @@ class Auditoria_model extends CI_Model {
 	}
 
 
+	/**
+	 * Buscar Auditoria
+	 */
+	function buscarAuditoria($id) 
+	{
+		$this->db->select('*');
+		
+		$this->db->from('Auditoria');
+
+		$this->db->where('auditoriaID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
 
 	/**
 	* Insere a execução da auditoria
