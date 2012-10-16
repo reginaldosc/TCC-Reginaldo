@@ -64,6 +64,19 @@ class AC_model extends CI_Model {
 	}
 
 
+	function buscaStatus($id)
+	{
+			$this->db->select('statusID');
+		
+			$this->db->from('AC');
+
+			$this->db->where('acID', $id);
+		
+			$query = $this->db->get();
+		
+			return $query->result();
+	}
+	
 	/**
 	 * Procura e deleta na BD
 	 */

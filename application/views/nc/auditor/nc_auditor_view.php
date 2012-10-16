@@ -2,6 +2,7 @@
 <!-- Estrutura -->
 <div class="container">
 
+
 	<div class="page-header">
 			<h2>
 				Visualização <small> de Não Conformidade</small>
@@ -62,9 +63,16 @@
 
 	  </div>
 	</div>
+	<br>	
+	<?php 
 		
-
-	<br>
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+			echo "<div class='alert alert-error'> $msg </div>";
+		
+		$this->session->unset_userdata('msg');
+	?>
 	<br>
 	<h4> Ações Corretivas</h4>
 	<br>
@@ -89,8 +97,8 @@
 				<td>{acDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}"> {statusNome} </span></td>
 				<td><a href="../../ac/visualizarAc/{acID}" class='icon-eye-open'></a></td>
-				<td><a href="updateAcCloseStatus/{acID}" class='icon-check'></a></td>
-				<td><a href="updateAcOpenStatus/{acID}" class='icon-repeat'></a></td>
+				<td><a href="../../ac/updateAcCloseStatus/{acID}" class='icon-check'></a></td>
+				<td><a href="../../ac/updateAcOpenStatus/{acID}" class='icon-repeat'></a></td>
 			</tr>
 			{/acs}
 		</tbody>

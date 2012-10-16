@@ -22,6 +22,10 @@
 			<br>
 			<br>
 			
+			<strong> Status: </strong> <td><span id="status" class="label label-{statusCode}"> {statusNome} </span></td>
+			<br>
+			<br>
+			
 		{/acs}
 
 	  	{acompanhante}

@@ -87,7 +87,17 @@ class NC extends CI_Controller {
 
 	}
 
+	public function buscarNc($id)
+	{
+		$data['main_content']	= 'nc/auditor/editNc_view';
 	
+		$data['nc'] 		= $this->nc_model->listarNc($id);
+	
+		$this->parser->parse('template', $data);
+	
+		//print_r($data);
+	
+	}
 	
 	function editarNc()
 	{

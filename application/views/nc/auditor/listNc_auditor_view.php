@@ -33,7 +33,7 @@
 				<td>{ncDataFinalprev}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
-				<td><a href="buscaNc/{ncID}" class='icon-edit'><a/></td>
+				<td><a href="buscarNc/{ncID}" class='icon-edit'><a/></td>
 				
 
 			</tr>

@@ -137,27 +137,45 @@ class AC extends CI_Controller {
 	
 	function updateAcCloseStatus($id)
 	{
-		$data['statusID'] = STATUS_FECHADA; 
-		
-		$this->ac_model->atualizaAc($id, $data);
+		$status = $this->ac_model->buscaStatus($id);
 
-		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_FECHADA);
-		
-		redirect('ac/listAll','refresh');
+		if($status == STATUS_EXECUTADA)
+		{
+			$data['statusID'] = STATUS_FECHADA;
+
+
+			$this->ac_model->atualizaAc($id, $data);
+
+			// Envia mensagem no formato id do usuario, status //
+			$this->mensagem->sendMsg(4, STATUS_FECHADA);
+		}
+		else
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status EXECUTADA.');
+		}
+		redirect("nc/visualizarNc/$id");
 	}
 	
 
 	function updateAcOpenStatus($id)
 	{
-		$data['statusID'] = STATUS_RETORNADA;
-	
-		$this->ac_model->atualizaAc($id, $data);
+		$status = $this->ac_model->buscaStatus($id);
 
-		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_RETORNADA);
-	
-		redirect('ac/listAll','refresh');
+		if($status == STATUS_EXECUTADA)
+		{
+			$data['statusID'] = STATUS_RETORNADA;
+
+			$this->ac_model->atualizaAc($id, $data);
+
+			// Envia mensagem no formato id do usuario, status //
+			$this->mensagem->sendMsg(4, STATUS_RETORNADA);
+		} 
+		else 
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status EXECUTADA.');
+		}
+		
+		redirect("nc/visualizarNc/$id");
 	}
 	
 	
