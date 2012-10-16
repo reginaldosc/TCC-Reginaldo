@@ -20,7 +20,7 @@
 				<th>Status</th>
 				<th>Visualizar</th>
 				<th>Editar</th>
-				<th>Excluir</th>
+				
 				
 			</tr>
 		</thead>
@@ -33,8 +33,8 @@
 				<td>{ncDataFinalprev}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
-				<td><a href="#EDITAR" class='icon-edit'><a/></td>
-				<td><a href="#DELETAR" class='icon-trash'><a/></td>
+				<td><a href="buscaNc/{ncID}" class='icon-edit'><a/></td>
+				
 
 			</tr>
 			{/ncs}

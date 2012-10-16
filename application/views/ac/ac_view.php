@@ -6,7 +6,7 @@
 				Edição <small> de Ação Corretiva
 		<?php
 			$atributos = array('form class'=>'form-horizontal',  'id'=>'FormCadastro', 'method'=>'POST');
-			echo form_open('ac/editAc', $atributos); 
+			echo form_open('ac/buscaAc', $atributos); 
 		?>
 		
 			<fieldset>

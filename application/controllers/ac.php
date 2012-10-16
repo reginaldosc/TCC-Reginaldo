@@ -50,7 +50,7 @@ class AC extends CI_Controller {
 
 	}
 
-
+	
 	/**
 	 * Apresenta view de cadastro de novos projetos
 	 */
@@ -124,6 +124,16 @@ class AC extends CI_Controller {
 		redirect('ac/listAll','refresh');
 	}
 
+	function buscaAC($id)
+	{
+		$data['main_content']	= 'ac/auditor/ac_auditor_view';
+		
+		$data['ac'] 		= $this->ac_model->listarAC($id);
+		
+		$this->parser->parse('template', $data);
+		
+		//print_r($data);
+	}
 	
 	function updateAcCloseStatus($id)
 	{
@@ -140,16 +150,62 @@ class AC extends CI_Controller {
 
 	function updateAcOpenStatus($id)
 	{
-		$data['statusID'] = STATUS_ABERTA;
+		$data['statusID'] = STATUS_RETORNADA;
 	
 		$this->ac_model->atualizaAc($id, $data);
 
 		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_ABERTA);
+		$this->mensagem->sendMsg(4, STATUS_RETORNADA);
 	
 		redirect('ac/listAll','refresh');
 	}
 	
+	
+	/**
+	 * Visualiza nao conformidade
+	 */
+	public function visualizarAc($id)
+	{
+	
+		// Lista todas as auditorias //
+		$data['ncs'] = $this->nc_model->listarNc($id);
+	
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'ncs','ncDataFinalprev');
+	
+		$auditoria = $data['ncs'][0]->auditoriaID;
+	
+		$data['auditorias'] = $this->auditoria_model->listarAuditoria($auditoria);
+	
+		$projeto = $data['auditorias'][0]->projetoID;
+		$acompanhante = $data['auditorias'][0]->acompanhanteID;
+	
+		$data['acompanhante'] = $this->usuario_model->getUsuario($acompanhante);
+		$data['projetos_artefatos'] = $this->auditoria_model->listarProjeto_Arfetato($projeto);
+	
+	
+		// Lista todos os Ação corretivas //
+		$data['acs'] = $this->ac_model->listarAC($id);
+	
+		// converte as datas do formato mysql para formato dd/mm/aaaa
+		$data = convert_date($data,'acs','acDataFinal');
+	
+	
+		if($this->getTipo() == USER_AUDITOR)
+		{
+			$data['main_content'] = 'ac/auditor/ac_auditor_view';
+			//print_r($data);
+		}
+		else
+		{
+			// Carrega a view correspondende //
+			$data['main_content'] = 'ac/ac_view';
+		}
+	
+		// Envia todas as informacoes para tela //
+		$this->parser->parse('template', $data);
+	
+	}
 }
 
 

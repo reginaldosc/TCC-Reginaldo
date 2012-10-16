@@ -58,6 +58,21 @@ class NC_model extends CI_Model {
 		return $query->result();
 	}
 	
+	
+	function editar($data)
+	{
+		$id 			= $data['ncID'];
+		
+		$descricao		= $data['ncDescricao'];
+		
+		$date			= $data['ncDataFinalprev'];
+		
+		$comentario		= $data['ncComentario'];
+		
+		$query = $this->db->query("UPDATE NC SET ncDescricao='$descricao', ncDataFinalprev='$date',
+				ncComentario='$comentario' WHERE ncID='$id'");
+	}
+	
 	/**
 	 * Lista dados
 	 */

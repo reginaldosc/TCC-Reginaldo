@@ -87,6 +87,28 @@ class NC extends CI_Controller {
 
 	}
 
+	
+	
+	function editarNc()
+	{
+		
+		// Recupera a data informada pelo usuario //
+		$date = $this->input->post('Data');
+		
+		// Converte a dada informada para o formato mysql //
+		$date_mysql = implode("-",array_reverse(explode("/",$date)));
+		
+		$data['ncID']				= $this->input->post('ID');
+		$data['ncDescricao']   		= $this->input->post('Descricao');		
+		$data['ncDataFinalprev']   	= $date_mysql;
+		$data['ncComentario']  		= $this->input->post('Comentario');
+		
+		//print_r($data);
+		$this->nc_model->editar($data);
+		
+		redirect('nc/listAll','refresh');
+	}
+	
 	/**
 	 * Chama o model para deletar o usuario selecionado, apos essa operacao retorna a view de listagem de usuarios
 	 */

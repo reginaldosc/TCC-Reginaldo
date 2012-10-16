@@ -179,7 +179,7 @@ class Auditoria_model extends CI_Model {
 	function editar($data)
 	{
 		
-		print_r($data);
+		//print_r($data);
 		
 		$id 				= $data['auditoriaID'];
 		
