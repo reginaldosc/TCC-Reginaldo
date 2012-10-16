@@ -14,7 +14,7 @@ class Mensagem {
     /**
 	 * Envia mensagem ao usuário
 	 */
-	public function sendMsg($id, $status) 
+	public function sendMsg($remetente, $destinatario, $assunto, $mensagem, $status) 
 	{
 		$CI =& get_instance();
 
@@ -25,28 +25,36 @@ class Mensagem {
 
 				$name = $CI->getName();
 
-				$data['mensagemBody']	= "A $name foi agendada";
-				$data['usuarioID']		= $id;
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi agendada"; 
+				$data['mensagemBody']		= $mensagem;
 
 				$CI->cadastrarMsg($data);
 				break;
 						
+
 			case STATUS_REALIZADA: 
 
 				$name = $CI->getName();
-
-				$data['mensagemBody']	= "A $name foi realizada";	
-				$data['usuarioID']		= $id;
+	
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi realizada"; 
+				$data['mensagemBody']		= $mensagem;
 
 				$CI->cadastrarMsg($data);
 				break;
 						
+
 			case STATUS_ABERTA:
 
 				$name = $CI->getName(); 
 				
-				$data['mensagemBody']	= "A $name foi aberta";	
-				$data['usuarioID']		= $id;
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi aberta";	 
+				$data['mensagemBody']		= $mensagem;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -56,18 +64,47 @@ class Mensagem {
 
 				$name = $CI->getName(); 
 				
-				$data['mensagemBody']	= "A $name foi fechada";
-				$data['usuarioID']		= $id;
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi fechada"; 
+				$data['mensagemBody']		= $mensagem;
 
 				$CI->cadastrarMsg($data);
 				break;
 				
+
 			case STATUS_EXECUTADA: 
 				
 				$name = $CI->getName();
 
-				$data['mensagemBody']	= "A $name foi executada";  	
-				$data['usuarioID']		= $id;
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi executada"; 
+				$data['mensagemBody']		= $mensagem;
+
+				$CI->cadastrarMsg($data);
+				break;
+
+
+			case STATUS_RETORNADA: 
+				
+				$name = $CI->getName();
+
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= "A $name foi retorna"; 
+				$data['mensagemBody']		= $mensagem;
+
+				$CI->cadastrarMsg($data);
+				break;
+
+
+			case STATUS_DIRETA: 
+				
+				$data['remetenteID']		= $remetente;
+				$data['destinatarioID']		= $destinatario;
+				$data['mensagemAssunto']	= $assunto;
+				$data['mensagemBody']		= $mensagem;
 
 				$CI->cadastrarMsg($data);
 				break;

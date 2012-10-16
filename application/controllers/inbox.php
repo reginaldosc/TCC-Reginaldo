@@ -38,7 +38,7 @@ class Inbox extends CI_Controller {
 		//$data = convert_date($data,'mensagens','mensagemData');
 
 		// Carrega a view correspondende //
-		$data['main_content'] = 'inbox/listMensagem_view';
+		$data['main_content'] = 'inbox/inbox_view';
 		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
@@ -56,9 +56,68 @@ class Inbox extends CI_Controller {
 		
 		redirect('inbox/listAll','refresh');
 	}
+
+
+	/**
+	 * Envia Email
+	 */
+	public function sendEmail()
+	{
+
+		$emailTo  	= $this->input->post('Email');
+		$assunto  	= $this->input->post('Assunto');
+		$mensagem   = $this->input->post('Mensagem');
+
+
+		/**
+		 * se e-mail tiver cadastrado envia por sendMsg,
+		 * caso contrário envia um e-mail.
+		 */
+
+		$teste = 1;
+
+		if ($teste = 1)
+		{
+			
+			echo $emailTo;
+			echo $assunto;
+			echo $mensagem;
+
+		}
+		else
+		{
+
+			echo "erro";
+			// // Carrega lib de envio de email //
+			// $this->load->library('email');
+
+			// // Preenche com os dados para Envio //
+			// $this->email->from('jairojair@gmail.com','Jairo Jair');
+			
+			// $this->email->to($EmailTo);
+			// $this->email->subject($assunto);
+			// $this->email->message($mensagem);
+			
+			// $this->email->send();
+
+		}
+
+		//echo $this->email->print_debugger();
+
+	}
+
+
+	/**
+	 * Salva mensagem 
+	 */
+	public function cadastrarMsg($data)
+	{
+		$this->mensagem_model->cadastrarUsuarioMensagem($data);
+
+	}
 	
 		
 }
 
 /* End of file mensagem.php */
-/* Location: ./application/controllers/mensagem.php */
+/* Location: ./application/controllers/inbox  .php */

@@ -57,6 +57,7 @@ define('STATUS_ABERTA',			7);
 define('STATUS_FECHADA',		8);
 define('STATUS_EXECUTADA',		9);
 define('STATUS_RETORNADA',		10);
+define('STATUS_DIRETA',			11);
 
 
 /*

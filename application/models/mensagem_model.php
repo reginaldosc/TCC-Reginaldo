@@ -49,7 +49,7 @@ class Mensagem_model extends CI_Model {
 	{
 		$this->db->select('*');
 		$this->db->from('Mensagem');
-		$this->db->join('Usuario' , 'Usuario.usuarioID = Mensagem.usuarioID');
+		$this->db->join('Usuario' , 'Usuario.usuarioID = Mensagem.remetenteID');
 		
 		$query = $this->db->get();
 	

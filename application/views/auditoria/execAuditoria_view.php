@@ -62,7 +62,7 @@
 			<div class="control-group">
 				<label class="control-label" for="">Acompanhante</label>
 				<div class="controls">
-					<select id="" name="Acompanhante" class="input-xlarge">						
+					<select id="Acompanhante" name="Acompanhante" class="input-xlarge">						
 						{usuarios}		
 						<option value="{usuarioID}"> {usuarioNome} </option>
 						{/usuarios}						

@@ -35,6 +35,14 @@ $(document).ready(function(){
 				maxlength: 255				
 			},
 
+			/* Valida campos Assunto */
+			Assunto:
+			{
+				required: true,
+				minlength: 6,
+				maxlength: 35				
+			},
+
 			/* Valida o nome do usuario, inserido */	
 			Matricula:
 			{
@@ -78,6 +86,12 @@ $(document).ready(function(){
 				required: "Informe a descrição",
 				minlength:"A Descricao deve ser maior que 6 caracteres ",
 				maxlength:"O nome deve ser menor que 256 caracteres ",
+			},
+
+			Assunto:{
+				required: "Informe o assunto",
+				minlength:"O assunto ser maior que 6 caracteres ",
+				maxlength:"O Assunto deve ser menor que 35 caracteres ",
 			},
 
 			Matricula:

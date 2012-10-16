@@ -126,10 +126,17 @@ class Auditoria extends CI_Controller {
 			
 			$this->auditoria_model->cadastrar($data);
 
-			// Envia mensagem no formato id do usuario, status //
-			$this->mensagem->sendMsg( $data['auditorID'] , STATUS_AGENDADA);
+
+			// MSG //
+			$remetente		= USER_ADMIN;
+			$destinatario	= $data['auditorID'];
+			$status 		= STATUS_AGENDADA;
+
+			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 
 			redirect('auditoria/listAll','refresh');
+
 		}
 
 	}
@@ -164,8 +171,14 @@ class Auditoria extends CI_Controller {
 
 		$this->auditoria_model->atualizaAuditoria($id, $data2);
 
-			// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg( $data2 ['acompanhanteID'] , STATUS_EXECUTADA);
+
+		// MSG //
+		$remetente		= USER_ADMIN;
+		$destinatario	= $data2 ['acompanhanteID'];
+		$status 		= STATUS_EXECUTADA;
+
+		// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+		$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 
 		redirect('auditoria/listAll','refresh');
 

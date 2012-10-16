@@ -115,14 +115,17 @@ CREATE TABLE IF NOT EXISTS rg_quality.Usuario (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS rg_quality.Mensagem (
   
-  mensagemID 	INT NOT NULL AUTO_INCREMENT ,
-  mensagemBody	VARCHAR(45) NOT NULL ,
+  mensagemID    INT NOT NULL AUTO_INCREMENT ,
+  remetenteID   INT NOT NULL ,
+  destinatarioID  INT NOT NULL ,
+  mensagemAssunto VARCHAR(35) NOT NULL ,
+  mensagemBody	TEXT NOT NULL ,
   mensagemData 	TIMESTAMP NOT NULL ,
-  usuarioID 	INT NOT NULL ,
   
   PRIMARY KEY (mensagemID) ,
 
-  FOREIGN KEY (usuarioID) REFERENCES rg_quality.Usuario (usuarioID)
+  FOREIGN KEY (remetenteID) REFERENCES rg_quality.Usuario (usuarioID) ,
+  FOREIGN KEY (destinatarioID) REFERENCES rg_quality.Usuario (usuarioID)
 
   )ENGINE = InnoDB;
 
