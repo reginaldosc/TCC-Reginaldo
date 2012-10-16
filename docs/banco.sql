@@ -266,6 +266,7 @@ INSERT INTO rg_quality.Status VALUES (null, 'Não Conforme'  , 'important');
 INSERT INTO rg_quality.Status VALUES (null, 'Aberta'        , 'important');
 INSERT INTO rg_quality.Status VALUES (null, 'Fechada'       , 'success');
 INSERT INTO rg_quality.Status VALUES (null, 'Executada'     , 'warning');
+INSERT INTO rg_quality.Status VALUES (null, 'Retornada'     , 'important');
 
 
 -- Inserindo Unidades de negocio --

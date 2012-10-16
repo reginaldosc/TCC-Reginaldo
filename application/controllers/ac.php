@@ -144,17 +144,27 @@ class AC extends CI_Controller {
 	
 	function updateAcCloseStatus($id)
 	{
-		$status = $this->ac_model->buscaStatus($id);
+		$status['s'] = $this->ac_model->buscaStatus($id);
 
-		if($status == STATUS_EXECUTADA)
+		if($status['s'][0]->statusID == STATUS_EXECUTADA)
 		{
 			$data['statusID'] = STATUS_FECHADA;
 
 
 			$this->ac_model->atualizaAc($id, $data);
 
-			// Envia mensagem no formato id do usuario, status //
-			$this->mensagem->sendMsg(4, STATUS_FECHADA);
+			// Buscar Acompanhante //
+			$ac['ac'] 	= $this->ac_model->buscarAC($id);
+			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
+			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
+
+			// MSG //
+			$remetente		= USER_ADMIN;
+			$destinatario	= $ad['ad'][0]->acompanhanteID;
+			$status 		= STATUS_FECHADA;
+
+			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 		}
 		else
 		{
@@ -166,16 +176,26 @@ class AC extends CI_Controller {
 
 	function updateAcOpenStatus($id)
 	{
-		$status = $this->ac_model->buscaStatus($id);
+		$status['s'] = $this->ac_model->buscaStatus($id);
 
-		if($status == STATUS_EXECUTADA)
+		if($status['s'][0]->statusID == STATUS_EXECUTADA)
 		{
 			$data['statusID'] = STATUS_RETORNADA;
 
 			$this->ac_model->atualizaAc($id, $data);
 
-			// Envia mensagem no formato id do usuario, status //
-			$this->mensagem->sendMsg(4, STATUS_RETORNADA);
+			// Buscar Acompanhante //
+			$ac['ac'] 	= $this->ac_model->buscarAC($id);
+			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
+			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
+
+			// MSG //
+			$remetente		= USER_ADMIN;
+			$destinatario	= $ad['ad'][0]->acompanhanteID;
+			$status 		= STATUS_RETORNADA;
+
+			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 		} 
 		else 
 		{
