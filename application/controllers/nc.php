@@ -47,6 +47,10 @@ class NC extends CI_Controller {
 		{
 			$data['main_content'] = 'nc/auditor/listNc_auditor_view';
 		}
+		elseif($this->getTipo() == USER_SUPERVISOR)
+		{
+			$data['main_content'] = 'nc/supervisor/listNc_supervisor_view';
+		}
 		else
 			{
 				// Carrega a view correspondende //
@@ -135,17 +139,17 @@ class NC extends CI_Controller {
 	 */
 	public function visualizarNc($id)
 	{
-	
+
 		// Lista todas as auditorias //
 		$data['ncs'] = $this->nc_model->listarNc($id);
-		
+
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'ncs','ncDataFinalprev');
 
 		$auditoria = $data['ncs'][0]->auditoriaID;
-		
+
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($auditoria);
-		
+
 		$projeto = $data['auditorias'][0]->projetoID;
 		$acompanhante = $data['auditorias'][0]->acompanhanteID;
 
@@ -158,21 +162,25 @@ class NC extends CI_Controller {
 
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'acs','acDataFinal');
-		
-	
+
+
 		if($this->getTipo() == USER_AUDITOR)
 		{
 			$data['main_content'] = 'nc/auditor/nc_auditor_view';
 		}
+		elseif($this->getTipo() == USER_SUPERVISOR)
+		{
+			// Carrega a view correspondende //
+			$data['main_content'] = 'nc/supervisor/nc_supervisor_view';
+		}
 		else
-			{
-				// Carrega a view correspondende //
-				$data['main_content'] = 'nc/nc_view';
-			}
-	
+		{
+			// Carrega a view correspondende //
+			$data['main_content'] = 'nc/nc_view';
+		}
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
-	
+
 	}
 
 

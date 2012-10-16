@@ -51,6 +51,11 @@ class Auditoria extends CI_Controller {
 			$data['main_content'] = 'auditoria/auditor/listAuditoria_view';
 
 		}
+		elseif ($this->getTipo() == USER_SUPERVISOR)
+		{
+			$data['main_content'] = 'auditoria/supervisor/listAuditoria_view';
+
+		}
 		else
 			{
 			$data['main_content'] = 'auditoria/admin/listAuditoria_view';
@@ -190,36 +195,48 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
-		$data['ncs'] = $this->nc_model->listarNcFromAuditoria($id);
+		$data['auditorias'] = $this->auditoria_model->executar($id);
 
-		// Deleta as AC relacionadas as NC //
-		if (!empty($data['ncs']))
+		if ($data['auditorias'][0]->statusID == STATUS_AGENDADA)
 		{
-			$tamanho = sizeof($data['ncs']);
-		
-			for ($i=0; $i < $tamanho; $i++)
+
+			$data['ncs'] = $this->nc_model->listarNcFromAuditoria($id);
+
+			// Deleta as AC relacionadas as NC //
+			if (!empty($data['ncs']))
 			{
-				$ncID = $data['ncs'][$i]->ncID;
-				$this->ac_model->deletarAcFromNC($ncID);
+				$tamanho = sizeof($data['ncs']);
+
+				for ($i=0; $i < $tamanho; $i++)
+				{
+					$ncID = $data['ncs'][$i]->ncID;
+					$this->ac_model->deletarAcFromNC($ncID);
+				}
 			}
+
+			// Deletar todos as nao conformidades //
+			$this->nc_model->deletar($id);
+
+			$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
+
+			$projetoID = $data['projeto'][0]->projetoID;
+
+			// Deletar dados da tabela Projeto_Artefato //
+			$this->auditoria_model->deletarPA($projetoID);
+
+
+			// Deletar dados da tabela Auditoria //
+			$this->auditoria_model->deletar($id);
 		}
-		
-		// Deletar todos as nao conformidades //
-		$this->nc_model->deletar($id);
-		
-		$data['projeto'] = $this->projeto_model->getProjetoFromAuditoria($id);
+		else
+		{
 
-		$projetoID = $data['projeto'][0]->projetoID;
-		
-		// Deletar dados da tabela Projeto_Artefato //
-		$this->auditoria_model->deletarPA($projetoID);
+			$this->session->set_userdata('msg', 'Essa auditoria já foi executada.');
 
-		
-		// Deletar dados da tabela Auditoria //
-		$this->auditoria_model->deletar($id);
-		
+		}
+
 		redirect('auditoria/listAll','refresh');
-	}	
+	}
 
 	/**
 	 * Chama o model para executar a auditoria selecionada, apos essa operacao retorna a HOME

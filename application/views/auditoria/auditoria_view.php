@@ -12,32 +12,31 @@
 		{auditorias}
 
 			<strong> Auditor: </strong> {usuarioNome}
-			<br>
-
+			<br><br>
+	
 			<strong> Unidade: </strong> {unidadeNome}
-			<br>			
+			<br><br>			
 			
 			<strong> Departamento: </strong> {departamentoNome}
-			<br>
+			<br><br>
 
 			<strong> Projeto: </strong> {projetoNome}
-			<br>
+			<br><br>
 
 			<strong> Data agendada: </strong> {auditoriaDataInicio}
-			<br>
+			<br><br>
 
 			<strong> Data da execução: </strong> {auditoriaDataInicio}
-			<br>
+			<br><br>
 		{/auditorias}
 
-		
 		{acompanhante}
 
 			<strong> Acompanhante: </strong> {usuarioNome}
 			<br>
 			<br>
 		{/acompanhante}
-
+<br>
 			<table class='table table-bordered table-striped'>
 				<thead>
 					<tr>
