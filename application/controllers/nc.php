@@ -42,9 +42,17 @@ class NC extends CI_Controller {
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'ncs','ncDataFinalprev');
 
-		// Carrega a view correspondende //
-		$data['main_content'] = 'nc/listNc_view';
-		
+
+		if($this->getTipo() == USER_AUDITOR)
+		{
+			$data['main_content'] = 'nc/auditor/listNc_auditor_view';
+		}
+		else
+			{
+				// Carrega a view correspondende //
+				$data['main_content'] = 'nc/listNc_view';
+			}
+
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
 
@@ -120,8 +128,15 @@ class NC extends CI_Controller {
 		$data = convert_date($data,'acs','acDataFinal');
 		
 	
-		// Carrega a view correspondende //
-		$data['main_content'] = 'nc/nc_view';
+		if($this->getTipo() == USER_AUDITOR)
+		{
+			$data['main_content'] = 'nc/auditor/nc_auditor_view';
+		}
+		else
+			{
+				// Carrega a view correspondende //
+				$data['main_content'] = 'nc/nc_view';
+			}
 	
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);

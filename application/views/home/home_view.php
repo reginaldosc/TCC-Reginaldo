@@ -8,6 +8,11 @@
 	</div>
 
 
+	<a href="<?php echo site_url()?>/app/SQAP" class="btn"></i>SQAP</a>
+	<br>
+	<br>
+
+
 	<ul class="thumbnails">
 		<li class="span3">
 
@@ -16,6 +21,7 @@
 				<h5>Garantia da Qualidade</h5>
 			</div>
 		</li>
+
 
 		<li class="span3">
 

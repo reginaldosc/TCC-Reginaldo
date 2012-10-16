@@ -7,10 +7,6 @@
 		<p>Plano da Garantia da Qualidade de Software</p>
 
 
-		<html>
-
-<body lang="pt-BR" text="#000000" link="#0000ff" dir="LTR">
-
 
 
 	<br>
@@ -659,9 +655,8 @@
 				qualidade da empresa.</span> </font>
 	</p>
 
-</body>
-		</html>
+
 	</div>
-</div>
+
 
 <!-- FIM estrutura -->

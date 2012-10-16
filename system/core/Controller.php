@@ -51,11 +51,18 @@ class CI_Controller {
 		$this->load->initialize();
 		
 		log_message('debug', "Controller Class Initialized");
+
+
 	}
 
 	public static function &get_instance()
 	{
 		return self::$instance;
+	}
+
+	public function getTipo()
+	{
+		return $this->session->userdata('usuarioTipo');
 	}
 }
 // END Controller class

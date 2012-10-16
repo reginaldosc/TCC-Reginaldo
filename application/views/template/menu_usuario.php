@@ -18,7 +18,6 @@
 					<?php 
 
 						$usuario = $this->session->userdata('usuarioLogin');
-						$tipo 	 = $this->session->userdata('usuarioTipo');
 					?>
 					
 					<i class="icon-user"> </i> <?php echo $usuario ?> <span class="caret"></span>
@@ -39,33 +38,10 @@
             	<ul class="nav">
               		
 					<li><?php echo anchor('app/home','Home');?></li>
-
-					<li><?php echo anchor('auditoria/listAll','Auditoria');?></li>
 					
 					<li><?php echo anchor('nc/listAll','Não Conformidade');?></li>
-
-					<li><?php echo anchor('ac/listAll','Acão Corretiva');?></li>
 					
-					<li class="dropdown">
-						
-						<a class="dropdown-toggle" href="#">Cadastro </a>
-						
-						<ul class="dropdown-menu">
-							
-							<li><?php echo anchor('artefato/listAll','Artefato');?></li>
-							
-							<li><?php echo anchor('cargo/listAll','Cargo');?></li>
-
-							<li><?php echo anchor('departamento/listAll','Departamento');?></li>
-							
-							<li><?php echo anchor('projeto/listAll','Projeto');?></li>
-  
-							<li><?php echo anchor('unidade/listAll','Unidade');?></li>
-
-							<li><?php echo anchor('usuario/listAll','Usuário');?></li>
-						</ul>
-					</li>
-					
+										
 					<a href="<?php echo site_url()?>/inbox/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
 					
 				</ul>

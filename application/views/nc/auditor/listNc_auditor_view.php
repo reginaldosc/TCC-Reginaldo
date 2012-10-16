@@ -14,20 +14,30 @@
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
-				<th>Descrição</th>
-				<th>Data Realizada</th>
+				<th>Item não conforme</th>
+				<th>Não conformidade</th>
+				<th>Data prevista</th>
 				<th>Status</th>
+				<th>Visualizar</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+				
 			</tr>
 		</thead>
 				
 		<tbody>
-			{acs}
-			<tr>
-				<td>{acAcao}</td>	
-				<td>{acDataFinal}</td>
-				<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
+			{ncs}
+			<tr>	
+				<td>{artefatoNome}</td>
+				<td>{ncDescricao}</td>
+				<td>{ncDataFinalprev}</td>
+				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
+				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
+				<td><a href="#EDITAR" class='icon-edit'><a/></td>
+				<td><a href="#DELETAR" class='icon-trash'><a/></td>
+
 			</tr>
-			{/acs}
+			{/ncs}
 		</tbody>
 	</table>
 	<br>
@@ -40,7 +50,7 @@
 		</div>
 
 		<div class="modal-body">
-		<p>Deseja realmente excluir a ação corretiva ?</p>
+		<p>Deseja realmente excluir a Não Conformidade ?</p>
 		</div>
 
 		 <div class="modal-footer">
@@ -54,10 +64,10 @@
 
 <script type="text/javascript">
 
-function RemoveAc(id){
+function RemoveNc(id){
 
 	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="deleteAc/"+id;
+	document.getElementById('Excluir').href="deleteNc/"+id;
 
 }	
 

@@ -45,10 +45,18 @@ class Auditoria extends CI_Controller {
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data, 'auditorias', 'auditoriaDataInicio');
 
-		// Carrega a view correspondende //
-		$data['main_content'] = 'auditoria/listAuditoria_view';
-		
-		// Envia todas as informacoes para tela //
+
+		if ($this->getTipo() == USER_AUDITOR)
+		{
+			$data['main_content'] = 'auditoria/auditor/listAuditoria_view';
+
+		}
+		else
+			{
+			$data['main_content'] = 'auditoria/admin/listAuditoria_view';
+			}
+
+		// // Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 
 	}
