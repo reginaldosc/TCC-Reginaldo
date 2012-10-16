@@ -76,9 +76,19 @@ class AC extends CI_Controller {
 		$data['acDataFinal']	= date_now_mysql();
 		
 		$this->ac_model->atualizaAc($id, $data);
-		
-		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_EXECUTADA);
+
+		// Buscar Auditor //
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
+		$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
+
+		// MSG //
+		$remetente		= USER_ADMIN;
+		$destinatario	= $ad['ad'][0]->auditorID;
+		$status 		= STATUS_EXECUTADA;
+
+		// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+		$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 		
 		redirect('ac/listAll','refresh');
 	}
@@ -96,9 +106,6 @@ class AC extends CI_Controller {
 		$data['statusID']			= STATUS_AGENDADA;
 
 		$this->ac_model->cadastrar($data);
-
-		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_AGENDADA);
 
 		redirect('nc/listAll','refresh');
 

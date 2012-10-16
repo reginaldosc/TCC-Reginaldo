@@ -91,6 +91,23 @@ class NC_model extends CI_Model {
 
 
 	/**
+	 * Buscar NC
+	 */
+	function buscarNC($id) 
+	{
+		$this->db->select('*');
+		
+		$this->db->from('NC');
+
+		$this->db->where('ncID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+
+
+	/**
 	 * Procura e deleta na BD
 	 */
     	function deletar($id)
