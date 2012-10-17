@@ -41,7 +41,6 @@
 					
 					<li><?php echo anchor('nc/listAll','Não Conformidade');?></li>
 					
-										
 					<a href="<?php echo site_url()?>/inbox/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
 					
 				</ul>

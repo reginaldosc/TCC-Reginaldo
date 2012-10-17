@@ -27,6 +27,13 @@
 			<br>
 		{/ncs}
 
+		{acompanhante}
+
+			<strong> Responsável: </strong> {usuarioNome}
+			<br>
+			<br>
+		{/acompanhante}
+		
 	  </div>
 
 	  <div class="span8">
@@ -48,19 +55,21 @@
 		
 		{/auditorias}
 
-		{acompanhante}
-
-			<strong> Acompanhante: </strong> {usuarioNome}
-			<br>
-			<br>
-		{/acompanhante}
-
 	  </div>
 	</div>
-		
 
 	<br>
+	<?php 
+		
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+			echo "<div class='alert alert-error'> $msg </div>";
+		
+		$this->session->unset_userdata('msg');
+	?>	
 	<br>
+	
 	<h4> Ação Corretiva</h4>
 	<br>
 
@@ -85,8 +94,8 @@
 				<td>{acAcao}</td>	
 				<td>{acDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}"> {statusNome} </span></td>
-				<td><a href="#VISUALIZAR" class='icon-eye-open'></a></td>
-				<td><a href="editAc/{acID}" class='icon-edit'> <a/></td>
+				<td><a href="../../ac/buscaAc/{acID}" class='icon-eye-open'></a></td>
+				<td><a href="../../ac/editAc/{acID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveAc("{acID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 				<td><a href="../../ac/execAc/{acID}" class='icon-check'><a/></td>
 			</tr>

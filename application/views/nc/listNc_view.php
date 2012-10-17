@@ -9,14 +9,25 @@
 		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
 	</form>
 
-
+	<br>
+	<?php 
+		
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+			echo "<div class='alert alert-error'> $msg </div>";
+		
+		$this->session->unset_userdata('msg');
+	?>	
+	<br>
+	
 	<!-- Tabela com a lista dos usuarios do sistema -->
 	<table class='table table-bordered table-striped'>
 		<thead>
 			<tr>
 				<th>Item não conforme</th>
 				<th>Não conformidade</th>
-				<th>Data prevista</th>
+				<th>Data Finalização</th>
 				<th>Status</th>
 				<th>Visualizar</th>
 				<th>Cadastrar Ação Corretiva</th>
@@ -29,7 +40,7 @@
 			<tr>	
 				<td>{artefatoNome}</td>
 				<td>{ncDescricao}</td>
-				<td>{ncDataFinalprev}</td>
+				<td>{ncDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
 				<td><a href="../ac/newAC/{ncID}"  class='icon-plus'><a/></td>

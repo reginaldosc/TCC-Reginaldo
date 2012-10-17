@@ -16,7 +16,7 @@
 			<tr>
 				<th>Item não conforme</th>
 				<th>Não conformidade</th>
-				<th>Data prevista</th>
+				<th>Data Prevista</th>
 				<th>Status</th>
 				<th>Visualizar</th>
 						

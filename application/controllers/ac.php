@@ -56,14 +56,23 @@ class AC extends CI_Controller {
 	 */
 	public function newAc($id)
 	{
-
-		$data['ncID'] = $id;
-		// Carrega a view correspondende //
-		$data['main_content'] = 'ac/newAc_view';
-
-		// Envia todas as informações para tela //			
-		$this->parser->parse('template', $data);
+	
+		$status['s'] = $this->nc_model->buscaStatus($id);
 		
+		if(($status['s'][0]->statusID == STATUS_ABERTA))
+		{
+			$data['ncID'] = $id;
+			// Carrega a view correspondende //
+			$data['main_content'] = 'ac/newAc_view';
+			// Envia todas as informações para tela //			
+			$this->parser->parse('template', $data);
+		}
+		else 
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se a Não Conformidade estiver 
+					com status ABERTA.');
+			redirect("nc/listAll");
+		}
 	}
 
 	/**
@@ -72,25 +81,39 @@ class AC extends CI_Controller {
 	public function execAC($id)
 	{
 					
-		$data['statusID']		= STATUS_EXECUTADA;
-		$data['acDataFinal']	= date_now_mysql();
+		$status['s'] = $this->ac_model->buscaStatus($id);
 		
-		$this->ac_model->atualizaAc($id, $data);
+		if(($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA))
+		{
 
-		// Buscar Auditor //
-		$ac['ac'] 	= $this->ac_model->buscarAC($id);
-		$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
-		$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
+			$data['statusID']		= STATUS_EXECUTADA;
+			$data['acDataFinal']	= date_now_mysql();
 
-		// MSG //
-		$remetente		= USER_ADMIN;
-		$destinatario	= $ad['ad'][0]->auditorID;
-		$status 		= STATUS_EXECUTADA;
+			$this->ac_model->atualizaAc($id, $data);
 
-		// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
-		$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
+			// Buscar Auditor //
+			$ac['ac'] 	= $this->ac_model->buscarAC($id);
+			$id2		= $ac['ac'][0]->ncID;
+			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
+			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
+
+			// MSG //
+			$remetente		= USER_ADMIN;
+			$destinatario	= $ad['ad'][0]->auditorID;
+			$status 		= STATUS_EXECUTADA;
+
+			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
+		}
+		else 
+		{
+			$ac['ac'] 	= $this->ac_model->buscarAC($id);
+			$id2		= $ac['ac'][0]->ncID;
+			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status AGENDADA ou RETORNADA.');
+				
+		}
 		
-		redirect('ac/listAll','refresh');
+		redirect("nc/visualizarNc/$id2");
 	}
 
 	/**
@@ -127,24 +150,40 @@ class AC extends CI_Controller {
 	public function deleteAc($id)
 	{
 
-		$this->ac_model->deletar($id);
-		redirect('ac/listAll','refresh');
-	}
+		$status['s'] = $this->ac_model->buscaStatus($id);
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$id2		= $ac['ac'][0]->ncID;			
 
-	function buscaAC($id)
+		if(($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA))
+		{
+			$this->ac_model->deletar($id);
+		}
+		else
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status 
+					AGENDADA ou RETORNADA.');
+		}
+		redirect("nc/visualizarNc/$id2");
+	}
+	
+
+	public function buscaAC($id)
 	{
 		$data['main_content']	= 'ac/auditor/ac_auditor_view';
 		
-		$data['ac'] 		= $this->ac_model->listarAC($id);
+		$data['acs'] 		= $this->ac_model->listarAC($id);
 		
 		$this->parser->parse('template', $data);
 		
 		//print_r($data);
 	}
+
 	
 	function updateAcCloseStatus($id)
 	{
 		$status['s'] = $this->ac_model->buscaStatus($id);
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$id2		= $ac['ac'][0]->ncID;
 
 		if($status['s'][0]->statusID == STATUS_EXECUTADA)
 		{
@@ -170,14 +209,16 @@ class AC extends CI_Controller {
 		{
 			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status EXECUTADA.');
 		}
-		redirect("nc/visualizarNc/$id");
+		redirect("nc/visualizarNc/$id2");
 	}
 	
 
 	function updateAcOpenStatus($id)
 	{
 		$status['s'] = $this->ac_model->buscaStatus($id);
-
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$id2		= $ac['ac'][0]->ncID;
+		
 		if($status['s'][0]->statusID == STATUS_EXECUTADA)
 		{
 			$data['statusID'] = STATUS_RETORNADA;
@@ -202,7 +243,7 @@ class AC extends CI_Controller {
 			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status EXECUTADA.');
 		}
 		
-		redirect("nc/visualizarNc/$id");
+		redirect("nc/visualizarNc/$id2");
 	}
 	
 	
@@ -236,7 +277,7 @@ class AC extends CI_Controller {
 		$data = convert_date($data,'acs','acDataFinal');
 	
 	
-		if($this->getTipo() == USER_AUDITOR)
+		if(($this->getTipo() == USER_AUDITOR) || ($this->getTipo() == USER_ADMIN) || ($this->getTipo() == USER_SUPERVISOR))
 		{
 			$data['main_content'] = 'ac/auditor/ac_auditor_view';
 			//print_r($data);
@@ -251,6 +292,52 @@ class AC extends CI_Controller {
 		$this->parser->parse('template', $data);
 	
 	}
+
+	function editAC($id)
+	{
+		$status['s'] = $this->ac_model->buscaStatus($id);
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$id2		= $ac['ac'][0]->ncID;
+		
+		if(($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA))
+		{
+			$data['main_content']	= 'ac/editAc_view';
+	
+			$data['ac'] 		= $this->ac_model->listarAC($id);
+	
+			$this->parser->parse('template', $data);
+		}
+		else
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status AGENDADA ou RETORNADA.');
+			redirect("nc/visualizarNc/$id2");
+		}
+		
+
+		//print_r($data);
+	}
+	
+	
+	/**
+	 * Recupera as informações do cadastro e grava no banco de dados
+	 */
+	public function editarAc()
+	{
+		// Recupera dos dados a serem cadastrados //
+		$data['acID']			= $this->input->post('ID');
+	
+		$data['acAcao']   		= $this->input->post('Acao');
+	
+		$data['acDescricao']  	= $this->input->post('Descricao');
+	
+		$id						= $this->input->post('ID2');
+	
+		$this->ac_model->editar($data);
+	
+		redirect("nc/visualizarNc/$id");
+	
+	}
+
 }
 
 

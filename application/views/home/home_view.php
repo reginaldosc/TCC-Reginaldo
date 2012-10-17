@@ -8,7 +8,7 @@
 	</div>
 
 
-	<a href="<?php echo site_url()?>/app/SQAP" class="btn"></i>SQAP</a>
+	<p><a href="<?php echo site_url()?>/app/SQAP" class="btn btn-primary"></i>SQAP</a><strong> Plano da Garantia da Qualidade de Software</strong></p>
 	<br>
 	<br>
 

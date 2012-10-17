@@ -49,12 +49,30 @@ class AC_model extends CI_Model {
 	/**
 	 * Lista dados
 	 */
+	function listarAcByNc($id)
+	{
+		$this->db->select('statusNome');
+	
+		$this->db->from('AC');
+		$this->db->where('ncID', $id);
+	
+		$this->db->join('Status' , 'Status.statusID = AC.statusID');
+	
+		$query = $this->db->get();
+	
+		return $query->result();
+	}
+	
+	
+	/**
+	 * Lista dados
+	 */
 	function listarAC($id)
 	{
 		$this->db->select('*');
 	
 		$this->db->from('AC');
-		$this->db->where('ncID', $id);
+		$this->db->where('acID', $id);
 	
 		$this->db->join('Status' , 'Status.statusID = AC.statusID');
 	
@@ -114,6 +132,22 @@ class AC_model extends CI_Model {
 	
 	}
 	
+	
+	/**
+	 * Edita
+	 */
+	function editar($data)
+	{
+		$id 		= $data['acID'];
 
+		$acao 		= $data['acAcao'];
+
+		$descricao 	= $data['acDescricao'];
+
+		$query = $this->db->query("UPDATE AC SET acAcao='$acao', acDescricao='$descricao'
+				WHERE acID='$id'");
+
+	}
+	
 	
 }

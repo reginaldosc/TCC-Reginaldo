@@ -195,9 +195,9 @@ class Auditoria extends CI_Controller {
 	public function deleteAuditoria($id)
 	{
 
-		$data['auditorias'] = $this->auditoria_model->executar($id);
-
-		if ($data['auditorias'][0]->statusID == STATUS_AGENDADA)
+		$data['auditorias'] = $this->auditoria_model->executar($id);		
+	
+		if(($data['auditorias'][0]->statusID == STATUS_AGENDADA) || ($this->getTipo() == USER_ADMIN))
 		{
 
 			$data['ncs'] = $this->nc_model->listarNcFromAuditoria($id);
@@ -213,7 +213,6 @@ class Auditoria extends CI_Controller {
 					$this->ac_model->deletarAcFromNC($ncID);
 				}
 			}
-
 			// Deletar todos as nao conformidades //
 			$this->nc_model->deletar($id);
 

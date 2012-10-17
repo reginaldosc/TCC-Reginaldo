@@ -20,7 +20,22 @@ class NC_model extends CI_Model {
 		return $this->db->insert('NC', $data);
 	}
 
-
+	
+	
+	public function buscaStatus($id)
+	{
+		$this->db->select('statusID');
+	
+		$this->db->from('NC');
+	
+		$this->db->where('ncID', $id);
+	
+		$query = $this->db->get();
+	
+		return $query->result();
+	}
+	
+	
 	/**
 	 * Lista dados
 	 */
@@ -56,6 +71,12 @@ class NC_model extends CI_Model {
 		$query = $this->db->get();
 	
 		return $query->result();
+	}
+	
+	
+	public function setStatus($id, $status)
+	{
+		$query = $this->db->query("UPDATE NC SET StatusID='$status' WHERE ncID='$id'");
 	}
 	
 	

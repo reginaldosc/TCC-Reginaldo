@@ -17,6 +17,10 @@
 				<th>Descrição</th>
 				<th>Data Realizada</th>
 				<th>Status</th>
+				<th>Visualizar</th>
+				<th>Editar</th>
+				<th>Excluir</th>
+				<th>Confirmar Execução</th>
 			</tr>
 		</thead>
 				
@@ -25,7 +29,11 @@
 			<tr>
 				<td>{acAcao}</td>	
 				<td>{acDataFinal}</td>
-				<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
+				<td><span id="status" class="label label-{statusCode}"> {statusNome} </span></td>
+				<td><a href="buscaAc/{acID}" class='icon-eye-open'></a></td>
+				<td><a href="editAc/{acID}" class='icon-edit'> <a/></td>
+				<td><a onclick='RemoveAc("{acID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
+				<td><a href="../ac/execAc/{acID}" class='icon-check'><a/></td>
 			</tr>
 			{/acs}
 		</tbody>

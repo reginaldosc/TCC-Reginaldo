@@ -94,7 +94,7 @@
 				<td>{acAcao}</td>	
 				<td>{acDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}"> {statusNome} </span></td>
-				<td><a href="../../ac/visualizarAc/{acID}" class='icon-eye-open'></a></td>
+				<td><a href="../../ac/buscaAc/{acID}" class='icon-eye-open'></a></td>
 			</tr>
 			{/acs}
 		</tbody>

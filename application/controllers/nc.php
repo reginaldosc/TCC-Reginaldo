@@ -42,7 +42,6 @@ class NC extends CI_Controller {
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'ncs','ncDataFinalprev');
 
-
 		if($this->getTipo() == USER_AUDITOR)
 		{
 			$data['main_content'] = 'nc/auditor/listNc_auditor_view';
@@ -52,11 +51,11 @@ class NC extends CI_Controller {
 			$data['main_content'] = 'nc/supervisor/listNc_supervisor_view';
 		}
 		else
-			{
-				// Carrega a view correspondende //
-				$data['main_content'] = 'nc/listNc_view';
-			}
-
+		{
+			// Carrega a view correspondende //
+			$data['main_content'] = 'nc/listNc_view';
+		}
+		
 		// Envia todas as informações para tela //
 		$this->parser->parse('template', $data);
 
@@ -93,17 +92,29 @@ class NC extends CI_Controller {
 
 	public function buscarNc($id)
 	{
-		$data['main_content']	= 'nc/auditor/editNc_view';
-	
-		$data['nc'] 		= $this->nc_model->listarNc($id);
-	
-		$this->parser->parse('template', $data);
-	
-		//print_r($data);
+		$status['s'] = $this->nc_model->buscaStatus($id);
+		
+		if(($status['s'][0]->statusID == STATUS_ABERTA))
+		{
+			$data['main_content']	= 'nc/auditor/editNc_view';
+		
+			$data['nc'] 			= $this->nc_model->listarNc($id);
+		
+			$this->parser->parse('template', $data);
+		}
+		else
+		{
+			$this->session->set_userdata('msg', 'Ação permitada, somente se a Não Conformidade estiver
+					com status ABERTA.');
+			//print_r($status[0]->statusID);
+			redirect("nc/listAll");
+		}
 	
 	}
 	
-	function editarNc()
+	
+	
+	public function editarNc()
 	{
 		
 		// Recupera a data informada pelo usuario //
@@ -134,12 +145,42 @@ class NC extends CI_Controller {
 		redirect('nc/listAll','refresh');
 	}
 	
+	
+	function verificaStatusAcs($id)
+	{
+		$igual = "FALSE";
+		$data['acs'] = $this->ac_model->listarAcByNc($id);
+		
+		for ($i=0; $i < count($data['acs']); $i++)
+		{
+			if($data['acs'][$i]->statusNome == 'Fechada')
+			{
+				$igual = "TRUE";
+			}
+			else
+			{
+				$igual = "FALSE";
+				break;
+			}
+		}
+		return $igual;
+	}
+	
+		
 	/**
 	 * Visualiza nao conformidade
 	 */
 	public function visualizarNc($id)
 	{
 
+		$status = $this->verificaStatusAcs($id);
+		
+		if($status == "TRUE")
+		{
+			$statusID = 8;
+			$this->nc_model->setStatus($id, $statusID);
+		}
+		
 		// Lista todas as auditorias //
 		$data['ncs'] = $this->nc_model->listarNc($id);
 
@@ -158,12 +199,13 @@ class NC extends CI_Controller {
 
 
 		// Lista todos os Ação corretivas //
-		$data['acs'] = $this->ac_model->listarAC($id);
+		$data['acs'] = $this->ac_model->listar();
 
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'acs','acDataFinal');
 
-
+		//print_r($data);
+		
 		if($this->getTipo() == USER_AUDITOR)
 		{
 			$data['main_content'] = 'nc/auditor/nc_auditor_view';
@@ -180,6 +222,8 @@ class NC extends CI_Controller {
 		}
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
+
+		
 
 	}
 
