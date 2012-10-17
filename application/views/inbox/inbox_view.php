@@ -4,6 +4,19 @@
 	<br>
 	<br>
 
+	<?php 
+		
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+		{
+			echo $msg;
+
+		}
+		
+		$this->session->unset_userdata('msg');
+
+	?>
 	<div class="">
 
 		<ul class="nav nav-tabs">
@@ -17,7 +30,7 @@
 
         	<br>
 
-          	<form class="form-horizontal" id="FormCadastro" method="POST" action="sendEmail">  
+          	<form class="form-horizontal" id="FormCadastro" method="POST" action="sendMensagem">  
 			
 				<fieldset>
 					
@@ -47,7 +60,7 @@
 					
 
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Enviar</button>
+						<button type="submit" id="submit_msg"class="btn btn-primary">Enviar</button>
 						<button class="btn" type="reset">Limpar</button>
 					</div>
 			
@@ -68,7 +81,8 @@
 					<tr>
 						<th>Remetente</th>
 						<th>Assunto</th>
-						<th>Data</th>
+						<th>Mensagem</th>
+						<th>Data do recebimento</th>
 						<th>Excluir</th>
 					</tr>
 				</thead>
@@ -77,7 +91,8 @@
 					{mensagens}
 						<tr>
 							<td>{usuarioNome}</td>
-							<td>{mensagemAssunto}</td>	
+							<td>{mensagemAssunto}</td>
+							<td>{mensagemBody}</td>	
 							<td>{mensagemData}</td>
 							<td><a onclick='RemoveArtefato("{mensagemID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>
 						</tr>

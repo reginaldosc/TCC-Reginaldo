@@ -35,9 +35,8 @@ class Inbox extends CI_Controller {
 		$id = $this->getUserID();
 		// Lista todos os artefatos //
 		$data['mensagens'] = $this->mensagem_model->listarUsuarioMensagem($id);
-		
-		// converte as datas do formato mysql para formato dd/mm/aaaa
-		//$data = convert_date($data,'mensagens','mensagemData');
+
+		$data = convert_date_mysql_timestamp($data, 'mensagens', 'mensagemData');
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'inbox/inbox_view';
@@ -63,7 +62,7 @@ class Inbox extends CI_Controller {
 	/**
 	 * Envia Email
 	 */
-	public function sendEmail()
+	public function sendMensagem()
 	{
 
 		// Recupera dados enviados via formulario //
@@ -96,36 +95,49 @@ class Inbox extends CI_Controller {
 		}
 		else
 		{
-			$config = Array(
-			    'protocol' => 'smtp',
-			    'smtp_host' => 'ssl://smtp.googlemail.com',
-			    'smtp_port' => 465,
-			    'smtp_user' => 'mensagemquality@gmail.com',
-			    'smtp_pass' => 'intelbras',
-			);
+			$this->sendEmail($emailTo, $assunto, $mensagem);
+		}
 
-			$this->load->library('email', $config);
-			$this->email->set_newline("\r\n");
-
-			// recupera dados da sessao para envio //
-			$nomeFrom = $this->session->userdata('usuarioNome');
-			$emailFrom = $this->session->userdata('usuarioEmail');
-
-			$this->email->from($emailFrom, $nomeFrom);
-			$this->email->to($emailTo);
-
-			$this->email->subject($assunto);
-			$this->email->message($mensagem);
+	}
 
 
-			if (!$this->email->send())
-			{
-			    show_error($this->email->print_debugger());
-			}
-			else
-			{
-			    echo 'E-mail Enviado com Sucesso!';
-			}
+	/**
+	 * Envia Email
+	 */
+	public function sendEmail($emailTo, $assunto , $mensagem)
+	{
+		// configs //	
+		$config = Array(
+		    'protocol' => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'mensagemquality@gmail.com',
+		    'smtp_pass' => 'intelbras',
+		);
+
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");
+
+		// recupera dados da sessao para envio //
+		$nomeFrom = $this->session->userdata('usuarioNome');
+		$emailFrom = $this->session->userdata('usuarioEmail');
+
+		$this->email->from($emailFrom, $nomeFrom);
+		$this->email->to($emailTo);
+
+		$this->email->subject($assunto);
+		$this->email->message($mensagem);
+
+
+		if (!$this->email->send())
+		{
+		    show_error($this->email->print_debugger());
+		}
+		else
+		{  	
+		   	$this->session->set_userdata('msg', "<div class='alert alert-success'> E-mail Enviado com Sucesso! </div>");
+		
+			redirect('inbox/listAll');
 		}
 
 	}
