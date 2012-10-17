@@ -67,7 +67,6 @@
 				<thead>
 					<tr>
 						<th>Remetente</th>
-						<th>Destinatario</th>
 						<th>Assunto</th>
 						<th>Data</th>
 						<th>Excluir</th>
@@ -78,7 +77,6 @@
 					{mensagens}
 						<tr>
 							<td>{usuarioNome}</td>
-							<td>{destinatarioID}</td>
 							<td>{mensagemAssunto}</td>	
 							<td>{mensagemData}</td>
 							<td><a onclick='RemoveArtefato("{mensagemID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>

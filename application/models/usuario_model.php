@@ -130,6 +130,26 @@ class Usuario_model extends CI_Model {
 	
 		return $query->result();
 	}
+
+
+	/**
+	 * Busca por Email
+	 */
+	function buscarByEmail($email)
+	{
+		$this->db->select('*');
+		
+		$this->db->from('Usuario');
+
+		$this->db->where('usuarioEmail', $email);
+
+		$query = $this->db->get();
+
+		 if ($query->num_rows == 1)
+		 {
+		 	return $query->result();
+		 }
+	}
 	
 	
 	/**
@@ -170,6 +190,8 @@ class Usuario_model extends CI_Model {
 		return $query->result();
 
 	}
+
+
 
 
 /**

@@ -45,10 +45,12 @@ class Mensagem_model extends CI_Model {
 	/**
 	 * Lista dados
 	 */
-	function listarUsuarioMensagem()
+	function listarUsuarioMensagem($id)
 	{
 		$this->db->select('*');
 		$this->db->from('Mensagem');
+
+		$this->db->where('destinatarioID', $id);
 		$this->db->join('Usuario' , 'Usuario.usuarioID = Mensagem.remetenteID');
 		
 		$query = $this->db->get();

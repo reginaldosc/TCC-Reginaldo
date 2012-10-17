@@ -33,7 +33,10 @@ class Login extends CI_Controller {
 			$data = array(
 
 				'usuarioLogin' => $this->input->post('login'),
-				'usuarioTipo' => $query[0]->tipoID, 
+				'usuarioTipo' => $query[0]->tipoID,
+				'usuarioID' => $query[0]->usuarioID,
+				'usuarioNome' => $query[0]->usuarioNome,
+				'usuarioEmail' => $query[0]->usuarioEmail,   
 				'logged' => true
 
 			);

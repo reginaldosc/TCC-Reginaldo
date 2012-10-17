@@ -60,9 +60,16 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+	// Pega o Tipo do usuario na session //
 	public function getTipo()
 	{
 		return $this->session->userdata('usuarioTipo');
+	}
+
+	// Pega o ID do usuario na session //
+	public function getUserID()
+	{
+		return $this->session->userdata('usuarioID');
 	}
 }
 // END Controller class

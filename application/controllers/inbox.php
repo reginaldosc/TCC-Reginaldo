@@ -7,6 +7,7 @@ class Inbox extends CI_Controller {
 	{
 		parent::__construct();
 		$this->logged();
+		date_default_timezone_set('America/Sao_Paulo');
 
 	}
 
@@ -31,8 +32,9 @@ class Inbox extends CI_Controller {
 	public function listAll()
 	{
 
+		$id = $this->getUserID();
 		// Lista todos os artefatos //
-		$data['mensagens'] = $this->mensagem_model->listarUsuarioMensagem();
+		$data['mensagens'] = $this->mensagem_model->listarUsuarioMensagem($id);
 		
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		//$data = convert_date($data,'mensagens','mensagemData');
@@ -64,45 +66,67 @@ class Inbox extends CI_Controller {
 	public function sendEmail()
 	{
 
+		// Recupera dados enviados via formulario //
 		$emailTo  	= $this->input->post('Email');
 		$assunto  	= $this->input->post('Assunto');
 		$mensagem   = $this->input->post('Mensagem');
 
 
 		/**
-		 * se e-mail tiver cadastrado envia por sendMsg,
+		 * se o e-mail for de algum usuario já cadastrado no sistema, envia por sendMsg,
 		 * caso contrário envia um e-mail.
 		 */
 
-		$teste = 1;
+		// Busca dados do usuario //
+		$retorno = $this->usuario_model->buscarByEmail($emailTo);
 
-		if ($teste = 1)
+		if ($retorno)
 		{
 			
-			echo $emailTo;
-			echo $assunto;
-			echo $mensagem;
+			// MSG //
+			$remetente		= $this->getUserID();
+			$destinatario	= $retorno[0]->usuarioID;
+			$status 		= STATUS_DIRETA;
+
+			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+			$this->mensagem->sendMsg($remetente, $destinatario, $assunto, $mensagem , $status);
+
+			redirect('inbox/listAll');
 
 		}
 		else
 		{
+			$config = Array(
+			    'protocol' => 'smtp',
+			    'smtp_host' => 'ssl://smtp.googlemail.com',
+			    'smtp_port' => 465,
+			    'smtp_user' => 'mensagemquality@gmail.com',
+			    'smtp_pass' => 'intelbras',
+			);
 
-			echo "erro";
-			// // Carrega lib de envio de email //
-			// $this->load->library('email');
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
 
-			// // Preenche com os dados para Envio //
-			// $this->email->from('jairojair@gmail.com','Jairo Jair');
-			
-			// $this->email->to($EmailTo);
-			// $this->email->subject($assunto);
-			// $this->email->message($mensagem);
-			
-			// $this->email->send();
+			// recupera dados da sessao para envio //
+			$nomeFrom = $this->session->userdata('usuarioNome');
+			$emailFrom = $this->session->userdata('usuarioEmail');
 
+			$this->email->from($emailFrom, $nomeFrom);
+			$this->email->to($emailTo);
+
+			$this->email->subject($assunto);
+			$this->email->message($mensagem);
+
+
+			if (!$this->email->send())
+			{
+			    show_error($this->email->print_debugger());
+			}
+			else
+			{
+			    echo 'E-mail Enviado com Sucesso!';
+			}
 		}
-
-		//echo $this->email->print_debugger();
 
 	}
 
