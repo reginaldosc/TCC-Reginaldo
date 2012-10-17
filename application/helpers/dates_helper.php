@@ -83,34 +83,44 @@ if ( !function_exists('date_now'))
 
 
 /**
- * Retorna a data do sistema no formato dd/mm/aaaa
+ * Retorna a data do sistema no formato 17/10/2012 - 01:23 59
  */
-if ( !function_exists('date_now_mysql'))
+if ( !function_exists('convert_date_mysql_timestamp'))
 {
-	function date_now_mysql()
+	function convert_date_mysql_timestamp($array, $objName, $dateName)
 	{
 		$CI =& get_instance();
+		
 		date_default_timezone_set('America/Sao_Paulo');
 
-		return date("Y/m/d");
+		// Formato da data //
+		$datestring = "%d/%m/%Y às %H:%i e %s segundos";
+
+		// Caracteres a serem retirados //
+		$pontos = array(":", "-", " ");
+
+		if (!empty($array[$objName]))
+		{
+			$tamanho = sizeof($array[$objName]);
+
+			for ($i=0; $i < $tamanho; $i++) 
+			{
+				// Recupera a data do bd //
+				$string = $array[$objName][$i]->$dateName;
+
+				// retira caracteres da data vinda do bd //
+				$dateBD = str_replace($pontos,"", $string);
+
+				// pega a data vinda do bd sem os caracteres e formata como espeficicado //
+		 		$date_convertida = mdate($datestring, mysql_to_unix($dateBD));
+
+		 		$array[$objName][$i]->$dateName = $date_convertida;
+			}
+		}
+
+		return $array;
 
 	}	
-}
-
-
-/**
- * Retorna a data do sistema no formato dd/mm/aaaa
- */
-if ( !function_exists('date_now_mysql_with_seconds'))
-{
-	function date_now_mysql_with_seconds()
-	{
-		$CI =& get_instance();
-		date_default_timezone_set('America/Sao_Paulo');
-
-		return date("Y/m/d h:i:s");
-
-	}
 }
 
 
