@@ -80,21 +80,22 @@ class AC extends CI_Controller {
 	 */
 	public function execAC($id)
 	{
-					
+		/*			
+		$ac['ac'] 	= $this->ac_model->buscarAC($id);
+		$id2		= $ac['ac'][0]->ncID;
+		
 		$status['s'] = $this->ac_model->buscaStatus($id);
 		
 		if(($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA))
-		{
+		*/{
 
 			$data['statusID']		= STATUS_EXECUTADA;
 			$data['acDataFinal']	= date_now_mysql();
-
+			print_r($data);
 			$this->ac_model->atualizaAc($id, $data);
 
-			// Buscar Auditor //
+/*			// Buscar Auditor //
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
-			$id2		= $ac['ac'][0]->ncID;
-			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
 			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
 
 			// MSG //
@@ -104,16 +105,15 @@ class AC extends CI_Controller {
 
 			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
 			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
-		}
-		else 
+	*/	}
+		/*else 
 		{
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
-			$id2		= $ac['ac'][0]->ncID;
 			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status AGENDADA ou RETORNADA.');
 				
-		}
+		}*/
 		
-		redirect("nc/visualizarNc/$id2");
+		//redirect("nc/visualizarNc/$id2");
 	}
 
 	/**
