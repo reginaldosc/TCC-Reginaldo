@@ -57,10 +57,10 @@ class Usuario extends CI_Controller {
 		$data['cargos'] = $this->cargo_model->listar(2);
 
 		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar();
+		$data['departamentos'] = $this->departamento_model->listar(0);
 
 		// Lista todas as unidades de negocio //
-		$data['unidades'] = $this->unidade_model->listar();
+		$data['unidades'] = $this->unidade_model->listar(0);
 
 		// Lista todos os tipos de usuario //
 		$data['tipos'] = $this->tipo_model->listar();
@@ -89,6 +89,7 @@ class Usuario extends CI_Controller {
 		$data['cargoID']    		= $this->input->post('Cargo');
 		$data['departamentoID']		= $this->input->post('Setor');
 		$data['tipoID']   		    = $this->input->post('Tipo');
+		$data['usuarioAtivo']		= "SIM";
 			 
 		 
 		// Insere os dados do novo usuario no bd //

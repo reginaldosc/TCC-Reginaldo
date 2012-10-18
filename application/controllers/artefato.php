@@ -49,6 +49,9 @@ class Artefato extends CI_Controller {
 	public function newArtefato()
 	{
 
+		// Lista todos os usuarios //
+		$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
+		
 		// Carrega a view correspondende //
 		$data['main_content'] = 'artefato/newArtefato_view';
 
@@ -68,6 +71,8 @@ class Artefato extends CI_Controller {
 		$data['artefatoNome']   	= $this->input->post('Nome');
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
+		
+		$data['artefatoResponsavel']= $this->input->post('Responsavel');
 		
 		$data['artefatoAtivo']		= 'SIM';
 					 
@@ -90,7 +95,11 @@ class Artefato extends CI_Controller {
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
 		
+		$data['artefatoResponsavel']= $this->input->post('Responsavel');
+		
 		$data['artefatoAtivo']		= $this->input->post('Ativo');
+		
+		//print_r($data);
 		
 		$this->artefato_model->editar($data);
 		
@@ -106,9 +115,11 @@ class Artefato extends CI_Controller {
 	 */
 	public function buscaArtefato($id)
 	{
-		$data['main_content'] = 'artefato/editArtefato_view';
+		$data['main_content']	= 'artefato/editArtefato_view';
 		
-		$data['artefato'] = $this->artefato_model->buscar($id);
+		$data['artefato']		= $this->artefato_model->buscar($id);
+		
+		$data['usuarios']		= $this->usuario_model->listarPorTipo('4');
 		
 		$this->parser->parse('template', $data);
 		

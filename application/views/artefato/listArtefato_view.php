@@ -20,6 +20,7 @@
 			<tr>
 				<th>Artefato</th>
 				<th>Descricao</th>
+				<th>Responsável</th>
 				<th>Ativo</th>
 				<th>Editar</th>
 				<th>Excluir</th>
@@ -31,6 +32,7 @@
 			<tr>	
 				<td>{artefatoNome}</td>
 				<td>{artefatoDescricao}</td>
+				<td>{usuarioNome}</td>
 				<td>{artefatoAtivo}</td>
 				<td><a href="buscaArtefato/{artefatoID}" class='icon-edit'> <a/></td>
 				<td><a onclick='RemoveArtefato("{artefatoID}")' data-toggle="modal" href="#myModal" class='icon-trash'></a></td>

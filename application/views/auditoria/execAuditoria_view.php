@@ -169,6 +169,17 @@
 						<input class="input-xlarge" id="Comentario" autocomplete="off" placeholder="Adicione mais informações." type="text">
 				</div>
 			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="">Responsável</label>
+				<div class="controls">
+					<select id="Responsavel" name="Responsavel" class="input-xlarge">						
+						{usuarios}		
+						<option value="{usuarioID}"> {usuarioNome} </option>
+						{/usuarios}						
+				    </select>
+				</div>
+			</div>
 
 		</div>
 

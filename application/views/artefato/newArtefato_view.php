@@ -28,6 +28,18 @@
 				</div>
 			</div>
 			
+			<div class="control-group">
+				<label class="control-label" for="">Responsável</label>
+				<div class="controls">					
+					<select id="Responsavel" name="Responsavel" class="input-xlarge">
+						{usuarios}
+							<option value="{usuarioID}">{usuarioNome}</option>
+						{/usuarios}
+					</select>
+					
+				</div>
+			</div>
+			
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary">Salvar</button>
 				<button class="btn" type="reset">Limpar</button>

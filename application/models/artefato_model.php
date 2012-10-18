@@ -49,6 +49,7 @@ class Artefato_model extends CI_Model {
 			$this->db->select('*');
 			$this->db->from('Artefato');
 			$this->db->where('artefatoAtivo', 'SIM');
+			$this->db->join('Usuario', 'Artefato.artefatoResponsavel = Usuario.usuarioID');
 			$query = $this->db->get();			
 		}
 		//lista somente os inativos
@@ -57,6 +58,7 @@ class Artefato_model extends CI_Model {
 			$this->db->select('*');
 			$this->db->from('Artefato');
 			$this->db->where('artefatoAtivo', 'NÃO');
+			$this->db->join('Usuario', 'Artefato.artefatoResponsavel = Usuario.usuarioID');
 			$query = $this->db->get();	
 		}
 		//lista todos (ativos + inativos)
@@ -64,6 +66,7 @@ class Artefato_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Artefato');
+			$this->db->join('Usuario', 'Artefato.artefatoResponsavel = Usuario.usuarioID');
 			$query = $this->db->get();
 		}
 		
@@ -76,8 +79,8 @@ class Artefato_model extends CI_Model {
 	 */
 	function buscar($id)
 	{
-		$query = $this->db->query("SELECT artefatoID, artefatoNome, artefatoDescricao, artefatoAtivo 
-				FROM Artefato WHERE artefatoID = '$id' LIMIT 1");
+		$query = $this->db->query("SELECT artefatoID, artefatoNome, artefatoDescricao, artefatoAtivo, 
+				artefatoResponsavel FROM Artefato WHERE artefatoID = '$id' LIMIT 1");
 		
 		return $query->result();		
 	}
@@ -88,16 +91,18 @@ class Artefato_model extends CI_Model {
 	 */
 	function editar($data)
 	{
-		$id 		= $data['artefatoID']; 
+		$id 			= $data['artefatoID']; 
 		
-		$nome 		= $data['artefatoNome'];
+		$nome 			= $data['artefatoNome'];
 
-		$descricao 	= $data['artefatoDescricao']; 
+		$descricao 		= $data['artefatoDescricao'];
+
+		$responsavel	= $data['artefatoResponsavel'];
 		
-		$ativo		= $data['artefatoAtivo'];
+		$ativo			= $data['artefatoAtivo'];
 		
 		$query = $this->db->query("UPDATE Artefato SET artefatoNome='$nome', artefatoDescricao='$descricao',
-				artefatoAtivo='$ativo' WHERE artefatoID='$id'");
+				artefatoAtivo='$ativo', artefatoResponsavel='$responsavel' WHERE artefatoID='$id'");
 		 
 	}
 	
