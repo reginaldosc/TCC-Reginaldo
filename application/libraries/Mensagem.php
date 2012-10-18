@@ -28,7 +28,7 @@ class Mensagem {
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
 				$data['mensagemAssunto']	= "A $name foi agendada"; 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -41,7 +41,7 @@ class Mensagem {
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
 				$data['mensagemAssunto']	= "A $name foi realizada"; 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -54,7 +54,7 @@ class Mensagem {
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
 				$data['mensagemAssunto']	= "A $name foi aberta";	 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -67,7 +67,7 @@ class Mensagem {
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
 				$data['mensagemAssunto']	= "A $name foi fechada"; 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -80,7 +80,7 @@ class Mensagem {
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
 				$data['mensagemAssunto']	= "A $name foi executada"; 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;
@@ -92,8 +92,8 @@ class Mensagem {
 
 				$data['remetenteID']		= $remetente;
 				$data['destinatarioID']		= $destinatario;
-				$data['mensagemAssunto']	= "A $name foi retorna"; 
-				$data['mensagemBody']		= $mensagem;
+				$data['mensagemAssunto']	= "A $name foi retornada"; 
+				$data['mensagemBody']		= MSG01;
 
 				$CI->cadastrarMsg($data);
 				break;

@@ -85,8 +85,13 @@ class NC extends CI_Controller {
 		
 		$this->nc_model->cadastrar($data);
 
-		// Envia mensagem no formato id do usuario, status //
-		$this->mensagem->sendMsg(4, STATUS_ABERTA);
+		// MSG //
+		$remetente		= USER_ADMIN;
+		$destinatario	= $this->input->post('Acompanhante');
+		$status 		= STATUS_ABERTA;
+
+		// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
+		$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
 
 	}
 

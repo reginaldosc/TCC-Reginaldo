@@ -76,5 +76,16 @@ define('USER_USUARIO',		4);
 
 
 
+/*
+|--------------------------------------------------------------------------
+| Constantes de mensagens
+|--------------------------------------------------------------------------
+|
+| Constantes de mensagens
+|
+*/
+
+define('MSG01',	"Mensagem enviada automaticamente pelo sistema");
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
