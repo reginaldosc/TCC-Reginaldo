@@ -159,7 +159,7 @@ class Auditoria extends CI_Controller {
 
 		$array_artefatos = $this->input->post('allArtefatos');
 		$array_artefatos = explode("," ,$array_artefatos);
-
+		print_r($array_artefatos);
 		$tam = count($array_artefatos);
 
 		for ($i=0; $i < $tam; $i++) { 
