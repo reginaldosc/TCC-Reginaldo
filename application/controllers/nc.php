@@ -80,6 +80,7 @@ class NC extends CI_Controller {
 		$data['ncComentario']  		= $this->input->post('Comentario');
 		$data['auditoriaID']  		= $this->input->post('Auditoria');
 		$data['artefatoID']  		= $this->input->post('Artefato');
+		$data['ncResponsavel'] 		= $this->input->post('Responsavel');
 
 		$data['statusID']   		= STATUS_ABERTA;
 		
@@ -87,7 +88,7 @@ class NC extends CI_Controller {
 
 		// MSG //
 		$remetente		= USER_ADMIN;
-		$destinatario	= $this->input->post('Acompanhante');
+		$destinatario	= $this->input->post('Responsavel');
 		$status 		= STATUS_ABERTA;
 
 		// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //

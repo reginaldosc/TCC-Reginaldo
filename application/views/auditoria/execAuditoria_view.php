@@ -74,8 +74,7 @@
 		<thead>
 			<tr>
 				<th>Artefato</th>
-				<th>Resultado</th>				
-				<th>Responsável</th>		
+				<th>Resultado</th>					
 			</tr>
 		</thead>
 				
@@ -103,7 +102,6 @@
 					</label>
 				
 				</td>
-				<td>{usuarioNome}</td>
 			</tr>
 			{/artefatos}
 
@@ -174,9 +172,13 @@
 			<div class="control-group">
 				<label class="control-label" for="">Responsável</label>
 				<div class="controls">
-					<input class="input-xlarge" id="disabledInput" type="text" value="{artefatoResponsavel}" disabled>
+					<select id="Responsavel" name="Responsavel" class="input-xlarge">						
+						{usuarios}		
+						<option value="{usuarioID}"> {usuarioNome} </option>
+						{/usuarios}						
+				    </select>
 				</div>
-			</div>
+			</div>	
 			
 		</div>
 

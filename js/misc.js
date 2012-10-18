@@ -8,18 +8,18 @@ $(document).ready(function(){
 		var comment = $('#Comentario').val();
 		var auditoria = $('#Auditoria').val();
 		var artefato = $('#Artefato').val();
-		var acompanhante = $('#Acompanhante').val();
+		var responsavel = $('#Responsavel').val();
 
 		// Limpa //
 		$('#Descricao').val('');
 		$('#Data').val('');
 		$('#Comentario').val('');
 		$('#Artefato').val('');
-		$('#Acompanhante').val('');
+		$('#Responsavel').val('');
 		
 		if (desc != "" && date != "" && comment != "" ){
 			
-			$.post("../../nc/cadastrarNc/", { Descricao : desc , Data : date, Comentario : comment, Auditoria : auditoria, Artefato : artefato, Acompanhante : acompanhante }, "json");
+			$.post("../../nc/cadastrarNc/", { Descricao : desc , Data : date, Comentario : comment, Auditoria : auditoria, Artefato : artefato, Responsavel : responsavel }, "json");
 			
 			$('.modal-body').slideUp(400);
 			$('#alert-msg').slideDown(400).delay(800);
@@ -64,7 +64,7 @@ $(document).ready(function(){
 		$('#Data').val('');
 		$('#Comentario').val('');
 		$('#Artefato').val('');
-		$('#Acompanhante').val('');
+		$('#Responsavel').val('');
 		
 		// Deixa página default //
 		$('.modal-body').slideDown();
