@@ -201,13 +201,15 @@ CREATE TABLE IF NOT EXISTS rg_quality.NC (
 
   auditoriaID INT NOT NULL ,
   statusID INT NOT NULL ,
-  artefatoID INT NOT NULL ,   
+  artefatoID INT NOT NULL ,
+  ncResponsavel INT NOT NULL ,  
 
   PRIMARY KEY (ncID),
 
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID) ,
   FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID) ,
-  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID)
+  FOREIGN KEY (auditoriaID) REFERENCES rg_quality.Auditoria (auditoriaID),
+  FOREIGN KEY (ncResponsavel) REFERENCES rg_quality.Usuario (usuarioID)
 
 
   )ENGINE = InnoDB;
@@ -224,13 +226,11 @@ CREATE TABLE IF NOT EXISTS rg_quality.AC (
   acAcao VARCHAR(45) NOT NULL,
   statusID INT NOT NULL ,
   ncID INT NOT NULL ,   
-  acResponsavel INT NOT NULL,
-
+  
   PRIMARY KEY (acID) ,
 
   FOREIGN KEY (ncID) REFERENCES rg_quality.NC (ncID) ,
-  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID),
-  FOREIGN KEY (acResponsavel) REFERENCES rg_quality.Usuario (usuarioID)
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
   
   )ENGINE = InnoDB;
 
