@@ -41,6 +41,12 @@ class NC extends CI_Controller {
 
 		// converte as datas do formato mysql para formato dd/mm/aaaa
 		$data = convert_date($data,'ncs','ncDataFinalprev');
+		
+		if($data['ncs'][0]->statusID == 8)
+		{
+			// converte as datas do formato mysql para formato dd/mm/aaaa
+			$data = convert_date($data,'ncs','ncDataFinal');
+		}
 
 		if($this->getTipo() == USER_AUDITOR)
 		{
@@ -180,12 +186,12 @@ class NC extends CI_Controller {
 	{
 
 		$status = $this->verificaStatusAcs($id);
-		print_r($status);
-		
+				
 		if($status == "TRUE")
 		{
-			$statusID = 8;
-			$this->nc_model->setStatus($id, $statusID);
+			$data['statusID']		 = 8;
+			$data['acDataFinal']	 = implode("-",array_reverse(explode("/",date_now())));
+			$this->nc_model->setStatus($id, $data);
 		}
 		
 		// Lista todas as auditorias //
@@ -196,7 +202,8 @@ class NC extends CI_Controller {
 
 		$auditoria = $data['ncs'][0]->auditoriaID;
 		
-		$responsavel 			= $data['ncs'][0]->artefatoResponsavel;
+		//print_r($data);
+		$responsavel 			= $data['ncs'][0]->ncResponsavel;
 		$data['responsavel'] 	= $this->usuario_model->getUsuario($responsavel);
 		
 		

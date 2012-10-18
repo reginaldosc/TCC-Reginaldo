@@ -22,7 +22,7 @@
 			<br>
 			<br>			
 			
-			<strong> Data Prevista: </strong> {ncDataFinalprev}
+			<strong> Data Prev. Finalização: </strong> {ncDataFinalprev}
 			<br>
 			<br>
 		{/ncs}

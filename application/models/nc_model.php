@@ -74,9 +74,11 @@ class NC_model extends CI_Model {
 	}
 	
 	
-	public function setStatus($id, $status)
+	public function setStatus($id, $data)
 	{
-		$query = $this->db->query("UPDATE NC SET StatusID='$status' WHERE ncID='$id'");
+		$status = $data['statusID'];
+		$date = $data['acDataFinal'];
+		$query = $this->db->query("UPDATE NC SET StatusID='$status', ncDataFinal='$date' WHERE ncID='$id'");
 	}
 	
 	

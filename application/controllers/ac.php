@@ -62,10 +62,11 @@ class AC extends CI_Controller {
 		if(($status['s'][0]->statusID == STATUS_ABERTA))
 		{
 			$data['ncID'] = $id;
+			
 			// Carrega a view correspondende //
 			$data['main_content'] = 'ac/newAc_view';
 			// Envia todas as informações para tela //			
-			$this->parser->parse('template', $data);
+			$this->parser->parse('template', $data);				
 		}
 		else 
 		{
@@ -80,21 +81,24 @@ class AC extends CI_Controller {
 	 */
 	public function execAC($id)
 	{
-		/*			
-		$ac['ac'] 	= $this->ac_model->buscarAC($id);
-		$id2		= $ac['ac'][0]->ncID;
+		$ac['ac'] 		= $this->ac_model->buscarAC($id);
+		$id2			= $ac['ac'][0]->ncID;
+		$nc['nc']		= $this->nc_model->buscarNC($id2);
+		$responsavel	= $nc['nc'][0]->ncResponsavel;
+		
+		$user = $this->getUserID();
 		
 		$status['s'] = $this->ac_model->buscaStatus($id);
 		
-		if(($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA))
-		*/{
-
+		if(($user == $responsavel) && (($status['s'][0]->statusID == STATUS_AGENDADA) || ($status['s'][0]->statusID == STATUS_RETORNADA)))
+		{
+			
 			$data['statusID']		= STATUS_EXECUTADA;
-			$data['acDataFinal']	= date_now_mysql();
-			print_r($data);
+			$data['acDataFinal']	= implode("-",array_reverse(explode("/",date_now())));
+			//print_r($data);
 			$this->ac_model->atualizaAc($id, $data);
 
-/*			// Buscar Auditor //
+			// Buscar Auditor //
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
 			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
 
@@ -105,15 +109,16 @@ class AC extends CI_Controller {
 
 			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
 			$this->mensagem->sendMsg($remetente, $destinatario, " ", " ", $status);
-	*/	}
-		/*else 
+			
+		}
+		else 
 		{
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
 			$this->session->set_userdata('msg', 'Ação permitada, somente se Ação Corretiva estiver com status AGENDADA ou RETORNADA.');
 				
-		}*/
+		}
 		
-		//redirect("nc/visualizarNc/$id2");
+		redirect("nc/visualizarNc/$id2");
 	}
 
 	/**
@@ -130,7 +135,9 @@ class AC extends CI_Controller {
 
 		$this->ac_model->cadastrar($data);
 
-		redirect('nc/listAll','refresh');
+		$this->session->set_userdata('msgOK', ' AC cadastrada com sucesso !');
+		
+		redirect('nc/listAll');
 
 	}
 
@@ -195,11 +202,10 @@ class AC extends CI_Controller {
 			// Buscar Acompanhante //
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
 			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
-			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
 
 			// MSG //
 			$remetente		= USER_ADMIN;
-			$destinatario	= $ad['ad'][0]->acompanhanteID;
+			$destinatario	= $ad['nc'][0]->ncResponsavel;
 			$status 		= STATUS_FECHADA;
 
 			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
@@ -228,11 +234,10 @@ class AC extends CI_Controller {
 			// Buscar Acompanhante //
 			$ac['ac'] 	= $this->ac_model->buscarAC($id);
 			$nc['nc'] 	= $this->nc_model->buscarNC( $ac['ac'][0]->ncID );
-			$ad['ad']	= $this->auditoria_model->buscarAuditoria( $nc['nc'][0]->auditoriaID );
-
+			
 			// MSG //
 			$remetente		= USER_ADMIN;
-			$destinatario	= $ad['ad'][0]->acompanhanteID;
+			$destinatario	= $ad['nc'][0]->ncResponsavel;
 			$status 		= STATUS_RETORNADA;
 
 			// Envia mensagem no formato: $remetente, $destinatario, $assunto, $mensagem, $status //
@@ -304,7 +309,7 @@ class AC extends CI_Controller {
 			$data['main_content']	= 'ac/editAc_view';
 	
 			$data['ac'] 		= $this->ac_model->listarAC($id);
-	
+
 			$this->parser->parse('template', $data);
 		}
 		else
