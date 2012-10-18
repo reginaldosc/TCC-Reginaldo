@@ -72,8 +72,6 @@ class Artefato extends CI_Controller {
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
 		
-		$data['artefatoResponsavel']= $this->input->post('Responsavel');
-		
 		$data['artefatoAtivo']		= 'SIM';
 					 
 		$this->artefato_model->cadastrar($data);
@@ -94,8 +92,6 @@ class Artefato extends CI_Controller {
 		$data['artefatoNome']   	= $this->input->post('Nome');
 		
 		$data['artefatoDescricao']  = $this->input->post('Descricao');
-		
-		$data['artefatoResponsavel']= $this->input->post('Responsavel');
 		
 		$data['artefatoAtivo']		= $this->input->post('Ativo');
 		
@@ -118,8 +114,6 @@ class Artefato extends CI_Controller {
 		$data['main_content']	= 'artefato/editArtefato_view';
 		
 		$data['artefato']		= $this->artefato_model->buscar($id);
-		
-		$data['usuarios']		= $this->usuario_model->listarPorTipo('4');
 		
 		$this->parser->parse('template', $data);
 		

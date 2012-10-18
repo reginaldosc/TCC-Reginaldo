@@ -179,6 +179,7 @@ class NC extends CI_Controller {
 	{
 
 		$status = $this->verificaStatusAcs($id);
+		print_r($status);
 		
 		if($status == "TRUE")
 		{
@@ -193,7 +194,11 @@ class NC extends CI_Controller {
 		$data = convert_date($data,'ncs','ncDataFinalprev');
 
 		$auditoria = $data['ncs'][0]->auditoriaID;
-
+		
+		$responsavel 			= $data['ncs'][0]->artefatoResponsavel;
+		$data['responsavel'] 	= $this->usuario_model->getUsuario($responsavel);
+		
+		
 		$data['auditorias'] = $this->auditoria_model->listarAuditoria($auditoria);
 
 		$projeto = $data['auditorias'][0]->projetoID;
@@ -225,6 +230,7 @@ class NC extends CI_Controller {
 			// Carrega a view correspondende //
 			$data['main_content'] = 'nc/nc_view';
 		}
+
 		// Envia todas as informacoes para tela //
 		$this->parser->parse('template', $data);
 

@@ -27,12 +27,12 @@
 			<br>
 		{/ncs}
 
-		{acompanhante}
+		{responsavel}
 
 			<strong> Responsável: </strong> {usuarioNome}
 			<br>
 			<br>
-		{/acompanhante}
+		{/responsavel}		
 		
 	  </div>
 
@@ -55,6 +55,13 @@
 		
 		{/auditorias}
 
+		{acompanhante}
+
+			<strong> Responsável: </strong> {usuarioNome}
+			<br>
+			<br>
+		{/acompanhante}
+		
 	  </div>
 	</div>
 

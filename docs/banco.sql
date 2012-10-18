@@ -140,12 +140,10 @@ CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
   artefatoNome VARCHAR(45) NOT NULL ,
   artefatoDescricao TEXT NOT NULL ,
   artefatoAtivo VARCHAR(3) NOT NULL,
-  artefatoResponsavel INT NOT NULL,
   
-  PRIMARY KEY (artefatoID),
+  PRIMARY KEY (artefatoID)
 
-  FOREIGN KEY (artefatoResponsavel) REFERENCES rg_quality.Usuario (usuarioID)
-
+  
   )ENGINE = InnoDB;
 
 
@@ -226,11 +224,13 @@ CREATE TABLE IF NOT EXISTS rg_quality.AC (
   acAcao VARCHAR(45) NOT NULL,
   statusID INT NOT NULL ,
   ncID INT NOT NULL ,   
-  
+  acResponsavel INT NOT NULL,
+
   PRIMARY KEY (acID) ,
 
   FOREIGN KEY (ncID) REFERENCES rg_quality.NC (ncID) ,
-  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
+  FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID),
+  FOREIGN KEY (acResponsavel) REFERENCES rg_quality.Usuario (usuarioID)
   
   )ENGINE = InnoDB;
 
@@ -314,7 +314,7 @@ INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4, 'SIM');
 
 
 -- Inserindo Artefatos --
-INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto', 'SIM', 5);
-INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto', 'SIM', 4);
-INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema', 'SIM', 5);
+INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema', 'SIM');
 
