@@ -26,16 +26,16 @@ class AC_model extends CI_Model {
 	function atualizaAc($id, $data) 
 	{
 		print_r($data);
-	/*	
-		$acao 		= $data['acAcao'];
 		
-		$descricao 	= $data['acDescricao'];
+		$status 		= $data['statusID'];
 		
-		$query = $this->db->query("UPDATE AC SET acAcao='$acao', acDescricao='$descricao'
+		$date		 	= $data['acDataFinal'];
+		
+		$query = $this->db->query("UPDATE AC SET statusID='$status', acDataFinal='$date'
 				WHERE acID='$id'");
 		
 		//$this->db->update('AC', $data, "acID = $id");
-	*/}
+	}
 
 
 	/**

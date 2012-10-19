@@ -1,24 +1,32 @@
 <!-- Estrutura -->
 <div class="container">
 
-	<br>
-
-	<!-- Buscador -->
-	<form class="well form-search">
-		<input type="text" class="input-xlarge search-query">
-		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
-	</form>
-
-	<br>
-	<?php 
+		<br>	
+		<div class="page-header">
+			<h2>
+				Listagem <small> de Não Conformidades</small>
+			</h2>
+		</div>
+		<br>
 		
-		$msg = $this->session->userdata('msg');
+		<?php 
+			$msg2 = $this->session->userdata('msgOK');
+			if (!empty($msg2))
+			{
+				echo "<div class='alert alert-success'> $msg2 </div>";
+			}
+			$this->session->unset_userdata('msgOK');
+		?>
 		
-		if (!empty($msg))
-			echo "<div class='alert alert-error'> $msg </div>";
+		<?php 
 		
-		$this->session->unset_userdata('msg');
-	?>	
+			$msg = $this->session->userdata('msg');
+			if (!empty($msg))
+			{
+				echo "<div class='alert alert-error'> $msg </div>";
+			}
+			$this->session->unset_userdata('msg');
+		?>	
 	<br>
 	
 	<!-- Tabela com a lista dos usuarios do sistema -->
@@ -27,7 +35,8 @@
 			<tr>
 				<th>Item não conforme</th>
 				<th>Não conformidade</th>
-				<th>Data Finalização</th>
+				<th>Data Prev. Finalização</th>
+				<th>Data Real. Finalização</th>
 				<th>Status</th>
 				<th>Visualizar</th>
 				<th>Cadastrar Ação Corretiva</th>
@@ -40,6 +49,7 @@
 			<tr>	
 				<td>{artefatoNome}</td>
 				<td>{ncDescricao}</td>
+				<td>{ncDataFinalprev}</td>
 				<td>{ncDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>

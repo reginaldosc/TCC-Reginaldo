@@ -3,12 +3,13 @@
 
 	<br>
 
-	<!-- Buscador -->
-	<form class="well form-search">
-		<input type="text" class="input-xlarge search-query">
-		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
-	</form>
-
+	
+	<div class="page-header">
+			<h2>
+				Listagem <small> de Auditorias</small>
+			</h2>
+		</div>
+		<br>
 	
 	<?php 
 		
@@ -19,7 +20,8 @@
 		
 		$this->session->unset_userdata('msg');
 	?>
-
+	<br>
+	
 	<!-- Tabela com a lista dos usuarios do sistema -->
 	<table class='table table-bordered table-striped'>
 		<thead>

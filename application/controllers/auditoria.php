@@ -159,7 +159,7 @@ class Auditoria extends CI_Controller {
 
 		$array_artefatos = $this->input->post('allArtefatos');
 		$array_artefatos = explode("," ,$array_artefatos);
-		print_r($array_artefatos);
+		
 		$tam = count($array_artefatos);
 
 		for ($i=0; $i < $tam; $i++) { 
@@ -234,7 +234,7 @@ class Auditoria extends CI_Controller {
 
 		}
 
-		redirect('auditoria/listAll','refresh');
+		redirect('auditoria/listAll');
 	}
 
 	/**
@@ -325,6 +325,9 @@ class Auditoria extends CI_Controller {
 		
 			$data['id'] = $id;
 			
+			// Lista todos os usuarios //
+			$data['usuarios'] = $this->usuario_model->listarPorTipo('2');
+			
 			// Lista todas as unidades de negocio //
 			$data['unidades'] = $this->unidade_model->listar(2);
 	
@@ -335,7 +338,7 @@ class Auditoria extends CI_Controller {
 			$data['projetos'] = $this->projeto_model->listar(2);
 	
 			// Carrega a view correspondende //
-			$data['main_content'] = 'auditoria/editAuditoria_view';
+			$data['main_content'] = 'auditoria/admin/editAuditoria_view';
 	
 			// Envia todas as informações para tela //			
 			$this->parser->parse('template', $data);

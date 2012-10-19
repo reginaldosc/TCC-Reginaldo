@@ -16,7 +16,8 @@
 			<tr>
 				<th>Item não conforme</th>
 				<th>Não conformidade</th>
-				<th>Data Prevista</th>
+				<th>Data Prev. Finalização</th>
+				<th>Data Real. Finalização</th>
 				<th>Status</th>
 				<th>Visualizar</th>
 						
@@ -29,6 +30,7 @@
 				<td>{artefatoNome}</td>
 				<td>{ncDescricao}</td>
 				<td>{ncDataFinalprev}</td>
+				<td>{ncDataFinal}</td>
 				<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 				<td><a href="visualizarNc/{ncID}" class='icon-eye-open'><a/></td>
 				
