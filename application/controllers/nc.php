@@ -63,6 +63,23 @@ class NC extends CI_Controller {
 
 
 	/**
+	 * Lista Auditorias com status = Agendadas 
+	 */
+	function listarAgendadas($id) 
+	{
+		$this->db->select('ncID,ncDataFinalprev');
+		
+		$this->db->from('NC');
+
+		$this->db->where('statusID', $id);
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+
+
+	/**
 	 * Recupera as informações do cadastro e grava no bando de dados
 	 */
 	public function cadastrarNc() 

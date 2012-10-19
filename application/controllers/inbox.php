@@ -95,7 +95,7 @@ class Inbox extends CI_Controller {
 		}
 		else
 		{
-			$this->sendEmail($emailTo, $assunto, $mensagem);
+			$this->sendEmail($emailTo, $assunto, $mensagem, $retorno[0]->usuarioNome);
 		}
 
 	}
@@ -104,32 +104,12 @@ class Inbox extends CI_Controller {
 	/**
 	 * Envia Email
 	 */
-	public function sendEmail($emailTo, $assunto , $mensagem)
+	public function sendEmail($emailTo, $assunto , $mensagem, $nomefrom)
 	{
-		// configs //	
-		$config = Array(
-		    'protocol' => 'smtp',
-		    'smtp_host' => 'ssl://smtp.googlemail.com',
-		    'smtp_port' => 465,
-		    'smtp_user' => 'mensagemquality@gmail.com',
-		    'smtp_pass' => 'intelbras',
-		);
 
-		$this->load->library('email', $config);
-		$this->email->set_newline("\r\n");
+		$status = $this->mail->envia_email($emailTo, $assunto , $mensagem, $nomefrom);
 
-		// recupera dados da sessao para envio //
-		$nomeFrom = $this->session->userdata('usuarioNome');
-		$emailFrom = $this->session->userdata('usuarioEmail');
-
-		$this->email->from($emailFrom, $nomeFrom);
-		$this->email->to($emailTo);
-
-		$this->email->subject($assunto);
-		$this->email->message($mensagem);
-
-
-		if (!$this->email->send())
+		if (!$status)
 		{
 		    show_error($this->email->print_debugger());
 		}

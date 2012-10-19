@@ -35,11 +35,11 @@ if ( !function_exists('convert_date'))
 
 
 /**
- * Verifica a se a data é maior 
+ * Verifica a se a data é menor que hoje 
  */
-if ( !function_exists('date_is_bigger'))
+if ( !function_exists('date_is_menor_hoje'))
 {
-	function date_is_bigger($date)
+	function date_is_menor_hoje($date)
 	{
 		$CI =& get_instance();
 		date_default_timezone_set('America/Sao_Paulo');
@@ -52,18 +52,19 @@ if ( !function_exists('date_is_bigger'))
 		list ($dia,$mes,$ano) = explode ('/', $data_auditoria);
 
 		// Data do sistema //
-		list ($d,$m,$y) = explode ('/', $data_atual);
+		list ($dia_atual ,$mes_atual ,$ano_atual) = explode ('/', $data_atual);
 
-		if( ($dia < $d) or ($mes < $m) or ($ano < $y) )  
-		{
-			return FALSE;
-		}
-		else
+		if( ($dia < $dia_atual) && ($mes <= $mes_atual) && ($ano <= $ano_atual) )  
 		{
 			return TRUE;
 		}
+		else
+		{
+			return FALSE;
+		}
 	}	
 }
+
 
 
 /**

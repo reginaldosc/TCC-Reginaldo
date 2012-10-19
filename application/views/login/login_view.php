@@ -36,7 +36,6 @@
 	
 			<div class="form-actions">
 				<button type="submit" class="btn btn-primary">Acessar</button>
-				<button type="button" class="btn">Recuperar senha</button>
 			</div>
 
 	

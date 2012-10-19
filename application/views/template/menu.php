@@ -67,7 +67,7 @@
 					</li>
 					
 					<a href="<?php echo site_url()?>/inbox/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
-					
+					<a href="<?php echo site_url()?>/escalonamento/run" class="btn btn-inverse"> Escalonamento</a>
 				</ul>
 			</div>
 

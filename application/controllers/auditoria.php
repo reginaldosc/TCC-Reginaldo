@@ -421,9 +421,9 @@ class Auditoria extends CI_Controller {
 	public function date_check($date)
 	{
 
-		$retorno = date_is_bigger($date);
+		$retorno = date_is_menor_hoje($date);
 
-		if(!$retorno)  
+		if($retorno)  
 		{
 			$this->form_validation->set_message('date_check', ' - A %s não pode ser menor que a data atual.');
 			return FALSE;

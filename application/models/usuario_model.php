@@ -112,7 +112,7 @@ class Usuario_model extends CI_Model {
 	function buscar($id)
 	{
 		$query = $this->db->query("SELECT usuarioID, usuarioNome, usuarioMatricula, usuarioLogin, usuarioPassword, 
-				usuarioEmail, tipoID, usuarioAtivo FROM Usuario WHERE usuarioID = '$id' LIMIT 1");
+				usuarioEmail, tipoID, departamentoID, usuarioAtivo FROM Usuario WHERE usuarioID = '$id' LIMIT 1");
 		
 		//$query = $this->db->tipo_model->buscar('tipoID');
 	
@@ -149,6 +149,26 @@ class Usuario_model extends CI_Model {
 		 {
 		 	return $query->result();
 		 }
+	}
+
+
+	/**
+	 * Busca por departamento
+	 */
+	function buscarByUsuarioID($departamentoID , $tipoID)
+	{
+		$this->db->select('usuarioID, usuarioEmail');
+		
+		$this->db->from('Usuario');
+
+		$this->db->where('departamentoID', $departamentoID);
+
+		$this->db->where('tipoID', $tipoID);
+
+		$query = $this->db->get();
+
+		return $query->result();
+
 	}
 	
 	

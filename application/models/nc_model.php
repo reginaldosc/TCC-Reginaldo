@@ -72,6 +72,24 @@ class NC_model extends CI_Model {
 	
 		return $query->result();
 	}
+
+	/**
+	 * Lista Auditorias com status = Agendadas 
+	 */
+	function listarAbertas($id) 
+	{
+		$this->db->select('*');
+		
+		$this->db->from('NC');
+
+		$this->db->where('statusID', $id);
+
+		$this->db->join('Usuario' , 'Usuario.usuarioID = ncResponsavel');
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
 	
 	
 	public function setStatus($id, $status)

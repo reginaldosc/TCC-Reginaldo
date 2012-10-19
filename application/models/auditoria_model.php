@@ -45,6 +45,30 @@ class Auditoria_model extends CI_Model {
 		return $query->result();
 	}
 
+	/**
+	 * Lista Auditorias com status = Agendadas 
+	 */
+	function listarAgendadas($id) 
+	{
+		$this->db->select('*');
+		
+		$this->db->from('Auditoria');
+
+		$this->db->where('statusID', $id);
+
+		$this->db->join('Projeto' , 'Projeto.projetoID = Auditoria.projetoID');
+
+		$this->db->join('Departamento' , 'Departamento.departamentoID = Projeto.departamentoID');
+
+		$this->db->join('Unidade' , 'Unidade.unidadeID = Departamento.unidadeID');
+
+		$this->db->join('Usuario' , 'Usuario.usuarioID = Auditoria.auditorID');
+
+		$query = $this->db->get();
+		
+		return $query->result();
+	}
+
 
 	/**
 	 * Buscar Auditoria
