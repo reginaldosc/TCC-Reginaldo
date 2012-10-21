@@ -297,24 +297,39 @@ INSERT INTO rg_quality.Tipo VALUES (null, 'Usuario');
 INSERT INTO rg_quality.Cargo VALUES (null, 'Técnico', 'SIM');
 INSERT INTO rg_quality.Cargo VALUES (null, 'Analista', 'SIM');
 INSERT INTO rg_quality.Cargo VALUES (null, 'Engenheiro', 'SIM');
-
+INSERT INTO rg_quality.Cargo VALUES (null, 'Coordenador de Projetos', 'SIM');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Supervisor', 'SIM');
+INSERT INTO rg_quality.Cargo VALUES (null, 'Especialista', 'SIM');
 
 -- Inserindo Usuario --
---									  (ID, Nome, Matricula, Login, Password, Email, cargoID, departamentoID, tipoID) --
-INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador',000001, 'admin','admin','admin@localhost.com', 2, 1, 1, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello',000002, 'marcelo','marcelo','marcelo@auditor.com', 2, 1, 2, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane',000003, 'fabiane','fabiane','fabiane@supervisor.com', 2, 1, 3, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra',000004, 'alessandra','alessandra','alessandra@usuario.com', 2, 1, 4, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Reginaldo',021784, 're021784','re021784','reginaldo.goncalves.sc@gmail.com', 2, 1, 4, 'SIM');
-
+--									  (ID, 		Nome,			 Matricula, Login, Password, Email, cargoID, departamentoID, tipoID, ativo) --
+INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador'	  ,000001, 'admin','admin','admin@localhost.com'		   	 , 2, 1, 1, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Auditor'	  ,012345, 'ma012345','ma012345','thiry@univali.br' 		 , 1, 1, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Superv.'	  ,112345, 'ma112345','ma112345','thiry@univali.br'			 , 5, 1, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Usuario'	  ,212345, 'ma212345','ma212345','thiry@univali.br'			 , 3, 1, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Auditora'	  ,123456, 'fa123456','fa123456','fabiane.benitti@univali.br', 1, 1, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Superv.'	  ,223456, 'fa223456','fa223456','fabiane.benitti@univali.br', 5, 1, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Usuario'	  ,323456, 'fa323456','fa323456','fabiane.benitti@univali.br', 3, 1, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Auditora',234567, 'al234567','al234567','alessandrazoucas@gmail.com', 1, 1, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Superv.' ,334567, 'al334567','al334567','alessandrazoucas@gmail.com', 5, 1, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Usuario' ,434567, 'al434567','al434567','alessandrazoucas@gmail.com', 3, 1, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Reginaldo'    ,021784, 're021784','re021784','reginaldo.goncalves.sc@gmail.com', 2, 1, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Auditora'   ,'098765', 'gi098765','gi098765','gihames02@gmail.com'	 , 2, 1, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Superv.'    ,'198765', 'gi198765','gi198765','gihames02@gmail.com'	 , 5, 1, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Usuario'    ,'298765', 'gi298765','gi298765','gihames02@gmail.com'	 , 4, 1, 4, 'SIM');
 
 -- Inserindo Projeto --
 INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1, 'SIM');
 INSERT INTO rg_quality.Projeto VALUES (null, 'Modem ADSL', 4, 'SIM');
+INSERT INTO rg_quality.Projeto VALUES (null, 'Nave Espacial', 1, 'SIM');
+INSERT INTO rg_quality.Projeto VALUES (null, 'Submarino', 4, 'SIM');
 
 
 -- Inserindo Artefatos --
 INSERT INTO rg_quality.Artefato VALUES (null, 'ATA-Reunião', 'ATA da Reunião de abertura do projeto', 'SIM');
 INSERT INTO rg_quality.Artefato VALUES (null, 'Cronograma', 'Cronograma Macro das Atividades do Projeto', 'SIM');
-INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos', 'Documento Detalhado dos Requisitos do Sistema', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos de mercado', 'Documento Detalhado dos Requisitos de mercado', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Book-1', 'Book com todas as informações do projeto', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Requisitos de SW', 'Documento Detalhado dos Requisitos de SW', 'SIM');
+INSERT INTO rg_quality.Artefato VALUES (null, 'Casos de Teste', 'Documento Detalhado com os casos de teste', 'SIM');
 

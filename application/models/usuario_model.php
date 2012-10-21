@@ -45,6 +45,7 @@ class Usuario_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Usuario');
+			$this->db->order_by('usuarioNome', 'asc');				
 			$this->db->where('usuarioAtivo', 'SIM');
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
@@ -57,6 +58,7 @@ class Usuario_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Usuario');
+			$this->db->order_by('usuarioNome', 'asc');
 			$this->db->where('usuarioAtivo', 'NÃO');
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
@@ -69,6 +71,7 @@ class Usuario_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Usuario');
+			$this->db->order_by('usuarioNome', 'asc');
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
@@ -89,7 +92,9 @@ class Usuario_model extends CI_Model {
 
 		$this->db->from('Usuario');
 		
-	    $this->db->where('tipoID', $id);
+		$this->db->order_by('usuarioNome', 'asc');
+		
+		$this->db->where('tipoID', $id);
 	    
 	    $this->db->where('usuarioAtivo', 'SIM'); //somente ativos
 	    
