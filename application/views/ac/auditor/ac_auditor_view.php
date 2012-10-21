@@ -1,12 +1,11 @@
 
 <!-- Estrutura -->
 <div class="container">
-
+	<br>
 	<div class="page-header">
-			<h2>
-				Visualização <small> de Ação Corretiva</small>
-			</h2>
+		<h2>Visualização <small> de Ação Corretiva</small></h2>
 	</div>
+	<br>
 
 	<div class="row">
 	  

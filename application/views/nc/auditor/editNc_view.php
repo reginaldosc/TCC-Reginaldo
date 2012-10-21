@@ -1,11 +1,13 @@
 
 	<div class="container">
 	
+		<br>
 		<div class="page-header">
 			<h2>
 				Edição <small> de Não Conformidade</small>
 			</h2>
 		</div>
+		<br>
 		
 		<?php
 			$atributos = array('form class'=>'form-horizontal',  'id'=>'FormCadastro', 'method'=>'POST');

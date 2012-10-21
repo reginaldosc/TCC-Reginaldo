@@ -2,12 +2,14 @@
 <!-- Estrutura -->
 <div class="container">
 
+	<br>
 	<div class="page-header">
 			<h2>
 				Cadastro <small> de nova Auditoria</small>
 			</h2>
 	</div>
-
+	<br>
+	
 	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarAuditoria">			
 
 			 <?php 

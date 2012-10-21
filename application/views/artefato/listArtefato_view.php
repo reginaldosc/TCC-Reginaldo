@@ -2,12 +2,10 @@
 <div class="container">
 
 	<br>
-
-	<!-- Buscador -->
-	<form class="well form-search">
-		<input type="text" class="input-xlarge search-query">
-		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
-	</form>
+	<div class="page-header">
+		<h2>Edição <small> de Artefato</small></h2>
+	</div>
+	<br>
 
 	<!-- Adicionar nova unidade -->
 	<a href="newArtefato" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Novo Artefato </a>

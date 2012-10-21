@@ -2,11 +2,13 @@
 <!-- Estrutura -->
 <div class="container">
 
+	<br>
 	<div class="page-header">
 			<h2>
 				Edição <small> de Auditoria</small>
 			</h2>
 	</div>
+	<br>
 
 	<form class="form-horizontal" id="FormCadastro" method="POST" action="../editarAuditoria">			
 

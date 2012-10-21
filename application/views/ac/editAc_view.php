@@ -5,6 +5,9 @@
 			<h2>
 				Edição <small> de Ação Corretiva </small>
 			</h2>
+		</div>
+		<br>
+			
 		<?php
 			$atributos = array('form class'=>'form-horizontal',  'id'=>'FormCadastro', 'method'=>'POST');
 			echo form_open('ac/editarAc', $atributos); 

@@ -1,12 +1,12 @@
 
 <!-- Estrutura -->
 <div class="container">
-
+	
+	<br>
 	<div class="page-header">
-			<h2>
-				Cadastro <small> de nova AC</small>
-			</h2>
+		<h2>Cadastro <small> de nova AC</small></h2>
 	</div>
+	<br>
 
 	<form class="form-horizontal" id="FormCadastro" method="POST" action="../cadastrarAc">  
 			

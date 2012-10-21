@@ -2,8 +2,10 @@
 <div class="container">
 
 	<br>
-
-<br><br><br>
+	<div class="page-header">
+		<h2>Listagem <small> de Auditorias</small></h2>
+	</div>
+	<br>
 
 	<!-- Adicionar novo usuario -->
 	<a href="newAuditoria" class="btn btn-primary"> <i class="icon-plus icon-white"></i> Nova Auditoria </a>

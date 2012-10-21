@@ -2,11 +2,13 @@
 <!-- Estrutura -->
 <div class="container">
 
+	<br>
 	<div class="page-header">
 			<h2>
 				Cadastro <small> de artefatos</small>
 			</h2>
 		</div>
+		<br>
 
 	<form class="form-horizontal" id="FormCadastro" method="POST" action="cadastrarArtefato">  
 			

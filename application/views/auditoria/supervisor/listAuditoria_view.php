@@ -2,7 +2,10 @@
 <div class="container">
 
 	<br>
-	<br><br><br>
+	<div class="page-header">
+		<h2>Listagem <small> de Auditorias</small></h2>
+	</div>
+	<br>
 	
 
 	<!-- Adicionar nova Auditoria -->

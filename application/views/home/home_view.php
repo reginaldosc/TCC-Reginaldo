@@ -8,7 +8,8 @@
 	</div>
 
 
-	<p><a href="<?php echo site_url()?>/app/SQAP" class="btn btn-primary"></i>PGQS</a><strong> Plano da Garantia da Qualidade de Software</strong></p>
+	<p><a href="<?php echo site_url()?>/app/SQAP" class="btn btn-primary"></i>SQAP</a>
+		<strong> Software Quality Assurance Plan</strong></p>
 	<br>
 	<br>
 

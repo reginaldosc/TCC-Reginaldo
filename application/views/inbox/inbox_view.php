@@ -2,6 +2,9 @@
 <div class="container">
 
 	<br>
+	<div class="page-header">
+		<h2>Caixa<small> de Mensagens</small></h2>
+	</div>
 	<br>
 
 	<?php 

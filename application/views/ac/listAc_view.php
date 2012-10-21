@@ -2,12 +2,10 @@
 <div class="container">
 
 	<br>
-
-	<!-- Buscador -->
-	<form class="well form-search">
-		<input type="text" class="input-xlarge search-query">
-		<button type="submit" class="btn"><i class="icon-search"></i> Buscar</button>
-	</form>
+	<div class="page-header">
+		<h2>Listagem <small> de Ações Corretivas</small></h2>
+	</div>
+	<br>
 
 
 	<!-- Tabela com a lista dos usuarios do sistema -->
