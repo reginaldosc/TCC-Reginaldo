@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS rg_quality.Mensagem (
 -- -----------------------------------------------------
 -- Table rg_quality.Artefato
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
+	CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
   
   artefatoID INT NOT NULL AUTO_INCREMENT ,
   artefatoNome VARCHAR(45) NOT NULL ,
@@ -145,6 +145,25 @@ CREATE TABLE IF NOT EXISTS rg_quality.Artefato (
 
   
   )ENGINE = InnoDB;
+
+
+
+-- -----------------------------------------------------
+-- Table rg_quality.Perguntas
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS rg_quality.Perguntas (
+  
+  perguntasID INT NOT NULL AUTO_INCREMENT ,
+  artefatoID INT NOT NULL ,
+  artefatoPergunta VARCHAR(45) NOT NULL ,
+  perguntaAtivo VARCHAR(3) NOT NULL,
+  
+  PRIMARY KEY (perguntasID) ,
+  
+  FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID)
+  
+  )ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------

@@ -63,6 +63,8 @@
 							<li><?php echo anchor('unidade/listAll','Unidade');?></li>
 
 							<li><?php echo anchor('usuario/listAll','Usuário');?></li>
+							
+							<li><?php echo anchor('perguntas/listAll','Perguntas');?></li>
 						</ul>
 					</li>
 					
