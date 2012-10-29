@@ -88,6 +88,19 @@ class Projeto_model extends CI_Model {
 
 
 	/**
+	 * Busca projeto a partir do departamento
+	 */
+
+	function getProjetos($id)
+	{
+
+		$query  = $this->db->query("SELECT distinct projetoID, projetoNome FROM Projeto P, Departamento D where P.departamentoID = '$id' ");		
+		
+		return $query->result();
+	}
+
+
+	/**
 	 * Edita
 	 */
 	function editar($data)
