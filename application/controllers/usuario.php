@@ -187,19 +187,35 @@ class Usuario extends CI_Controller {
 		$this->parser->parse('template', $data);
 	}
 
-	
-	public function mudaSenha($id)
+	/**
+	 * Verific se a senha do usuario
+	 */
+	public function getPass($password)
 	{
-		
-		$data['usuarioPWD']     = $this->input->post('senha');
-		
-		echo($id);
-		
-		//$data['usuario'] 		= buscar($id);
-				
-		print_r($data);
-		
-		//atualizaSenha($data);
+		// recupera o id do usuario está que está logado //
+		$id = $this->getUserID();
+
+		$retorno = $this->usuario_model->getPass($id, $password);
+
+		echo json_encode($retorno);
+		return;
+	}
+
+	/**
+	 * Atualiza Senha do usuario 
+	 */
+	public function setPass($password)
+	{
+		// recupera o id do usuario está que está logado //
+		$id = $this->getUserID();
+
+		$data['usuarioPassword']	= $password;
+
+		$retorno = $this->usuario_model->atualizaUsuario($id, $data);
+
+		echo json_encode($retorno);
+		return;
+
 	}
 	
 }

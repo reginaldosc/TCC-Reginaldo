@@ -47,7 +47,9 @@ class Login extends CI_Controller {
 		}
 		else
 		{
-			echo "Erro";
+			$this->session->set_userdata('msg', 'O nome de usuário ou a senha inserido está incorreto.');
+
+			redirect('login');
 		}
 	}
 

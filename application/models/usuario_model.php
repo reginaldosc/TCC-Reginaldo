@@ -216,7 +216,18 @@ class Usuario_model extends CI_Model {
 
 	}
 
+	function getPass($id,$password)
+	{
+			
+		$query = $this->db->query("SELECT * FROM Usuario U where U.usuarioID = '$id' AND U.usuarioPassword = BINARY '$password' ");
+		
+		if ($query->num_rows == 1)
+		 {
+		 	return TRUE;
+		 }
+		 return FALSE;
 
+	}
 
 
 /**
@@ -225,7 +236,7 @@ class Usuario_model extends CI_Model {
 	function atualizaUsuario($id, $data) 
 	{
 		
-		$this->db->update('Usuario', $data, "usuarioID = $id");
+		return $this->db->update('Usuario', $data, "usuarioID = $id");
 	}
 	
 }
