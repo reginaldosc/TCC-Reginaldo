@@ -102,7 +102,7 @@ class Usuario_model extends CI_Model {
 		
 		$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 		
-		$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+		$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
 		
 		$query = $this->db->get();
 		
