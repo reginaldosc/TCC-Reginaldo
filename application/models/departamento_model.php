@@ -116,6 +116,18 @@ class Departamento_model extends CI_Model {
 				WHERE departamentoID='$id'");
 
 	}
+
+	/**
+	 * Busca departamento a partir da Unidade
+	 */
+
+	function getDepartamentos($id)
+	{
+
+		$query  = $this->db->query("SELECT distinct departamentoID, departamentoNome FROM Departamento D, Unidade U where D.unidadeID = '$id' ");		
+		
+		return $query->result();
+	}
 }
 
 ?>

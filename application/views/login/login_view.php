@@ -42,6 +42,16 @@
 		</fieldset>
 	</form>
 
+	<?php 
+		
+		$msg = $this->session->userdata('msg');
+		
+		if (!empty($msg))
+			echo "<div class='alert alert-error'> $msg </div>";
+		
+		$this->session->unset_userdata('msg');
+	?>
+
 </div>
 </body>
 </html>

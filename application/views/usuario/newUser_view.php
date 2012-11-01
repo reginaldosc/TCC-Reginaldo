@@ -53,8 +53,9 @@
 			<div class="control-group">
 				<label class="control-label" for="">Unidade</label>
 				<div class="controls">
-					<select id="" class="input-xlarge" >
+					<select id="" name="Unidade" class="input-xlarge" >
 						
+						<option value=""> Escolha </option>
 						{unidades}		
 						<option value="{unidadeID}"> {unidadeNome} </option>
 						{/unidades}					
@@ -69,9 +70,7 @@
 				<div class="controls">
 					<select id="" name="Setor" class="input-xlarge">
 						
-						{departamentos}		
-						<option value="{departamentoID}"> {departamentoNome} </option>
-						{/departamentos}
+						<option value=""> Escolha </option>
 						
 				    </select>
 				</div>
@@ -100,7 +99,9 @@
 		</fieldset>
 	</form>
 
-
+<script type="text/javascript">
+    var path = '<?php echo site_url(); ?>'
+</script>
 <!-- FIM -->
 
 

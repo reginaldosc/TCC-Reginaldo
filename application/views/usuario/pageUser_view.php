@@ -35,75 +35,71 @@
 
  			<h4>Login: <small> {usuarioLogin}</small></h4>
 
- 		 	<h4>Senha: <small> {usuarioPassword}</small></h4>
  		<br>
- 		 	<button class="btn btn-warning" onclick='mudaSenha("{usuarioID}")' data-toggle="modal" href="#mudaSenhamodal">Alterar a Senha </button>
+ 		<button class="btn btn-warning" id="AlterarSenha"> Alterar a Senha </button>
+
+ 		<br>
+ 		<br>
+ 		<br>
+
+ 		<div class="hide" id="Altera">
+
+ 			<!-- Cadastro efetuado com sucesso -->
+			<div class="alert hide alert-success" id="CadastroPass_ok">
+				<p> Senha alterada com sucesso !</p>
+			</div>
+			<div class="alert hide alert-error" id="CadastroPass_nok">
+				<p> Não foi possivel alterar a senha !</p>
+			</div>	
+
+	 		<!-- senha Atual -->
+			<div class="control-group">
+				<label class="control-label" for="">Senha Atual</label>
+				<div class="controls">
+						<input class="input-xlarge" id="senhaAtual" type="password" name="">
+						<i class="icon-ok" id="Pass_atual_ok"></i>
+						<i class="icon-remove" id="Pass_atual_nok"></i>	
+				</div>
+			</div>
+
+			<!-- nova senha -->
+			<div class="control-group">
+				<label class="control-label" for="">Nova Senha</label>
+				<div class="controls">
+						<input class="input-xlarge" id="senhaNova" type="password" name="">
+						<i class="icon-ok" id="Pass_novo_ok"></i>
+						<i class="icon-remove" id="Pass_novo_nok"></i>
+						<small id='msg_tamanho' class="alert hide alert-error"> Nova senha deve possuir no minimo 1 e no maximo 8 caracteres !</small>
+				</div>
+			</div>
+
+			<!-- confirmacao da senha -->
+			<div class="control-group">
+				<label class="control-label" for="">Repetir Senha</label>
+				<div class="controls">
+						<input class="input-xlarge" id="senhaConf" type="password" name="">
+						<i class="icon-ok" id="Pass_conf_ok"></i>
+						<i class="icon-remove" id="Pass_conf_nok"></i>	
+				</div>
+			</div>
+
+			<div class="">
+				<button class="btn btn-danger" id="submit_altera_senha"> Confirmar </button>
+		 	</div>
+		</div>
+
+
  	</li>
 	</ul>
 
 	</div>
 {/usuario}
 </div>	
-	<br>
 
-	
-	<!-- Modal de cadastro de Nao conformidade --> 
-
-<div class="modal hide" id="mudaSenhamodal">
-
-<form class="form-horizontal" id="FormCadastro" method="POST" action="../mudaSenha">
-
-		<div class="modal-header">
-		
-		<button type="button" class="close" data-dismiss="modal">×</button>
-			<h3>Alteração de Senha</h3>
-		</div>
-
-		<div class="modal-body">
-			
-			<div class="control-group">
-				<label class="control-label" for="">Senha Atual</label>
-				<div class="controls">
-						<input class="input-xlarge" id="" type="text" value="">
-				</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="">Senha Nova</label>
-				<div class="controls">
-						<input class="input-xlarge" id="" type="password" value="">
-				</div>
-			</div>
-
-			<div class="control-group">
-				<label class="control-label" for="">Repetir Senha</label>
-				<div class="controls">
-						<input class="input-xlarge" id="senha" type="password" value="{usuarioPWD}" name="senha">
-				</div>
-			</div>
-
-		</div>
-
-		<div class="modal-footer">
-			<a href="" class="btn" data-dismiss="modal">Voltar</a>
-			<a href="" class="btn btn-danger" id="Excluir">Salvar</a>
-	 	</div>
-
-	 	</form>
-</div> <!-- Fim Modal NC -->  
-	
-		
-<!-- FIM -->
-
+<br>
 
 
 <script type="text/javascript">
-
-// Chama modal para cadastro de NC //
-function mudaSenha(id){
-
-	document.getElementById("Excluir");
-	document.getElementById('Excluir').href="../mudaSenha/"+id;
-
-}	
+    var path = '<?php echo site_url(); ?>'
 </script>
+<!-- FIM -->

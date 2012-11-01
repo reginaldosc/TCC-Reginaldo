@@ -60,6 +60,20 @@ class Departamento extends CI_Controller {
 		
 	}
 
+	/**
+	 * 
+	 */
+	public function getDepartamento($id)
+	{
+		$departamentos = $this->departamento_model->getDepartamentos($id);
+		
+		if( empty ( $departamentos ) ) 
+			return '{ "nome": "Nenhum departamento encontrado" }';
+			
+		echo json_encode($departamentos);
+
+		return;
+	}
 
 	/**
 	 * Recupera as informações do cadastro e grava no bando de dados

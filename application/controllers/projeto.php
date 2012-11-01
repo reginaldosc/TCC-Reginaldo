@@ -60,6 +60,21 @@ class Projeto extends CI_Controller {
 		
 	}
 
+	/**
+	 * 
+	 */
+	public function getProjetos($id)
+	{
+		$projetos = $this->projeto_model->getProjetos($id);
+		
+		if( empty ( $projetos ) ) 
+			return '{ "nome": "Nenhum projeto encontrado" }';
+			
+		echo json_encode($projetos);
+
+		return;
+	}
+
 
 	/**
 	 * Recupera as informações do cadastro e grava no bando de dados
