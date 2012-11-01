@@ -50,7 +50,7 @@ class Usuario_model extends CI_Model {
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
-			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
 			$query = $this->db->get();			
 		}
 		//lista somente os inativos
@@ -63,7 +63,7 @@ class Usuario_model extends CI_Model {
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
-			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
 			$query = $this->db->get();	
 		}
 		//lista todos (ativos + inativos)
@@ -75,7 +75,7 @@ class Usuario_model extends CI_Model {
 			$this->db->join('Cargo', 'Usuario.cargoID = Cargo.cargoID');
 			$this->db->join('Departamento', 'Usuario.departamentoID = Departamento.departamentoID');
 			$this->db->join('Tipo', 'Usuario.tipoID = Tipo.tipoID');
-			$this->db->join('Unidade', 'Departamento.departamentoID = Unidade.unidadeID');
+			$this->db->join('Unidade', 'Departamento.unidadeID = Unidade.unidadeID');
 			$query = $this->db->get();
 		}
 
