@@ -67,7 +67,7 @@
 			<div class="control-group">
 				<label class="control-label" for="">Projeto</label>
 				<div class="controls">
-					<select id="" name="Projeto"class="input-xlarge">
+					<select id="" name="Projeto" class="input-xlarge">
 						
 						{projetos}		
 						<option value="{projetoID}"> {projetoNome} </option>

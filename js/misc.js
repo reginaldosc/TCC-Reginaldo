@@ -77,7 +77,7 @@ $(document).ready(function(){
 	
 
 	// Datas para o sistema //
-	$('#Data').datepicker()
+	$('#Data').datepicker();
 
 
 

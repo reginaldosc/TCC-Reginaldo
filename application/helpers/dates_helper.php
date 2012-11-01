@@ -44,17 +44,12 @@ if ( !function_exists('date_is_menor_hoje'))
 		$CI =& get_instance();
 		date_default_timezone_set('America/Sao_Paulo');
 
-		$data_auditoria = $date;
 		$data_atual = date("d/m/Y");
 
+		$data_auditoria = implode("",array_reverse(explode("/",$date)));
+		$data_hoje = implode("",array_reverse(explode("/",$data_atual)));
 
-		// Data da auditoria //
-		list ($dia,$mes,$ano) = explode ('/', $data_auditoria);
-
-		// Data do sistema //
-		list ($dia_atual ,$mes_atual ,$ano_atual) = explode ('/', $data_atual);
-
-		if( ($dia < $dia_atual) && ($mes <= $mes_atual) && ($ano <= $ano_atual) )  
+		if( $data_auditoria < $data_hoje)  
 		{
 			return TRUE;
 		}
