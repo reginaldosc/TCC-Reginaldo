@@ -84,25 +84,56 @@
 	
 			{artefatos}
 			<tr>	
-			    <td><strong>{artefatoNome}</strong></td>
+			    <td>
+			    	<dl>
+			    		<dt>
+			    			<strong>{artefatoNome}</strong>
+			    		</dt>
+			    	   	{perguntas}
+			    		<dd>
+			    			{artefatoPergunta}
+			    		</dd>
+			    		{/perguntas}
+			    	</dl>
+			    </td>
+			    
 				<td> 
+					<dl>
+						<dt>
+							<label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="4" checked="">
+								<p class="label label-info">Não Aplicável</p>
+							</label>
 
-					<label class="radio inline">
+							<label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="5">
+								<p class="label label-success">Conforme</p>
+							</label>
 
-						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="4" checked="">
-						<p class="label label-info">Não Aplicável</p>
-					</label>
+							<label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="6">
+								<p class="label label-important">Não Conforme</p>
+							</label>
+						</dt>
+						
+						<dd>
+						    <label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="4" checked="">
+								<p class="label label-info">Não Aplicável</p>
+							</label>
 
-					<label class="radio inline">
-						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="5">
-						<p class="label label-success">Conforme</p>
-					</label>
+							<label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="5">
+								<p class="label label-success">Conforme</p>
+							</label>
 
-					<label class="radio inline">
-						<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6">
-						<p class="label label-important">Não Conforme</p>
-					</label>
-				
+							<label class="radio inline">
+								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6">
+								<p class="label label-important">Não Conforme</p>
+							</label>
+						</dd>
+						
+					</dl>
 				</td>
 			</tr>
 			{/artefatos}

@@ -254,9 +254,30 @@ class Auditoria extends CI_Controller {
 			// Lista todos os usuarios //
 			$data['usuarios'] = $this->usuario_model->listarPorTipo('4');
 
-			// Lista todos os artefatos //
+			// Lista todos os artefatos ativos//
 			$data['artefatos'] = $this->artefato_model->listar(2);
+			
+			print_r($data['artefatos']);
+			echo"###teste####";
+			//============================================
+			
+			for ($i=0; $i < count($data['artefatos']);$i++)
+			{
+				$id2 = $data['artefatos'][$i]->artefatoID;
+				
+				$data2['perguntas'][$i] = $this->perguntas_model->getPerguntasByArtefato($id2);
+				
+			}
 
+			print_r($data2['perguntas']);
+			echo"@@@@@@@@@@@@";
+			
+			
+			
+			print_r($data2['perguntas']);
+			
+			//================================================================
+			
 			// Carrega a view correspondende //
 			$data['main_content'] = 'auditoria/execAuditoria_view';
 			

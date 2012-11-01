@@ -48,7 +48,7 @@ class Perguntas_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Perguntas');
-			$this->db->where('perguntasAtivo', 'SIM');
+			$this->db->where('perguntaAtivo', 'SIM');
 			$this->db->join('Artefato', 'Perguntas.artefatoID = Artefato.artefatoID');
 			$query = $this->db->get();			
 		}
@@ -57,7 +57,7 @@ class Perguntas_model extends CI_Model {
 		{
 			$this->db->select('*');
 			$this->db->from('Perguntas');
-			$this->db->where('perguntasAtivo', 'NÃO');
+			$this->db->where('perguntaAtivo', 'NÃO');
 			$this->db->join('Artefato', 'Perguntas.artefatoID = Artefato.artefatoID');
 			$query = $this->db->get();	
 		}
@@ -107,9 +107,24 @@ class Perguntas_model extends CI_Model {
 	
 	
 	/**
+	 * get perguntas por artefatoID
+	 */
+    public function getPerguntasByArtefato($id)
+    {
+    	$this->db->select('artefatoPergunta');
+    	$this->db->from('Perguntas');
+    	$this->db->where('artefatoID', $id);
+    	$query = $this->db->get();
+    	
+    	return $query->result();
+    }
+	
+	
+	
+	/**
 	 * Procura e deleta na BD
 	 */
-    function deletar($id)
+    public function deletar($id)
     {
     	$ativo = "NAO";
 	    $query = $this->db->query("UPDATE Perguntas SET perguntaAtivo='$ativo' WHERE perguntasID='$id'");
