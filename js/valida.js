@@ -65,6 +65,16 @@ $(document).ready(function(){
 				required: true,
 				dateISO: true
 			},
+
+			Setor:
+			{
+				required: true,
+			},
+
+			Projeto: 
+			{
+				required: true,
+			},
 		
 		},
 		
@@ -110,7 +120,17 @@ $(document).ready(function(){
 
 			Data:{
 				required: "Informe a data para auditoria",
-				dateISO: "Informe uma data valida, exemplo: dd/mm/aaaa",
+				dateISO: "Informe uma data valida, exemplo: dd/mm/aaaa"
+			},
+
+			Setor:
+			{
+				required: "Escolha um Departamento",
+			},
+
+			Projeto:
+			{
+				required: "Escolha um Projeto",
 			},
 			
 		},
@@ -119,6 +139,7 @@ $(document).ready(function(){
 		errorElement: "span",
 		highlight:function(element, errorClass, validClass) {
 
+			$(element).parents('.control-group').removeClass('success');
 			$(element).parents('.control-group').addClass('error');
 		},
 		unhighlight: function(element, errorClass, validClass) {
