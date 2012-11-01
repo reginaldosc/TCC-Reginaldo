@@ -295,6 +295,7 @@ INSERT INTO rg_quality.Status VALUES (null, 'Retornada'     , 'important');
 INSERT INTO rg_quality.Unidade VALUES (null, 'ISOL', 'SIM');
 INSERT INTO rg_quality.Unidade VALUES (null, 'INET', 'SIM');
 INSERT INTO rg_quality.Unidade VALUES (null, 'ISEC', 'SIM');
+INSERT INTO rg_quality.Unidade VALUES (null, 'QUALIDADE', 'SIM');
 
 
 -- Inserindo departamentos --
@@ -303,6 +304,7 @@ INSERT INTO rg_quality.Departamento VALUES (null, 'UC', 1, 'SIM');
 INSERT INTO rg_quality.Departamento VALUES (null, 'Grandes Sistemas', 1, 'SIM');
 INSERT INTO rg_quality.Departamento VALUES (null, 'BroadBand', 2, 'SIM');
 INSERT INTO rg_quality.Departamento VALUES (null, 'Cameras IP', 3, 'SIM');
+INSERT INTO rg_quality.Departamento VALUES (null, 'SGQ', 4, 'SIM' );
 
 
 -- Inserindo tipos de usuario --
@@ -310,6 +312,7 @@ INSERT INTO rg_quality.Tipo VALUES (null, 'Admin');
 INSERT INTO rg_quality.Tipo VALUES (null, 'Auditor');
 INSERT INTO rg_quality.Tipo VALUES (null, 'Supervisor');
 INSERT INTO rg_quality.Tipo VALUES (null, 'Usuario');
+INSERT INTO rg_quality.Tipo VALUES (null, 'Supervisor_SGQ');
 
 
 -- Inserindo Cargo --
@@ -323,19 +326,28 @@ INSERT INTO rg_quality.Cargo VALUES (null, 'Especialista', 'SIM');
 -- Inserindo Usuario --
 --									  (ID, 		Nome,			 Matricula, Login, Password, Email, cargoID, departamentoID, tipoID, ativo) --
 INSERT INTO rg_quality.Usuario VALUES (null, 'Administrador'	  ,000001, 'admin','admin','admin@localhost.com'		   	 , 2, 1, 1, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Auditor'	  ,012345, 'ma012345','ma012345','thiry@univali.br' 		 , 1, 1, 2, 'SIM');
+
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Auditor'	  ,012345, 'ma012345','ma012345','thiry@univali.br' 		 , 1, 6, 2, 'SIM');
 INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Superv.'	  ,112345, 'ma112345','ma112345','thiry@univali.br'			 , 5, 1, 3, 'SIM');
 INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello Usuario'	  ,212345, 'ma212345','ma212345','thiry@univali.br'			 , 3, 1, 4, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Auditora'	  ,123456, 'fa123456','fa123456','fabiane.benitti@univali.br', 1, 1, 2, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Superv.'	  ,223456, 'fa223456','fa223456','fabiane.benitti@univali.br', 5, 1, 3, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Usuario'	  ,323456, 'fa323456','fa323456','fabiane.benitti@univali.br', 3, 1, 4, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Auditora',234567, 'al234567','al234567','alessandrazoucas@gmail.com', 1, 1, 2, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Superv.' ,334567, 'al334567','al334567','alessandrazoucas@gmail.com', 5, 1, 3, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Usuario' ,434567, 'al434567','al434567','alessandrazoucas@gmail.com', 3, 1, 4, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Reginaldo'    ,021784, 're021784','re021784','reginaldo.goncalves.sc@gmail.com', 2, 1, 4, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Auditora'   ,'098765', 'gi098765','gi098765','gihames02@gmail.com'	 , 2, 1, 2, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Superv.'    ,'198765', 'gi198765','gi198765','gihames02@gmail.com'	 , 5, 1, 3, 'SIM');
-INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Usuario'    ,'298765', 'gi298765','gi298765','gihames02@gmail.com'	 , 4, 1, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Marcello SGQ'	  	  ,312345, 'ma312345','ma312345','thiry@univali.br'			 , 5, 6, 5, 'SIM');
+
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Auditora'	  ,123456, 'fa123456','fa123456','fabiane.benitti@univali.br', 1, 6, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Superv.'	  ,223456, 'fa223456','fa223456','fabiane.benitti@univali.br', 5, 4, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane Usuario'	  ,323456, 'fa323456','fa323456','fabiane.benitti@univali.br', 3, 4, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Fabiane SGQ'		  ,423456, 'fa423456','fa423456','fabiane.benitti@univali.br', 5, 6, 5, 'SIM');
+
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Auditora',234567, 'al234567','al234567','alessandrazoucas@gmail.com', 1, 6, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Superv.' ,334567, 'al334567','al334567','alessandrazoucas@gmail.com', 5, 5, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra Usuario' ,434567, 'al434567','al434567','alessandrazoucas@gmail.com', 3, 5, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Alessandra SGQ'	  ,534567, 'al534567','al534567','alessandrazoucas@gmail.com', 5, 6, 5, 'SIM');
+
+INSERT INTO rg_quality.Usuario VALUES (null, 'Reginaldo'    ,021784, 're021784','re021784','reginaldo.goncalves.sc@gmail.com', 6, 3, 4, 'SIM');
+
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Auditora'   ,'098765', 'gi098765','gi098765','gihames02@gmail.com'	 , 2, 6, 2, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Superv.'    ,'198765', 'gi198765','gi198765','gihames02@gmail.com'	 , 5, 2, 3, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara Usuario'    ,'298765', 'gi298765','gi298765','gihames02@gmail.com'	 , 4, 2, 4, 'SIM');
+INSERT INTO rg_quality.Usuario VALUES (null, 'Gilmara SGQ'	      ,'398765', 'gi398765','gi398765','gihames02@gmail.com'	 , 5, 6, 5, 'SIM');
 
 -- Inserindo Projeto --
 INSERT INTO rg_quality.Projeto VALUES (null, 'Gateway Cisco', 1, 'SIM');
