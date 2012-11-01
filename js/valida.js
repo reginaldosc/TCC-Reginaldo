@@ -66,6 +66,11 @@ $(document).ready(function(){
 				dateISO: true
 			},
 
+			Unidade: 
+			{
+				required: true,
+			},
+
 			Setor:
 			{
 				required: true,
@@ -121,6 +126,11 @@ $(document).ready(function(){
 			Data:{
 				required: "Informe a data para auditoria",
 				dateISO: "Informe uma data valida, exemplo: dd/mm/aaaa"
+			},
+
+			Unidade:
+			{
+				required: "Escolha uma Unidade",
 			},
 
 			Setor:

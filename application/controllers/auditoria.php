@@ -79,11 +79,11 @@ class Auditoria extends CI_Controller {
 		// Lista todas as unidades de negocio //
 		$data['unidades'] = $this->unidade_model->listar(2);
 
-		// Lista todos os departamentos //
-		$data['departamentos'] = $this->departamento_model->listar(2);
+		// // Lista todos os departamentos //
+		// $data['departamentos'] = $this->departamento_model->listar(2);
 
-		// Lista todos os projetos //
-		$data['projetos'] = $this->projeto_model->listar(2);
+		// // Lista todos os projetos //
+		// $data['projetos'] = $this->projeto_model->listar(2);
 
 		// Carrega a view correspondende //
 		$data['main_content'] = 'auditoria/newAuditoria_view';

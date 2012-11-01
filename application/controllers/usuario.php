@@ -123,7 +123,7 @@ class Usuario extends CI_Controller {
 		
 		$data2['unidades']		= $this->unidade_model->listar(2);
 		
-		$data2['departamentos']	= $this->departamento_model->listar(2);
+		// $data2['departamentos']	= $this->departamento_model->listar(2);
 		
 		$data2['tipos']			= $this->tipo_model->listar(2);
 		

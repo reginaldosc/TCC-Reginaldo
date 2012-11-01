@@ -55,6 +55,7 @@
 				<div class="controls">
 					<select id="" name="Unidade" class="input-xlarge" >
 						
+						<option value=""> Escolha </option>
 						{unidades}		
 						<option value="{unidadeID}"> {unidadeNome} </option>
 						{/unidades}					
@@ -69,9 +70,7 @@
 				<div class="controls">
 					<select id="" name="Setor" class="input-xlarge">
 						
-						{departamentos}		
-						<option value="{departamentoID}"> {departamentoNome} </option>
-						{/departamentos}
+						<option value=""> Escolha </option>
 						
 				    </select>
 				</div>
