@@ -88,35 +88,20 @@
 			    	<dl>
 			    		<dt>
 			    			<strong>{artefatoNome}</strong>
-			    		</dt>
-			    	   	{perguntas}
-			    		<dd>
-			    			{artefatoPergunta}
-			    		</dd>
-			    		{/perguntas}
+			    		</dt>	    	   	
+			    		
 			    	</dl>
 			    </td>
 			    
 				<td> 
 					<dl>
 						<dt>
-							<label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="4" checked="">
-								<p class="label label-info">Não Aplicável</p>
-							</label>
-
-							<label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="5">
-								<p class="label label-success">Conforme</p>
-							</label>
-
-							<label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" disabled id="{artefatoID}" value="6">
-								<p class="label label-important">Não Conforme</p>
-							</label>
+							
 						</dt>
-						
+						{perguntas}
 						<dd>
+							{artefatoPergunta}
+							<br>
 						    <label class="radio inline">
 								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="4" checked="">
 								<p class="label label-info">Não Aplicável</p>
@@ -132,7 +117,7 @@
 								<p class="label label-important">Não Conforme</p>
 							</label>
 						</dd>
-						
+						{/perguntas}
 					</dl>
 				</td>
 			</tr>
