@@ -31,6 +31,8 @@ class Relatorio extends CI_Controller {
 
 		$data['ncs'] = $this->relatorio_model->listaNCs(1);
 
+		$data['acs'] = $this->relatorio_model->listaACs(1);
+
 		$data['main_content'] = 'relatorio/relatorio_view';
 		
 		// Envia todas as informações para tela //
@@ -62,11 +64,14 @@ class Relatorio extends CI_Controller {
 	}
 
 	/**
-	 * Gera o relatorio de NC do sistema 
+	 * Gera o relatorio de AC do sistema 
 	 */
 	public function relatAC($status)
 	{
-		echo "Acões corretivas";	
+		$data = $this->relatorio_model->listaACs($status);
+
+		echo json_encode($data);
+		return;	
 	}	
 
 

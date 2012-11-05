@@ -108,42 +108,40 @@
 	        	<div class="">
 
 					<label class="checkbox inline">
-				 		<input type="checkbox" id="" value=""> Agendada
+				 		<input type="checkbox" id="ac_agendada" value="agendada"> Agendada
 					</label>
 
 					<label class="checkbox inline">
-				  		<input type="checkbox" id="" value=""> Executada
+				  		<input type="checkbox" id="ac_executada" value="executada"> Executada
 					</label>
 
 					<label class="checkbox inline">
-				  		<input type="checkbox" id="" value=""> Retornada
+				  		<input type="checkbox" id="ac_retornada" value="retornada"> Retornada
 					</label>
 
 					<label class="checkbox inline">
-				  		<input type="checkbox" id="" value=""> Fechada
+				  		<input type="checkbox" id="ac_fechada" value="fechada"> Fechada
 					</label>
 
 				</div>
 
 				<br>
 
-				<table class='table table-bordered table-striped'>
+				<table id="tab_ac"class='table table-bordered table-striped'>
 					<thead>
 						<tr>
 							<th>AC</th>
-							<th>Assunto</th>
-							<th>Mensagem</th>
-							<th>Data do recebimento</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 								
 					<tbody>
+						{acs}
 							<tr>
-								<td>{usuarioNome}</td>
-								<td>{mensagemAssunto}</td>
-								<td>{mensagemBody}</td>	
-								<td>{mensagemData}</td>
+								<td>{acDescricao}</td>
+								<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 							</tr>
+						{/acs}
 					</tbody>
 				</table>
 

@@ -141,9 +141,91 @@ class Relatorio_model extends CI_Model {
 	}
 
 
-	// Relatorio de NC //
-	function listaACs()
+	// Relatorio de AC //
+	function listaACs($status)
 	{
-		# code...
+		if ($status == 'agendada')
+		{
+			
+			$this->db->select('*');
+		
+			$this->db->from('AC');
+
+			$this->db->join('Status' , 'Status.statusID = AC.statusID');
+
+			$this->db->where('Status.statusID', STATUS_AGENDADA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+		
+		elseif ($status == 'executada') 
+		{
+			
+			$this->db->select('*');
+		
+			$this->db->from('AC');
+
+			$this->db->join('Status' , 'Status.statusID = AC.statusID');		
+
+			$this->db->where('Status.statusID', STATUS_EXECUTADA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+
+		elseif ($status == 'retornada') 
+		{
+			
+			$this->db->select('*');
+		
+			$this->db->from('AC');
+
+			$this->db->join('Status' , 'Status.statusID = AC.statusID');
+
+			$this->db->where('Status.statusID', STATUS_RETORNADA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+
+		elseif ($status == 'fechada') 
+		{
+
+			$this->db->select('*');
+		
+			$this->db->from('AC');
+
+			$this->db->join('Status' , 'Status.statusID = AC.statusID');
+
+			$this->db->where('Status.statusID', STATUS_FECHADA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+		
+		else
+		{
+
+			$this->db->select('*');
+		
+			$this->db->from('AC');
+
+			$this->db->join('Status' , 'Status.statusID = AC.statusID');
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
 	}
+
 }
