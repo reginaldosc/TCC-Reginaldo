@@ -164,7 +164,7 @@ class Auditoria extends CI_Controller {
 
 		for ($i=0; $i < $tam; $i++) { 
 
-			list ($data['artefatoID'], $data['statusID'] ) = explode ('-', $array_artefatos[$i]);
+			list ($data['artefatoID'], $data['statusID'], $data['perguntasID'] ) = explode ('-', $array_artefatos[$i]);
 			$this->auditoria_model->cadastrarPAS($data);
 		 }
 

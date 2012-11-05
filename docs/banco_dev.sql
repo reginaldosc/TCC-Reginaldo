@@ -262,11 +262,13 @@ CREATE TABLE IF NOT EXISTS rg_quality.Projeto_Artefato (
   projetoID INT NOT NULL ,
   artefatoID INT NOT NULL ,
   statusID INT NOT NULL ,
+  perguntasID INT NOT NULL ,
   
-  PRIMARY KEY (projetoID, artefatoID,statusID) ,
+  PRIMARY KEY (projetoID, artefatoID,statusID, perguntasID) ,
   
   FOREIGN KEY (projetoID) REFERENCES rg_quality.Projeto (projetoID) ,
   FOREIGN KEY (artefatoID) REFERENCES rg_quality.Artefato (artefatoID),
+  FOREIGN KEY (perguntasID) REFERENCES rg_quality.Perguntas (perguntasID),
   FOREIGN KEY (statusID) REFERENCES rg_quality.Status (statusID)
 
   )ENGINE = InnoDB;

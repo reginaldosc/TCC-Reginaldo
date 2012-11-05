@@ -70,7 +70,12 @@ class Escalonamento extends CI_Controller {
 					$id_departamento = $dados['usuario'][0]->departamentoID; 
 
 					$id['supervisor']	=	$this->usuario_model->buscarByUsuarioID($id_departamento,USER_SUPERVISOR);
-
+					
+					if ($id['supervisor'] == NULL)
+					{
+						return;
+					}
+					//print_r($id['supervisor']);
 					// MSG //
 					$remetente		= USER_ADMIN;
 					$destinatario	= $id['supervisor'][0]->usuarioID;

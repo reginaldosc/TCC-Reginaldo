@@ -193,6 +193,8 @@ class Auditoria_model extends CI_Model {
 		
 		return $query->result();		    
 	}
+	
+	
 
 	function listarProjeto_Arfetato($id)
 	{
@@ -206,6 +208,8 @@ class Auditoria_model extends CI_Model {
 		$this->db->join('Status' , 'Status.statusID = Projeto_Artefato.statusID');
 
 		$this->db->join('Artefato' , 'Artefato.artefatoID = Projeto_Artefato.artefatoID');
+		
+		$this->db->join('Perguntas', 'Perguntas.perguntasID = Projeto_Artefato.perguntasID');
 
 		$query = $this->db->get();
 		

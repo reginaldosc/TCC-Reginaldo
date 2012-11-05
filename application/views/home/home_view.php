@@ -9,11 +9,11 @@
 
 
 	<p><a href="<?php echo site_url()?>/app/SQAP" class="btn btn-primary"></i>SQAP</a>
-		<strong> Software Quality Assurance Plan</strong></p>
+	   <a href="<?php echo site_url()?>/app/DOCS" class="btn btn-primary"></i>Docs</a>
+	   <a href="<?php echo site_url()?>/app/Workflow" class="btn btn-primary"></i>Workflow</a>
+	</p>
 	<br>
-	<br>
-
-
+	
 	<ul class="thumbnails">
 		<li class="span3">
 

@@ -101,19 +101,20 @@
 						{perguntas}
 						<dd>
 							{artefatoPergunta}
+							
 							<br>
 						    <label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="4" checked="">
+								<input type="radio" name="{perguntasID}" id="{artefatoID}" value="4" checked="">
 								<p class="label label-info">Não Aplicável</p>
 							</label>
 
 							<label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="5">
+								<input type="radio" name="{perguntasID}" id="{artefatoID}" value="5">
 								<p class="label label-success">Conforme</p>
 							</label>
 
 							<label class="radio inline">
-								<input type="radio" name="artefato{artefatoID}" id="{artefatoID}" value="6">
+								<input type="radio" name="{perguntasID}" id="{artefatoID}" value="6">
 								<p class="label label-important">Não Conforme</p>
 							</label>
 						</dd>
@@ -224,7 +225,7 @@ function PegaChecked()
 	for(var i=0; i < name.length; i++){
 		
 		if (name[i].checked == true) {
-			array_produtos[aux] = name[i].id + '-' + name[i].value;
+			array_produtos[aux] = name[i].id + '-' + name[i].value + '-' + name[i].name;
 			aux++;	
 		}
 	

@@ -111,7 +111,7 @@ class Perguntas_model extends CI_Model {
 	 */
     public function getPerguntasByArtefato($id)
     {
-    	$this->db->select('artefatoPergunta');
+    	$this->db->select('*');
     	$this->db->from('Perguntas');
     	$this->db->where('artefatoID', $id);
     	$query = $this->db->get();

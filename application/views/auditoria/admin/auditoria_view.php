@@ -44,6 +44,7 @@
 				<thead>
 					<tr>
 						<th>Artefato</th>
+						<th>Perguntas</th>
 						<th>Resultado</th>			
 						
 					</tr>
@@ -53,12 +54,10 @@
 				<tbody>
 					<tr>	
 				   	 	<td> <strong> {artefatoNome} </strong> </td>
-					
+						<td> <strong> {artefatoPergunta} </strong> </td>
 						<td> <span id="status" class="label label-{statusCode}"> {statusNome} </span> </td>
 					</tr>
-
 				</tbody>
-
 			{/projetos_artefatos}
 			</table>
 
