@@ -68,34 +68,34 @@
 	        	<div class="">
 
 					<label class="checkbox inline">
-				 		<input type="checkbox" id="" value=""> Aberta
+				 		<input type="checkbox" id="nc_aberta" value="aberta"> Aberta
 					</label>
 
 					<label class="checkbox inline">
-				  		<input type="checkbox" id="" value=""> Fechada
+				  		<input type="checkbox" id="nc_fechada" value="fechada"> Fechada
 					</label>
 
 				</div>
 
 				<br>
 
-				<table class='table table-bordered table-striped'>
+				<table id="tab_nc" class='table table-bordered table-striped'>
 					<thead>
 						<tr>
 							<th>NC</th>
-							<th>Assunto</th>
-							<th>Mensagem</th>
-							<th>Data do recebimento</th>
+							<th>Artefato</th>
+							<th>Status</th>
 						</tr>
 					</thead>
 								
 					<tbody>
+						{ncs}
 							<tr>
-								<td>{usuarioNome}</td>
-								<td>{mensagemAssunto}</td>
-								<td>{mensagemBody}</td>	
-								<td>{mensagemData}</td>
+								<td>{ncDescricao}</td>
+								<td>{artefatoNome}</td>
+								<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>		
 							</tr>
+						{/ncs}
 					</tbody>
 				</table>
 

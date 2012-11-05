@@ -61,7 +61,7 @@ $(document).ready(function() {
 
 			$.each(data, function(i, obj) 
 			{
-				$('#tab_auditoria tbody').append(
+				$(tableName).append(
 					
 					'<tr>' 
 					+ 

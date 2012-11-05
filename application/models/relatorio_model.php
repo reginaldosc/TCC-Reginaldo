@@ -86,9 +86,58 @@ class Relatorio_model extends CI_Model {
 
 
 	// Relatorio de NC //
-	function listaNCs()
+	function listaNCs($status)
 	{
-		# code...
+
+		if ($status == 'aberta')
+		{
+			$this->db->select('*');
+			
+			$this->db->from('NC');
+
+			$this->db->join('Status' , 'Status.statusID = NC.statusID');
+			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
+
+			$this->db->where('Status.statusID', STATUS_ABERTA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+		
+		elseif ($status == 'fechada') 
+		{
+			$this->db->select('*');
+			
+			$this->db->from('NC');
+
+			$this->db->join('Status' , 'Status.statusID = NC.statusID');
+			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
+
+			$this->db->where('Status.statusID', STATUS_FECHADA);
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
+		
+		else
+		{
+
+			$this->db->select('*');
+			
+			$this->db->from('NC');
+
+			$this->db->join('Status' , 'Status.statusID = NC.statusID');
+			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
+
+			$query = $this->db->get();
+			
+			return $query->result();
+
+		}
 	}
 
 

@@ -29,6 +29,8 @@ class Relatorio extends CI_Controller {
 		// Carrega a view correspondende //
 		$data['auditorias'] = $this->relatorio_model->listaAuditorias(1);
 
+		$data['ncs'] = $this->relatorio_model->listaNCs(1);
+
 		$data['main_content'] = 'relatorio/relatorio_view';
 		
 		// Envia todas as informações para tela //
@@ -53,7 +55,10 @@ class Relatorio extends CI_Controller {
 	 */
 	public function relatNC($status)
 	{
-		echo "Não conformidades";	
+		$data = $this->relatorio_model->listaNCs($status);
+
+		echo json_encode($data);
+		return;
 	}
 
 	/**
