@@ -91,7 +91,8 @@ $(document).ready(function() {
 					'<tr>' 
 					+ 
 					
-						'<td>' + obj.acDescricao + ' </td>' + 
+						'<td>' + obj.acDescricao + ' </td>' +
+						'<td>' + obj.ncDescricao + ' </td>' +
 						'<td>' + '<span class="label label-'+ obj.statusCode +' ">' + obj.statusNome + '</span>' + '</td>' 
 
 						+   

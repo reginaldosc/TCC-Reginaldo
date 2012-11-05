@@ -68,6 +68,7 @@ $(document).ready(function() {
 					
 						'<td>' + obj.ncDescricao + ' </td>' + 
 						'<td>' + obj.artefatoNome +' </td>' + 
+						'<td>' + obj.projetoNome +' </td>' + 
 						'<td>' + '<span class="label label-'+ obj.statusCode +' ">' + obj.statusNome + '</span>' + '</td>' 
 
 						+   

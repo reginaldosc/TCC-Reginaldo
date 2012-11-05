@@ -84,6 +84,7 @@
 						<tr>
 							<th>NC</th>
 							<th>Artefato</th>
+							<th>Projeto</th>
 							<th>Status</th>
 						</tr>
 					</thead>
@@ -93,6 +94,7 @@
 							<tr>
 								<td>{ncDescricao}</td>
 								<td>{artefatoNome}</td>
+								<td>{projetoNome}</td>
 								<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>		
 							</tr>
 						{/ncs}
@@ -131,6 +133,7 @@
 					<thead>
 						<tr>
 							<th>AC</th>
+							<th>NC</th>
 							<th>Status</th>
 						</tr>
 					</thead>
@@ -139,6 +142,7 @@
 						{acs}
 							<tr>
 								<td>{acDescricao}</td>
+								<td>{ncDescricao}</td>
 								<td><span id="status" class="label label-{statusCode}">{statusNome}</span></td>
 							</tr>
 						{/acs}

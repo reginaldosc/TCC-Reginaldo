@@ -97,6 +97,8 @@ class Relatorio_model extends CI_Model {
 
 			$this->db->join('Status' , 'Status.statusID = NC.statusID');
 			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
+			$this->db->join('Auditoria', 'Auditoria.auditoriaID = NC.auditoriaID');
+			$this->db->join('Projeto', 'Projeto.projetoID = Auditoria.projetoID');
 
 			$this->db->where('Status.statusID', STATUS_ABERTA);
 
@@ -114,7 +116,9 @@ class Relatorio_model extends CI_Model {
 
 			$this->db->join('Status' , 'Status.statusID = NC.statusID');
 			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
-
+			$this->db->join('Auditoria', 'Auditoria.auditoriaID = NC.auditoriaID');
+			$this->db->join('Projeto', 'Projeto.projetoID = Auditoria.projetoID');
+			
 			$this->db->where('Status.statusID', STATUS_FECHADA);
 
 			$query = $this->db->get();
@@ -132,7 +136,9 @@ class Relatorio_model extends CI_Model {
 
 			$this->db->join('Status' , 'Status.statusID = NC.statusID');
 			$this->db->join('Artefato' , 'Artefato.artefatoID = NC.artefatoID');
-
+			$this->db->join('Auditoria', 'Auditoria.auditoriaID = NC.auditoriaID');
+			$this->db->join('Projeto', 'Projeto.projetoID = Auditoria.projetoID');
+			
 			$query = $this->db->get();
 			
 			return $query->result();
@@ -152,6 +158,7 @@ class Relatorio_model extends CI_Model {
 			$this->db->from('AC');
 
 			$this->db->join('Status' , 'Status.statusID = AC.statusID');
+			$this->db->join('NC','NC.ncID = AC.ncID');
 
 			$this->db->where('Status.statusID', STATUS_AGENDADA);
 
@@ -169,7 +176,8 @@ class Relatorio_model extends CI_Model {
 			$this->db->from('AC');
 
 			$this->db->join('Status' , 'Status.statusID = AC.statusID');		
-
+			$this->db->join('NC','NC.ncID = AC.ncID');
+				
 			$this->db->where('Status.statusID', STATUS_EXECUTADA);
 
 			$query = $this->db->get();
@@ -186,7 +194,8 @@ class Relatorio_model extends CI_Model {
 			$this->db->from('AC');
 
 			$this->db->join('Status' , 'Status.statusID = AC.statusID');
-
+			$this->db->join('NC','NC.ncID = AC.ncID');
+				
 			$this->db->where('Status.statusID', STATUS_RETORNADA);
 
 			$query = $this->db->get();
@@ -203,7 +212,8 @@ class Relatorio_model extends CI_Model {
 			$this->db->from('AC');
 
 			$this->db->join('Status' , 'Status.statusID = AC.statusID');
-
+			$this->db->join('NC','NC.ncID = AC.ncID');
+				
 			$this->db->where('Status.statusID', STATUS_FECHADA);
 
 			$query = $this->db->get();
@@ -220,7 +230,8 @@ class Relatorio_model extends CI_Model {
 			$this->db->from('AC');
 
 			$this->db->join('Status' , 'Status.statusID = AC.statusID');
-
+			$this->db->join('NC','NC.ncID = AC.ncID');
+				
 			$query = $this->db->get();
 			
 			return $query->result();
