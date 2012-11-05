@@ -24,6 +24,7 @@
 <script src="<?php echo base_url();?>js/misc.js"></script>
 <script src="<?php echo base_url();?>js/valida.js"></script>
 <script src="<?php echo base_url();?>js/combobox.js"></script>
+<script src="<?php echo base_url();?>js/relatAuditoria.js"></script>
 
 
 </div>

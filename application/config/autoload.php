@@ -121,7 +121,8 @@ $autoload['model'] = array(
 							'ac_model',
 							'nc_model',
 							'mensagem_model',
-							'perguntas_model'
+							'perguntas_model',
+							'relatorio_model'
 							);
 
 
