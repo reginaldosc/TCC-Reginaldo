@@ -45,7 +45,7 @@
 					
 										
 					<a href="<?php echo site_url()?>/inbox/listAll" class="btn btn-inverse"> <i class="icon-envelope icon-white"></i></a>
-					
+					<a href="<?php echo site_url()?>/relatorio/listAll" class="btn btn-inverse"> <i class="icon-folder-open icon-white"></i></a>
 				</ul>
 			</div>
 
